@@ -6,6 +6,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
+import copy
+import math
 
 # TASK 0: Split data set in a training and an evaluation part (80/20)
 
@@ -62,7 +64,73 @@ def show_distribution_plot(dataset, title):
 show_distribution_plot(training_polarity_labels, "Distribution of Training Dataset")
 show_distribution_plot(evaluation_polarity_labels, "Distribution of Evaluation Dataset")
 
+
 # TASK 2: Run 3 different ML models (Naive Bayes Classifier, Base-DT and Best-DT)
 
+# Naive Bayes Classifier (TODO: NEED TO ADD SMOOTHING!!)
 
+# This method is used to get the probabilities from the training set
+def train_naive_bayes_classifier(reviews, labels):
+    
+    # get prior probabilities P(neg) and P(pos)
+    distribution = get_distribution_data_from_dataset(labels)
+    log_prior_probabilities = {};
+    for index, (key, val) in enumerate(distribution.items()):
+        log_prior_probabilities[key] = math.log((int(val)/len(labels)), 10)
+        
+    # getting the frequency of existing words in the class
+    total_word_frequencies_by_class = {}
+    for category in log_prior_probabilities.keys():
+       word_frequencies_by_class = Counter()
+       
+       for index,label in enumerate(labels):
+           if label == category:
+                for word in reviews[index]:
+                    word_frequencies_by_class[word] += 1
+       total_word_frequencies_by_class[category] = word_frequencies_by_class
+       
+
+    # getting total words in the classes
+    total_words_by_class = {}
+    for category,frequency_counter in total_word_frequencies_by_class.items():
+        total_words_by_class[category] = sum(frequency_counter.values())
+    
+   
+    # get conditional probabilities for every word in vocabulary example P(the|neg)
+    #(assuming vocabulary are all the words in the dataset)
+    log_conditional_probabilities = {};
+    for category,frequency_counter in total_word_frequencies_by_class.items():
+        temp_counter = copy.deepcopy(frequency_counter)
+        for key,value in frequency_counter.items():
+            temp_counter[key] = math.log(value / total_words_by_class[category], 10)
+        log_conditional_probabilities[category] = temp_counter
+        
+    return log_prior_probabilities, log_conditional_probabilities
+    
+        
+# JUST A TEST THAT WAS IN OUR NOTES - TO BE DELETED AFTER
+test_labels = ["spam", "spam", "spam", "ham", "ham"]
+test_reviews = [["cheap","viagra","sale"], ["best","viagra"], ["book","trip"], ["cheap","book","sale","viagra"], ["book"]]
+(prior, conditional) = train_naive_bayes_classifier(test_reviews, test_labels)
+print(prior)
+print(conditional)
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
