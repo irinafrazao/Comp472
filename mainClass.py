@@ -5,6 +5,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from collections import Counter
 
 # TASK 0: Split data set in a training and an evaluation part (80/20)
 
@@ -39,25 +40,16 @@ evaluation_polarity_labels = all_polarity_labels[split_point_index:]
 # This methods takes a data set of labels and returns the frequency of those labels
 # classes_and_distribution_dict is a dictionary of labels and associated frequencies
 def get_distribution_data_from_dataset(dataset):
-    classes_and_distribution_dict = {};
-    index = 0
-    
-    while index < len(dataset):
-        current_label = dataset[index]
+    classes_and_distribution_dict = Counter()
+    for label in dataset:
+        classes_and_distribution_dict[label] += 1
         
-        if current_label in classes_and_distribution_dict.keys():
-            classes_and_distribution_dict[current_label] += 1
-        else:
-            classes_and_distribution_dict[current_label] = 1
-        
-        index += 1
-    
     return classes_and_distribution_dict
     
 # This method shows a distribution plot using a data set of labels
 def show_distribution_plot(dataset, title):
     dataset_distribution = get_distribution_data_from_dataset(dataset);
-    
+
     y_values = np.arange(len(dataset_distribution))
     plt.bar(y_values, dataset_distribution.values())
     plt.xticks(y_values, dataset_distribution.keys())
@@ -69,7 +61,6 @@ def show_distribution_plot(dataset, title):
     
 show_distribution_plot(training_polarity_labels, "Distribution of Training Dataset")
 show_distribution_plot(evaluation_polarity_labels, "Distribution of Evaluation Dataset")
-
 
 # TASK 2: Run 3 different ML models (Naive Bayes Classifier, Base-DT and Best-DT)
 
