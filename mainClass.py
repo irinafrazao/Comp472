@@ -24,13 +24,13 @@ util.show_distribution_plot(evaluation_polarity_labels, "Distribution of Evaluat
 # TASK 2: Run 3 different ML models (Naive Bayes Classifier, Base-DT and Best-DT)
 
 # Naive Bayes Classifier (TODO: NEED TO ADD SMOOTHING!!)  
-# JUST A TEST THAT WAS IN OUR NOTES - TO BE DELETED AFTER
-test_labels = ["spam", "spam", "spam", "ham", "ham"]
-test_reviews = [["cheap","viagra","sale"], ["best","viagra"], ["book","trip"], ["cheap","book","sale","viagra"], ["book"]]
-(prior, conditional) = util.train_naive_bayes_classifier(test_reviews, test_labels)
-print(prior)
-print(conditional)
-        
+# Train the model
+(prior, conditional) = util.train_naive_bayes_classifier(training_reviews, training_polarity_labels)
+
+# Use the model to evaluate new data (just a test for now until task 3)
+classified_label = util.classify_naive_bayes(evaluation_reviews[0], prior, conditional)    
+print(classified_label) 
+print(evaluation_polarity_labels[0])
     
     
     

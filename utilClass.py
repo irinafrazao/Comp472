@@ -94,4 +94,32 @@ def train_naive_bayes_classifier(reviews, labels):
         log_conditional_probabilities[category] = temp_counter
         
     return log_prior_probabilities, log_conditional_probabilities
+
+# This method is used to get the score of a review for a certain label
+def score_review_label_naive_bayes(review, label, log_prior_probabilities, log_conditional_probabilities):
+    score = log_prior_probabilities[label]
+    print(score)
+    for word in review:
+        print(log_conditional_probabilities[label][word])
+        score += log_conditional_probabilities[label][word]
         
+    return float(score)
+        
+        
+# This method is used to classify a specific review in one of the possible labels
+def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probabilities):
+    scores = {}
+    possible_labels = get_distribution_data_from_dataset(log_prior_probabilities.keys());
+    
+    for label in possible_labels:
+        scores[label] = score_review_label_naive_bayes(review, label, log_prior_probabilities, log_conditional_probabilities)
+     
+    highest_score = max(scores.values())
+    
+    for key,value in scores.items():
+         if value == highest_score:
+             classified_label = key
+    
+    return classified_label
+
+            
