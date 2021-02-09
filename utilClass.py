@@ -13,7 +13,7 @@ import copy
 
 # This method reads a dataset and returns 2 arrays:
 # polarity_labels is an array of all the sentiment polarity labels
-# reviews is an array where each element is an array of the words in the review
+# reviews is an array where each element is an array of the words in a review
 def read_document(dataset_filename_with_extension):
     reviews = []
     polarity_labels = []
@@ -55,10 +55,13 @@ def show_distribution_plot(dataset, title):
     
 # TASK 2: Run 3 different ML models (Naive Bayes Classifier, Base-DT and Best-DT)
 
-# Naive Bayes Classifier (TODO: NEED TO ADD SMOOTHING!!)
+# Naive Bayes Classifier
 
 # This method is used to get the probabilities from the training set
-def train_naive_bayes_classifier(reviews, labels):
+# log_prior_probabilities is a dictionary with each label associated with a log probability
+# log_conditional_probabilities is a dictionary with a label key and a value being another dictionary
+# where the key is the word and the value is the associated log probability P(word|class)
+def train_naive_bayes_classifier(reviews, labels, smoothing_alpha):
     
     # get prior probabilities P(neg) and P(pos)
     distribution = get_distribution_data_from_dataset(labels)
@@ -77,6 +80,12 @@ def train_naive_bayes_classifier(reviews, labels):
                     word_frequencies_by_class[word] += 1
        total_word_frequencies_by_class[category] = word_frequencies_by_class
        
+    # get complete vocabulary (no duplicates, assuming that all the words in the docs are in vocabulary)
+    complete_vocabulary = set()
+    for label,frequencies in total_word_frequencies_by_class.items():
+        for word in frequencies:
+            if word not in complete_vocabulary:
+                complete_vocabulary.add(word)
 
     # getting total words in the classes
     total_words_by_class = {}
@@ -90,23 +99,24 @@ def train_naive_bayes_classifier(reviews, labels):
     for category,frequency_counter in total_word_frequencies_by_class.items():
         temp_counter = copy.deepcopy(frequency_counter)
         for key,value in frequency_counter.items():
-            temp_counter[key] = math.log(value / total_words_by_class[category], 10)
+            smoothed_word_frequency = value + smoothing_alpha
+            smoothed_total_word_in_label = total_words_by_class[category] + (len(complete_vocabulary) * smoothing_alpha)
+            temp_counter[key] = math.log(smoothed_word_frequency / smoothed_total_word_in_label, 10)
         log_conditional_probabilities[category] = temp_counter
         
     return log_prior_probabilities, log_conditional_probabilities
 
-# This method is used to get the score of a review for a certain label
+# This method is used to get the score of a review for a certain label using the training probabilities
 def score_review_label_naive_bayes(review, label, log_prior_probabilities, log_conditional_probabilities):
     score = log_prior_probabilities[label]
-    print(score)
     for word in review:
-        print(log_conditional_probabilities[label][word])
         score += log_conditional_probabilities[label][word]
         
     return float(score)
         
         
-# This method is used to classify a specific review in one of the possible labels
+# This method is used to classify a specific review in one of the possible labels using the training probabilities
+# Returns the label this new review is most likely to be of
 def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probabilities):
     scores = {}
     possible_labels = get_distribution_data_from_dataset(log_prior_probabilities.keys());
