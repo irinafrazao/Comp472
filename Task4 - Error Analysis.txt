@@ -1,0 +1,9 @@
+Naive Bayes Classifier
+
+The reviews in the initial data set are coming from very different topics.
+The language used to describe dvds and musics is going to ve bery different than the language used in books and health.
+I think this very broad scope of languague messes with the probabilities used to classify the reviews.
+
+- 11784: talks about the negatives of product but says its perfect. That one perfect words doesnt overpower the other "negative" words
+- 11801: short. english mistakes. talks about personal story not really using "rating" words
+- 9764: short. confusing language. The person says they like one half of the product and dislikes the other half.
