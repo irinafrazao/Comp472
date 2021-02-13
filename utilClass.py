@@ -1,7 +1,7 @@
 # Team Members:
-# PLEASE ADD NAME AND ID
+# Zach Eichler 40018021
 # Irina Patrocinio-Frazao 40024714
-# PLEASE ADD NAME AND ID
+# Emilie Mines 40045370
 
 from collections import Counter
 import matplotlib.pyplot as plt
@@ -132,4 +132,79 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
     
     return classified_label
 
+
+# TASK 3 : Generate output file with classification and performance evaluation
+
+# This method prints the output classification file and performance evaluation of a NB model
+# Assumes the there is only 2 classes: NEG and POS
+def print_NB_model_output_file_2_classes(filename_with_ext, index_evaluation_samples_start, evaluation_reviews,
+                                      evaluation_polarity_labels, prior, conditional):
+    bayes_output_file = open(filename_with_ext, "w")
+
+    sample_row_number = index_evaluation_samples_start
+    classified_labels = []
+    for test_review in evaluation_reviews:
+        classified_label = classify_naive_bayes(test_review, prior, conditional)   
+        classified_labels.append(classified_label)
+        bayes_output_file.write(str(sample_row_number) + ", " + classified_label + "\n")
+        sample_row_number += 1
+    
+    print_evaluation_parameters_2_classes(bayes_output_file, evaluation_polarity_labels, classified_labels)
+    
+    bayes_output_file.close()
+
+# This method is used to print to a file the confusion matrix, accuracy, precision, recall and f1-measure of a model
+# Assumes the there is only 2 classes: NEG and POS
+def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_labels, classified_labels):
+    counter = 0
+    true_positive_count = 0
+    true_negative_count = 0
+    false_negative_count = 0
+    false_positive_count = 0
+    
+    while(len(evaluation_polarity_labels) > counter):
+        if (evaluation_polarity_labels[counter] == classified_labels[counter]) and classified_labels[counter] == "pos":
+            true_positive_count += 1
+        elif (evaluation_polarity_labels[counter] == classified_labels[counter]) and classified_labels[counter] == "neg":
+            true_negative_count += 1
+        elif (evaluation_polarity_labels[counter] != classified_labels[counter]) and classified_labels[counter] == "neg":
+            false_negative_count += 1
+        elif (evaluation_polarity_labels[counter] != classified_labels[counter]) and classified_labels[counter] == "pos":
+            false_positive_count += 1
             
+        counter += 1
+    
+    output_file.write("\n\n")
+    output_file.write( "True positive:  " + str(true_positive_count) 
+                            + "      " + "False positive: " + str(false_positive_count) + "\n")
+    output_file.write( "False negative: " + str(false_negative_count) 
+                            + "      " + "True negative:  " + str(true_negative_count) + "\n")
+    
+    accuracy = (true_negative_count + true_positive_count) / (true_positive_count + true_negative_count + false_negative_count + false_positive_count)
+    output_file.write("\n\n")
+    output_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+    
+    precision_POS = true_positive_count / (true_positive_count + false_positive_count)
+    recall_POS = true_positive_count / (true_positive_count + false_negative_count)
+    f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
+    
+    output_file.write("\n\n")
+    output_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
+    output_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
+    output_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
+    
+    precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
+    recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
+    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
+    
+    output_file.write("\n")
+    output_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
+    output_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
+    output_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
+    
+
+
+    
+    
+    
+                

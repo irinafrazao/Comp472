@@ -1,13 +1,15 @@
 # Team Members:
-# PLEASE ADD NAME AND ID
+# Zach Eichler 40018021
 # Irina Patrocinio-Frazao 40024714
-# PLEASE ADD NAME AND ID
+# Emilie Mines 40045370
+
 
 import utilClass as util
 
 
 # TASK 0: Split data set in a training and an evaluation part (80/20)
-all_polarity_labels, all_reviews = util.read_document("dataset1.txt")
+dataset_filename_with_extension = "dataset1.txt"
+all_polarity_labels, all_reviews = util.read_document(dataset_filename_with_extension)
 
 split_point_index = int(0.80 * len(all_reviews))
 training_reviews = all_reviews[:split_point_index]
@@ -25,28 +27,15 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 # Naive Bayes Classifier 
 # Train the model
 (prior, conditional) = util.train_naive_bayes_classifier(training_reviews, training_polarity_labels, 0.5)
-print(prior)
-print(conditional)
 
-# Use the model to evaluate new data (just a test for now until task 3)
-classified_label = util.classify_naive_bayes(["a","top-quality","performance"], prior, conditional)    
-print(classified_label) 
-print(evaluation_polarity_labels[0])
+# TODO: ADD BASE-DT AND BEST-DT
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+# TASK 3 : Generate output file with classification and performance evaluation
+
+# Naive Bayes Classifier 
+# Evaluate samples and performance of model
+util.print_NB_model_output_file_2_classes("NB-" + dataset_filename_with_extension, split_point_index, evaluation_reviews,
+                                        evaluation_polarity_labels, prior, conditional)
+
+# TODO: ADD BASE-DT AND BEST-DT (reuse print_evaluation_parameters method)
