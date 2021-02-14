@@ -39,7 +39,7 @@
 9569, neg
 9570, pos
 9571, pos
-9572, neg
+9572, pos
 9573, pos
 9574, neg
 9575, neg
@@ -145,7 +145,7 @@
 9675, neg
 9676, neg
 9677, neg
-9678, neg
+9678, pos
 9679, pos
 9680, pos
 9681, pos
@@ -211,7 +211,7 @@
 9741, neg
 9742, pos
 9743, neg
-9744, neg
+9744, pos
 9745, pos
 9746, pos
 9747, pos
@@ -344,7 +344,7 @@
 9874, neg
 9875, neg
 9876, pos
-9877, pos
+9877, neg
 9878, pos
 9879, neg
 9880, pos
@@ -775,7 +775,7 @@
 10305, pos
 10306, pos
 10307, pos
-10308, neg
+10308, pos
 10309, neg
 10310, neg
 10311, pos
@@ -1294,7 +1294,7 @@
 10824, neg
 10825, neg
 10826, pos
-10827, pos
+10827, neg
 10828, pos
 10829, neg
 10830, neg
@@ -1451,7 +1451,7 @@
 10981, pos
 10982, neg
 10983, neg
-10984, neg
+10984, pos
 10985, pos
 10986, neg
 10987, pos
@@ -1932,7 +1932,7 @@
 11462, neg
 11463, pos
 11464, pos
-11465, pos
+11465, neg
 11466, pos
 11467, pos
 11468, pos
@@ -2383,17 +2383,17 @@
 11913, neg
 
 
-True positive:  626      False positive: 499
-False negative: 527      True negative:  731
+True positive:  628      False positive: 499
+False negative: 525      True negative:  731
 
 
-Accuracy: 56.95% 
+Accuracy: 57.03% 
 
 
-Precision POS: 55.64% 
-Recall POS: 54.29% 
-F1 Measure POS: 54.96% 
+Precision POS: 55.72% 
+Recall POS: 54.47% 
+F1 Measure POS: 55.09% 
 
-Precision NEG: 58.11% 
+Precision NEG: 58.2% 
 Recall NEG: 59.43% 
-F1 Measure NEG: 58.76% 
+F1 Measure NEG: 58.81% 
