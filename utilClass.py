@@ -9,6 +9,7 @@ import numpy as np
 import math
 import copy
 from sklearn import tree
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from codecs import open
 
 
@@ -268,6 +269,13 @@ def tree_evalutation_matrix(featureList,evaluation_reviews):
         X2.append(row)
     return X2
 
+
+    
+
+# TASK 3 : Generate output file with classification and performance evaluation
+
+#def tree_confusion_matrix()
+
 def evaluate_tree(X,X2,Y,evaluation_polarity_labels):
     clf = tree.DecisionTreeClassifier(criterion='entropy')
     clf = clf.fit(X,Y)
@@ -275,6 +283,7 @@ def evaluate_tree(X,X2,Y,evaluation_polarity_labels):
     counterCheck = 0
     numCorrect = 0
     for i in guesses:
+        
         if i == evaluation_polarity_labels[counterCheck]:
             numCorrect += 1
         counterCheck+=1
@@ -282,8 +291,15 @@ def evaluate_tree(X,X2,Y,evaluation_polarity_labels):
     print("correct: ", numCorrect)
     print("total: ", len(evaluation_polarity_labels))
     print("score: ", numCorrect/len(evaluation_polarity_labels))
+    y_true = evaluation_polarity_labels
+    y_pred = guesses
+    cm = confusion_matrix(y_true, y_pred, labels=["pos","neg"])
+    print(cm)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
+    disp.plot()
+  
+    
 
-# TASK 3 : Generate output file with classification and performance evaluation
 
 # This method prints the output classification file and performance evaluation of a NB model
 # Assumes the there is only 2 classes: NEG and POS

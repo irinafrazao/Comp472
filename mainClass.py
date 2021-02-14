@@ -3,7 +3,7 @@
 # Irina Patrocinio-Frazao 40024714
 # Emilie Mines 40045370
 
-
+#from sklearn.metrics import confusion_matrix
 
 import utilClass as util
 
@@ -36,10 +36,12 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 #X = training Matrix
 #X2 = evalution Matrix
 #Y = training polarity labels
+print("hi")
 Y,X,featureList = util.classify_decision_tree(training_reviews, training_polarity_labels)
 X2 = util.tree_evalutation_matrix(featureList, evaluation_reviews)
 util.evaluate_tree(X, X2, Y, evaluation_polarity_labels)
-    
+
+
 
 
 
@@ -61,6 +63,10 @@ util.evaluate_tree(X, X2, Y, evaluation_polarity_labels)
 
 
 # TASK 3 : Generate output file with classification and performance evaluation
+
+
+
+
 
 # Naive Bayes Classifier 
 # Evaluate samples and performance of model
