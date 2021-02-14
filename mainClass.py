@@ -33,7 +33,9 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 #Decision Tree classifier
 
 #training matrix generiation + feature list
-
+#X = training Matrix
+#X2 = evalution Matrix
+#Y = training polarity labels
 Y,X,featureList = util.classify_decision_tree(training_reviews, training_polarity_labels)
 X2 = util.tree_evalutation_matrix(featureList, evaluation_reviews)
 util.evaluate_tree(X, X2, Y, evaluation_polarity_labels)
