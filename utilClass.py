@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import copy
+from sklearn import tree
+from codecs import open
+
 
 # TASK 0: Split data set in a training and an evaluation part (80/20)
 
@@ -132,6 +135,153 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
     
     return classified_label
 
+
+#For decision Tree
+
+#Returns evalutation Matrix and list of chosen features
+def classify_decision_tree(training_reviews, training_polarity_labels):
+    pos = Counter()
+    neg = Counter()
+    total = Counter()
+    labelCount = 0
+    
+    for doc in training_reviews:
+        if training_polarity_labels[labelCount] == "pos":
+            for w in doc:
+                pos[w] += 1
+        else:
+            for w in doc:
+                neg[w] += 1
+        labelCount+=1
+    
+    
+    for doc in training_polarity_labels:
+        for w in doc:
+            total[w] +=1
+            
+            
+    #print(labelCount)
+            
+       
+            
+    #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
+    #do it for both the positive and negative reviews as some words may appear in one but not the other
+    
+    
+    pos_difference_dict ={}
+    neg_difference_dict ={}
+    
+    for word in pos:
+        difference = abs(pos[word] - neg[word])
+        pos_difference_dict[word] = abs(difference)
+    
+    for word in neg:
+        difference = abs(neg[word] - pos[word])
+        neg_difference_dict[word] = abs(difference)
+    
+    
+    
+    
+    
+    #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
+    pos_difference_dict.update(neg_difference_dict)
+    
+    #sort the dictionary
+    
+    
+    sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
+    
+    
+    
+    #using sorted data, pick words with highest values, excluding words like "and", "the", etc...
+    
+    #Choosing 10 words
+    
+    # "not" -> 1829, 
+    # "n't" -> 1305, 
+    # "great" -> 1184
+    # "no" -> 603
+    # "best" -> 600
+    # "love" -> 544
+    # "easy" -> 501
+    
+    
+    featureCounter = 0
+    featureMax = 100
+    featureList = []
+    
+    
+    #adding 100 words with largest difference in frequency excluding words like "and" "is" ....
+    #try stopwords after
+    for i in reversed(sorted_dict):
+        if (i[0] != "and" 
+            and i[0] != "i" 
+            and i[0] != "the" 
+            and i[0] != "is" 
+            and i[0] != "a" 
+            and i[0] != ','
+            and i[0] != "to" 
+            and i[0] != '.' 
+            and i[0] != '(' 
+            and i[0] != ')' 
+            and i[0] != "it"
+            and i[0] != "as" 
+            and i[0] != "or" 
+            and i[0] != '"'
+            and i[0] != "his"
+            and i[0] != ';'
+            ):
+            featureList.append(i[0])
+            featureCounter += 1
+        if featureCounter == featureMax: break
+    
+    
+    X = []
+
+    for i in training_reviews:
+        row = []
+        for j in featureList:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        X.append(row) 
+      
+    #Return list of training labels (could be removed already done)
+    Y = []
+    for i in training_polarity_labels:
+        Y.append(i)
+        
+    return Y,X,featureList
+
+
+#Returns evaluation matrix        
+def tree_evalutation_matrix(featureList,evaluation_reviews):
+    X2 =[]
+    for i in evaluation_reviews:
+        row = []
+        for j in featureList:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        X2.append(row)
+    return X2
+
+def evaluate_tree(X,X2,Y,evaluation_polarity_labels):
+    clf = tree.DecisionTreeClassifier(criterion='entropy')
+    clf = clf.fit(X,Y)
+    guesses = clf.predict(X2)
+    counterCheck = 0
+    numCorrect = 0
+    for i in guesses:
+        if i == evaluation_polarity_labels[counterCheck]:
+            numCorrect += 1
+        counterCheck+=1
+    
+    print("correct: ", numCorrect)
+    print("total: ", len(evaluation_polarity_labels))
+    print("score: ", numCorrect/len(evaluation_polarity_labels))
 
 # TASK 3 : Generate output file with classification and performance evaluation
 
