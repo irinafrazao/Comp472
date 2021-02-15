@@ -139,81 +139,51 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
 
 #For decision Tree
 
-#Returns evalutation Matrix and list of chosen features
-def classify_decision_tree(training_reviews, training_polarity_labels):
-    pos = Counter()
-    neg = Counter()
-    total = Counter()
+#Returns TRAINING existance Matrix and list of chosen features
+def setup_training_feature_matrix_decision_tree(training_reviews, training_polarity_labels):
+    
+    # get the frequencies of words for positive and negative classes
+    word_frequencies_in_pos_reviews = Counter()
+    word_frequencies_in_neg_review = Counter()
     labelCount = 0
     
-    for doc in training_reviews:
+    for review in training_reviews:
         if training_polarity_labels[labelCount] == "pos":
-            for w in doc:
-                pos[w] += 1
+            for word in review:
+                word_frequencies_in_pos_reviews[word] += 1
         else:
-            for w in doc:
-                neg[w] += 1
+            for word in review:
+                word_frequencies_in_neg_review[word] += 1
         labelCount+=1
-    
-    
-    for doc in training_polarity_labels:
-        for w in doc:
-            total[w] +=1
             
-            
-    #print(labelCount)
-            
-       
-            
+
     #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
     #do it for both the positive and negative reviews as some words may appear in one but not the other
-    
-    
     pos_difference_dict ={}
     neg_difference_dict ={}
     
-    for word in pos:
-        difference = abs(pos[word] - neg[word])
+    for word in word_frequencies_in_pos_reviews:
+        difference = abs(word_frequencies_in_pos_reviews[word] - word_frequencies_in_neg_review[word])
         pos_difference_dict[word] = abs(difference)
     
-    for word in neg:
-        difference = abs(neg[word] - pos[word])
+    for word in word_frequencies_in_neg_review:
+        difference = abs(word_frequencies_in_neg_review[word] - word_frequencies_in_pos_reviews[word])
         neg_difference_dict[word] = abs(difference)
-    
-    
-    
     
     
     #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
     pos_difference_dict.update(neg_difference_dict)
     
     #sort the dictionary
-    
-    
     sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
     
-    
-    
-    #using sorted data, pick words with highest values, excluding words like "and", "the", etc...
-    
-    #Choosing 10 words
-    
-    # "not" -> 1829, 
-    # "n't" -> 1305, 
-    # "great" -> 1184
-    # "no" -> 603
-    # "best" -> 600
-    # "love" -> 544
-    # "easy" -> 501
-    
-    
+    # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
+    #try stopwords after
     featureCounter = 0
     featureMax = 100
     featureList = []
     
     
-    #adding 100 words with largest difference in frequency excluding words like "and" "is" ....
-    #try stopwords after
     for i in reversed(sorted_dict):
         if (i[0] != "and" 
             and i[0] != "i" 
@@ -237,7 +207,7 @@ def classify_decision_tree(training_reviews, training_polarity_labels):
         if featureCounter == featureMax: break
     
     
-    X = []
+    feature_existance_per_review = []
 
     for i in training_reviews:
         row = []
@@ -246,19 +216,15 @@ def classify_decision_tree(training_reviews, training_polarity_labels):
                 row.append(1)
             else:
                 row.append(0)
-        X.append(row) 
+        feature_existance_per_review.append(row) 
       
-    #Return list of training labels (could be removed already done)
-    Y = []
-    for i in training_polarity_labels:
-        Y.append(i)
-        
-    return Y,X,featureList
+    return feature_existance_per_review,featureList
 
 
-#Returns evaluation matrix        
-def tree_evalutation_matrix(featureList,evaluation_reviews):
-    X2 =[]
+#Returns EVALUATION existance matrix        
+def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews):
+    feature_existance_per_review =[]
+    
     for i in evaluation_reviews:
         row = []
         for j in featureList:
@@ -266,20 +232,24 @@ def tree_evalutation_matrix(featureList,evaluation_reviews):
                 row.append(1)
             else:
                 row.append(0)
-        X2.append(row)
-    return X2
+        feature_existance_per_review.append(row)
+        
+    return feature_existance_per_review
 
 
-    
 
 # TASK 3 : Generate output file with classification and performance evaluation
 
 #def tree_confusion_matrix()
 
-def evaluate_tree(X,X2,Y,evaluation_polarity_labels):
+def classify_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
+                           training_polarity_labels,evaluation_polarity_labels):
+    # build decision tree and fit it with training data
     clf = tree.DecisionTreeClassifier(criterion='entropy')
-    clf = clf.fit(X,Y)
-    guesses = clf.predict(X2)
+    clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
+    
+    # evaluate new samples with tree
+    guesses = clf.predict(feature_existance_per_evaluation_review)
     counterCheck = 0
     numCorrect = 0
     for i in guesses:

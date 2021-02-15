@@ -32,14 +32,16 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 
 #Decision Tree classifier
 
-#training matrix generiation + feature list
-#X = training Matrix
-#X2 = evalution Matrix
-#Y = training polarity labels
-print("hi")
-Y,X,featureList = util.classify_decision_tree(training_reviews, training_polarity_labels)
-X2 = util.tree_evalutation_matrix(featureList, evaluation_reviews)
-util.evaluate_tree(X, X2, Y, evaluation_polarity_labels)
+# training matrix generation + feature list
+# feature_existance_per_training_review = training Matrix
+feature_existance_per_training_review, featureList = util.setup_training_feature_matrix_decision_tree(training_reviews, training_polarity_labels)
+
+# evaluate decision tree
+# feature_existance_per_evaluation_review = evalution Matrix
+feature_existance_per_evaluation_review = util.setup_evaluation_feature_matrix_decision_tree(featureList, evaluation_reviews)
+
+util.classify_decision_tree(feature_existance_per_training_review, feature_existance_per_evaluation_review,
+                   training_polarity_labels, evaluation_polarity_labels)
 
 
 
