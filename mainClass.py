@@ -31,8 +31,8 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 
 # Base Decision Tree classifier
 # training matrix generation + feature list
-feature_existance_per_training_review, featureList = util.setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels)
-feature_existance_per_evaluation_review = util.setup_evaluation_feature_matrix_decision_tree(featureList, evaluation_reviews)
+feature_existance_per_training_review_base, featureList_base = util.setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels)
+feature_existance_per_evaluation_review_base = util.setup_evaluation_feature_matrix_decision_tree(featureList_base, evaluation_reviews)
 
 
 # Best decision tree classifier
@@ -47,9 +47,9 @@ feature_existance_per_evaluation_review_best = util.setup_evaluation_feature_mat
 util.print_NB_model_output_file_2_classes("NB-" + dataset_filename_with_extension, split_point_index, evaluation_reviews, evaluation_polarity_labels, prior, conditional)
 
 # Base Decision Tree classifier
-base_guesses = util.classify_base_decision_tree(feature_existance_per_training_review, feature_existance_per_evaluation_review, training_polarity_labels, evaluation_polarity_labels)
+base_guesses = util.classify_decision_tree(feature_existance_per_training_review_base, feature_existance_per_evaluation_review_base, training_polarity_labels)
 util.print_base_model_output_file_2_classes("Base_Tree-" + dataset_filename_with_extension, base_guesses, evaluation_polarity_labels, split_point_index)
 
 # Best decision tree classifier
-best_guesses = util.classify_best_decision_tree(feature_existance_per_training_review_best, feature_existance_per_evaluation_review_best, training_polarity_labels, evaluation_polarity_labels)
+best_guesses = util.classify_decision_tree(feature_existance_per_training_review_best, feature_existance_per_evaluation_review_best, training_polarity_labels)
 util.print_best_model_output_file_2_classes("Best_Tree-" + dataset_filename_with_extension, best_guesses, evaluation_polarity_labels, split_point_index)

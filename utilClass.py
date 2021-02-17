@@ -137,7 +137,7 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
     return classified_label
 
 
-#For decision Tree
+#For decision Trees
 
 #Returns TRAINING existance Matrix and list of chosen features
 def setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels):
@@ -305,15 +305,12 @@ def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews
 
 # TASK 3 : Generate output file with classification and performance evaluation
 
-#def tree_confusion_matrix()
+# This method is used to classify new data using a decision tree
+# As input it needs: the feature matrix and labels of the training reviews and the feature matrix of the evaluation reviews
+def classify_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,training_polarity_labels):
 
-def classify_base_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
-                           training_polarity_labels,evaluation_polarity_labels):
     # build decision tree and fit it with training data
     clf = tree.DecisionTreeClassifier(criterion='entropy')
-    
-    #convert training_polarity_labels to to 1/0
-    
     clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
     
     # evaluate new samples with tree
@@ -321,20 +318,6 @@ def classify_base_decision_tree(feature_existance_per_training_review,feature_ex
     
     return guesses
     
-    
-    
-def classify_best_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
-                           training_polarity_labels,evaluation_polarity_labels):
-    # build decision tree and fit it with training data
-    clf = tree.DecisionTreeClassifier(criterion='entropy')
-    clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
-    
-    # evaluate new samples with tree
-    guesses = clf.predict(feature_existance_per_evaluation_review[0])
-   
-    
-    return guesses
-
 
 def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, evaluation_polarity_labels, split_point_index):
     base_tree_file = open(file_name_with_ext, "w")
