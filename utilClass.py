@@ -140,7 +140,7 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
 #For decision Tree
 
 #Returns TRAINING existance Matrix and list of chosen features
-def setup_training_feature_matrix_decision_tree(training_reviews, training_polarity_labels):
+def setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels):
     
     # get the frequencies of words for positive and negative classes
     word_frequencies_in_pos_reviews = Counter()
@@ -185,25 +185,8 @@ def setup_training_feature_matrix_decision_tree(training_reviews, training_polar
     
     
     for i in reversed(sorted_dict):
-        if (i[0] != "and" 
-            and i[0] != "i" 
-            and i[0] != "the" 
-            and i[0] != "is" 
-            and i[0] != "a" 
-            and i[0] != ','
-            and i[0] != "to" 
-            and i[0] != '.' 
-            and i[0] != '(' 
-            and i[0] != ')' 
-            and i[0] != "it"
-            and i[0] != "as" 
-            and i[0] != "or" 
-            and i[0] != '"'
-            and i[0] != "his"
-            and i[0] != ';'
-            ):
-            featureList.append(i[0])
-            featureCounter += 1
+        featureList.append(i[0])
+        featureCounter += 1
         if featureCounter == featureMax: break
     
     
@@ -221,6 +204,88 @@ def setup_training_feature_matrix_decision_tree(training_reviews, training_polar
     return feature_existance_per_review,featureList
 
 
+
+
+def setup_training_feature_matrix_best_decision_tree(training_reviews, training_polarity_labels):
+    
+    # get the frequencies of words for positive and negative classes
+    word_frequencies_in_pos_reviews = Counter()
+    word_frequencies_in_neg_review = Counter()
+    labelCount = 0
+    
+    for review in training_reviews:
+        if training_polarity_labels[labelCount] == "pos":
+            for word in review:
+                word_frequencies_in_pos_reviews[word] += 1
+        else:
+            for word in review:
+                word_frequencies_in_neg_review[word] += 1
+        labelCount+=1
+            
+
+    #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
+    #do it for both the positive and negative reviews as some words may appear in one but not the other
+    pos_difference_dict ={}
+    neg_difference_dict ={}
+    
+    for word in word_frequencies_in_pos_reviews:
+        difference = abs(word_frequencies_in_pos_reviews[word] - word_frequencies_in_neg_review[word])
+        pos_difference_dict[word] = abs(difference)
+    
+    for word in word_frequencies_in_neg_review:
+        difference = abs(word_frequencies_in_neg_review[word] - word_frequencies_in_pos_reviews[word])
+        neg_difference_dict[word] = abs(difference)
+    
+    
+    #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
+    pos_difference_dict.update(neg_difference_dict)
+    
+    #sort the dictionary
+    sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
+    
+    # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
+    #try stopwords after
+    featureCounter = 0
+    featureMax = 200
+    featureList_best = []
+    
+    
+    for i in reversed(sorted_dict):
+        if (i[0] != "and" 
+            and i[0] != "i" 
+            and i[0] != "the" 
+            and i[0] != "is" 
+            and i[0] != "a" 
+            and i[0] != ','
+            and i[0] != "to" 
+            and i[0] != '.' 
+            and i[0] != '(' 
+            and i[0] != ')' 
+            and i[0] != "it"
+            and i[0] != "as" 
+            and i[0] != "or" 
+            and i[0] != '"'
+            and i[0] != "his"
+            and i[0] != ';'
+            ):
+            featureList_best.append(i[0])
+            featureCounter += 1
+        if featureCounter == featureMax: break
+    
+    
+    feature_existance_per_review = []
+
+    for i in training_reviews:
+        row = []
+        for j in featureList_best:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        feature_existance_per_review.append(row) 
+      
+    return feature_existance_per_review, featureList_best
+
 #Returns EVALUATION existance matrix        
 def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews):
     feature_existance_per_review =[]
@@ -234,7 +299,7 @@ def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews
                 row.append(0)
         feature_existance_per_review.append(row)
         
-    return feature_existance_per_review
+    return feature_existance_per_review, featureList
 
 
 
@@ -242,32 +307,135 @@ def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews
 
 #def tree_confusion_matrix()
 
-def classify_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
+def classify_base_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
+                           training_polarity_labels,evaluation_polarity_labels):
+    # build decision tree and fit it with training data
+    clf = tree.DecisionTreeClassifier(criterion='entropy')
+    
+    #convert training_polarity_labels to to 1/0
+    
+    clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
+    
+    # evaluate new samples with tree
+    guesses = clf.predict(feature_existance_per_evaluation_review[0])
+    
+    return guesses
+    
+    
+    
+def classify_best_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,
                            training_polarity_labels,evaluation_polarity_labels):
     # build decision tree and fit it with training data
     clf = tree.DecisionTreeClassifier(criterion='entropy')
     clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
     
     # evaluate new samples with tree
-    guesses = clf.predict(feature_existance_per_evaluation_review)
+    guesses = clf.predict(feature_existance_per_evaluation_review[0])
+   
+    
+    return guesses
+
+
+def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, evaluation_polarity_labels, split_point_index):
+    base_tree_file = open(file_name_with_ext, "w")
+    base_tree_file.write("Base Decision Tree Model\n")
+    base_tree_file.write("\n")
     counterCheck = 0
     numCorrect = 0
-    for i in guesses:
+    for i in base_guesses:
         
         if i == evaluation_polarity_labels[counterCheck]:
             numCorrect += 1
         counterCheck+=1
     
-    print("correct: ", numCorrect)
-    print("total: ", len(evaluation_polarity_labels))
-    print("score: ", numCorrect/len(evaluation_polarity_labels))
+    
     y_true = evaluation_polarity_labels
-    y_pred = guesses
+    y_pred = base_guesses
     cm = confusion_matrix(y_true, y_pred, labels=["pos","neg"])
-    print(cm)
+    
     disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
     disp.plot()
-  
+    
+    
+    tp = cm[0][0]
+    fp = cm[0][1]
+    fn = cm[1][0]
+    tn = cm[1][1]
+    
+    accuracy = numCorrect/len(evaluation_polarity_labels)
+    precision = tp/(tp+fp)
+    recall = tp/(tp+fn)
+    
+    row = split_point_index
+    for i in base_guesses:
+        base_tree_file.write(str(row) + ", "+i+"\n")
+        row+=1
+    base_tree_file.write("\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("Confusion Matrix\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("_________________________\n")
+    base_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
+    base_tree_file.write("-----------------------------\n")
+    base_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
+    base_tree_file.write("-------------------------\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("Accuracy: "+ str(numCorrect) + "/"+ str(len(evaluation_polarity_labels))+": "+ str(accuracy)+"\n")
+    base_tree_file.write("Precision: "+ str(precision)+"\n")
+    base_tree_file.write("Recall: "+ str(recall)+"\n") 
+    base_tree_file.close()
+   
+def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, evaluation_polarity_labels, split_point_index):
+    best_tree_file = open(file_name_with_ext, "w")
+    best_tree_file.write("Best Decision Tree Model\n")
+    best_tree_file.write("\n")
+    counterCheck = 0
+    numCorrect = 0
+    for i in best_guesses:
+        
+        if i == evaluation_polarity_labels[counterCheck]:
+            numCorrect += 1
+        counterCheck+=1
+    
+    
+    y_true = evaluation_polarity_labels
+    y_pred = best_guesses
+    cm = confusion_matrix(y_true, y_pred, labels=["pos","neg"])
+    
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
+    disp.plot()
+    
+    
+    tp = cm[0][0]
+    fp = cm[0][1]
+    fn = cm[1][0]
+    tn = cm[1][1]
+    
+    accuracy = numCorrect/len(evaluation_polarity_labels)
+    precision = tp/(tp+fp)
+    recall = tp/(tp+fn)
+    
+    
+    row = split_point_index
+    for i in best_guesses:
+        best_tree_file.write(str(row) + ", "+i+"\n")
+        row+=1
+    best_tree_file.write("\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("Confusion Matrix\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("_________________________\n")
+    best_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
+    best_tree_file.write("-----------------------------\n")
+    best_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
+    best_tree_file.write("-------------------------\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("Accuracy: "+ str(numCorrect) + "/"+ str(len(evaluation_polarity_labels))+": "+ str(accuracy)+"\n")
+    best_tree_file.write("Precision: "+ str(precision)+"\n")
+    best_tree_file.write("Recall: "+ str(recall)+"\n") 
+    best_tree_file.close()
+        
+    
     
 
 
