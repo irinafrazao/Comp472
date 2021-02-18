@@ -31,13 +31,13 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 
 # Base Decision Tree classifier
 # training matrix generation + feature list
-feature_existance_per_training_review_base, featureList_base = util.setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels)
+feature_existance_per_training_review_base, featureList_base = util.setup_base_decision_tree(training_reviews, training_polarity_labels)
 feature_existance_per_evaluation_review_base = util.setup_evaluation_feature_matrix_decision_tree(featureList_base, evaluation_reviews)
 
 
 # Best decision tree classifier
 # training matrix generation + feature list
-feature_existance_per_training_review_best, featureList_best = util.setup_training_feature_matrix_best_decision_tree(training_reviews, training_polarity_labels)
+feature_existance_per_training_review_best, featureList_best = util.setup_best_decision_tree(training_reviews, training_polarity_labels)
 feature_existance_per_evaluation_review_best = util.setup_evaluation_feature_matrix_decision_tree(featureList_best, evaluation_reviews)
 
 

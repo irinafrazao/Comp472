@@ -139,9 +139,8 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
 
 #For decision Trees
 
-#Returns TRAINING existance Matrix and list of chosen features
-def setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels):
-    
+# This method returns the feature list and the feature matrix for training reviews
+def training_feature_matrix_DT(featureCountMax, dataCleanUp, training_reviews, training_polarity_labels):
     # get the frequencies of words for positive and negative classes
     word_frequencies_in_pos_reviews = Counter()
     word_frequencies_in_neg_review = Counter()
@@ -180,16 +179,37 @@ def setup_training_feature_matrix_base_decision_tree(training_reviews, training_
     # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
     #try stopwords after
     featureCounter = 0
-    featureMax = 100
     featureList = []
     
-    
-    for i in reversed(sorted_dict):
-        featureList.append(i[0])
-        featureCounter += 1
-        if featureCounter == featureMax: break
-    
-    
+    if dataCleanUp :
+        for i in reversed(sorted_dict):
+            if (i[0] != "and" 
+                and i[0] != "i" 
+                and i[0] != "the" 
+                and i[0] != "is" 
+                and i[0] != "a" 
+                and i[0] != ','
+                and i[0] != "to" 
+                and i[0] != '.' 
+                and i[0] != '(' 
+                and i[0] != ')' 
+                and i[0] != "it"
+                and i[0] != "as" 
+                and i[0] != "or" 
+                and i[0] != '"'
+                and i[0] != "his"
+                and i[0] != ';'
+                ):
+                featureList.append(i[0])
+                featureCounter += 1
+            if featureCounter == featureCountMax: break
+    else:
+        for i in reversed(sorted_dict):
+            featureList.append(i[0])
+            featureCounter += 1
+            if featureCounter == featureCountMax: break
+        
+        
     feature_existance_per_review = []
 
     for i in training_reviews:
@@ -203,88 +223,22 @@ def setup_training_feature_matrix_base_decision_tree(training_reviews, training_
       
     return feature_existance_per_review,featureList
 
+    
 
+# This method trains the base decision tree
+def setup_base_decision_tree(training_reviews, training_polarity_labels):
+    
+    feature_existance_per_review,featureList = training_feature_matrix_DT(100, False, training_reviews, training_polarity_labels)
+    
+    return feature_existance_per_review,featureList
 
-
-def setup_training_feature_matrix_best_decision_tree(training_reviews, training_polarity_labels):
+# This method trains the best decision tree
+def setup_best_decision_tree(training_reviews, training_polarity_labels):
     
-    # get the frequencies of words for positive and negative classes
-    word_frequencies_in_pos_reviews = Counter()
-    word_frequencies_in_neg_review = Counter()
-    labelCount = 0
+     feature_existance_per_review,featureList = training_feature_matrix_DT(200, True, training_reviews, training_polarity_labels)
     
-    for review in training_reviews:
-        if training_polarity_labels[labelCount] == "pos":
-            for word in review:
-                word_frequencies_in_pos_reviews[word] += 1
-        else:
-            for word in review:
-                word_frequencies_in_neg_review[word] += 1
-        labelCount+=1
-            
-
-    #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
-    #do it for both the positive and negative reviews as some words may appear in one but not the other
-    pos_difference_dict ={}
-    neg_difference_dict ={}
+     return feature_existance_per_review,featureList
     
-    for word in word_frequencies_in_pos_reviews:
-        difference = abs(word_frequencies_in_pos_reviews[word] - word_frequencies_in_neg_review[word])
-        pos_difference_dict[word] = abs(difference)
-    
-    for word in word_frequencies_in_neg_review:
-        difference = abs(word_frequencies_in_neg_review[word] - word_frequencies_in_pos_reviews[word])
-        neg_difference_dict[word] = abs(difference)
-    
-    
-    #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
-    pos_difference_dict.update(neg_difference_dict)
-    
-    #sort the dictionary
-    sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
-    
-    # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
-    #try stopwords after
-    featureCounter = 0
-    featureMax = 200
-    featureList_best = []
-    
-    
-    for i in reversed(sorted_dict):
-        if (i[0] != "and" 
-            and i[0] != "i" 
-            and i[0] != "the" 
-            and i[0] != "is" 
-            and i[0] != "a" 
-            and i[0] != ','
-            and i[0] != "to" 
-            and i[0] != '.' 
-            and i[0] != '(' 
-            and i[0] != ')' 
-            and i[0] != "it"
-            and i[0] != "as" 
-            and i[0] != "or" 
-            and i[0] != '"'
-            and i[0] != "his"
-            and i[0] != ';'
-            ):
-            featureList_best.append(i[0])
-            featureCounter += 1
-        if featureCounter == featureMax: break
-    
-    
-    feature_existance_per_review = []
-
-    for i in training_reviews:
-        row = []
-        for j in featureList_best:
-            if j in i:
-                row.append(1)
-            else:
-                row.append(0)
-        feature_existance_per_review.append(row) 
-      
-    return feature_existance_per_review, featureList_best
 
 #Returns EVALUATION existance matrix        
 def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews):
@@ -318,7 +272,7 @@ def classify_decision_tree(feature_existance_per_training_review,feature_existan
     
     return guesses
     
-
+# This method is used to print the evaluation file of the base decision tree
 def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, evaluation_polarity_labels, split_point_index):
     base_tree_file = open(file_name_with_ext, "w")
     base_tree_file.write("Base Decision Tree Model\n")
@@ -387,6 +341,8 @@ def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, eva
     base_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     base_tree_file.close()
    
+    
+# This method is used to print the evaluation file of the best decision tree
 def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, evaluation_polarity_labels, split_point_index):
     best_tree_file = open(file_name_with_ext, "w")
     best_tree_file.write("Best Decision Tree Model\n")
@@ -455,13 +411,14 @@ def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, eva
     
     
 
-
 # This method prints the output classification file and performance evaluation of a NB model
 # Assumes the there is only 2 classes: NEG and POS
 def print_NB_model_output_file_2_classes(filename_with_ext, index_evaluation_samples_start, evaluation_reviews,
                                       evaluation_polarity_labels, prior, conditional):
     bayes_output_file = open(filename_with_ext, "w")
-
+    bayes_output_file.write("Naive Bayes Classifier\n")
+    bayes_output_file.write("\n")
+    
     sample_row_number = index_evaluation_samples_start
     classified_labels = []
     for test_review in evaluation_reviews:
@@ -473,6 +430,7 @@ def print_NB_model_output_file_2_classes(filename_with_ext, index_evaluation_sam
     print_evaluation_parameters_2_classes(bayes_output_file, evaluation_polarity_labels, classified_labels)
     
     bayes_output_file.close()
+
 
 # This method is used to print to a file the confusion matrix, accuracy, precision, recall and f1-measure of a model
 # Assumes the there is only 2 classes: NEG and POS
@@ -529,11 +487,4 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
     output_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
     output_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     output_file.close()
-    
-   
-
-
-    
-    
-    
-                
+      
