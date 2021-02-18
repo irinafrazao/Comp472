@@ -8,6 +8,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import copy
+from sklearn import tree
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, precision_recall_fscore_support
+from codecs import open
+
 
 # TASK 0: Split data set in a training and an evaluation part (80/20)
 
@@ -133,7 +137,324 @@ def classify_naive_bayes(review, log_prior_probabilities, log_conditional_probab
     return classified_label
 
 
+#For decision Trees
+
+#Returns TRAINING existance Matrix and list of chosen features
+def setup_training_feature_matrix_base_decision_tree(training_reviews, training_polarity_labels):
+    
+    # get the frequencies of words for positive and negative classes
+    word_frequencies_in_pos_reviews = Counter()
+    word_frequencies_in_neg_review = Counter()
+    labelCount = 0
+    
+    for review in training_reviews:
+        if training_polarity_labels[labelCount] == "pos":
+            for word in review:
+                word_frequencies_in_pos_reviews[word] += 1
+        else:
+            for word in review:
+                word_frequencies_in_neg_review[word] += 1
+        labelCount+=1
+            
+
+    #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
+    #do it for both the positive and negative reviews as some words may appear in one but not the other
+    pos_difference_dict ={}
+    neg_difference_dict ={}
+    
+    for word in word_frequencies_in_pos_reviews:
+        difference = abs(word_frequencies_in_pos_reviews[word] - word_frequencies_in_neg_review[word])
+        pos_difference_dict[word] = abs(difference)
+    
+    for word in word_frequencies_in_neg_review:
+        difference = abs(word_frequencies_in_neg_review[word] - word_frequencies_in_pos_reviews[word])
+        neg_difference_dict[word] = abs(difference)
+    
+    
+    #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
+    pos_difference_dict.update(neg_difference_dict)
+    
+    #sort the dictionary
+    sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
+    
+    # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
+    #try stopwords after
+    featureCounter = 0
+    featureMax = 100
+    featureList = []
+    
+    
+    for i in reversed(sorted_dict):
+        featureList.append(i[0])
+        featureCounter += 1
+        if featureCounter == featureMax: break
+    
+    
+    feature_existance_per_review = []
+
+    for i in training_reviews:
+        row = []
+        for j in featureList:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        feature_existance_per_review.append(row) 
+      
+    return feature_existance_per_review,featureList
+
+
+
+
+def setup_training_feature_matrix_best_decision_tree(training_reviews, training_polarity_labels):
+    
+    # get the frequencies of words for positive and negative classes
+    word_frequencies_in_pos_reviews = Counter()
+    word_frequencies_in_neg_review = Counter()
+    labelCount = 0
+    
+    for review in training_reviews:
+        if training_polarity_labels[labelCount] == "pos":
+            for word in review:
+                word_frequencies_in_pos_reviews[word] += 1
+        else:
+            for word in review:
+                word_frequencies_in_neg_review[word] += 1
+        labelCount+=1
+            
+
+    #create dictinonary with all words in positive reviews paired with the abs value of the difference in of appearances in negative reviews
+    #do it for both the positive and negative reviews as some words may appear in one but not the other
+    pos_difference_dict ={}
+    neg_difference_dict ={}
+    
+    for word in word_frequencies_in_pos_reviews:
+        difference = abs(word_frequencies_in_pos_reviews[word] - word_frequencies_in_neg_review[word])
+        pos_difference_dict[word] = abs(difference)
+    
+    for word in word_frequencies_in_neg_review:
+        difference = abs(word_frequencies_in_neg_review[word] - word_frequencies_in_pos_reviews[word])
+        neg_difference_dict[word] = abs(difference)
+    
+    
+    #combine dictionaries, removing duplicates with every word and the difference difference in frequency between positive and negative
+    pos_difference_dict.update(neg_difference_dict)
+    
+    #sort the dictionary
+    sorted_dict = sorted(pos_difference_dict.items(), key=lambda x: x[1])
+    
+    # using sorted data, pick 100 words with largest difference in frequency excluding words like "and" "is"....
+    #try stopwords after
+    featureCounter = 0
+    featureMax = 200
+    featureList_best = []
+    
+    
+    for i in reversed(sorted_dict):
+        if (i[0] != "and" 
+            and i[0] != "i" 
+            and i[0] != "the" 
+            and i[0] != "is" 
+            and i[0] != "a" 
+            and i[0] != ','
+            and i[0] != "to" 
+            and i[0] != '.' 
+            and i[0] != '(' 
+            and i[0] != ')' 
+            and i[0] != "it"
+            and i[0] != "as" 
+            and i[0] != "or" 
+            and i[0] != '"'
+            and i[0] != "his"
+            and i[0] != ';'
+            ):
+            featureList_best.append(i[0])
+            featureCounter += 1
+        if featureCounter == featureMax: break
+    
+    
+    feature_existance_per_review = []
+
+    for i in training_reviews:
+        row = []
+        for j in featureList_best:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        feature_existance_per_review.append(row) 
+      
+    return feature_existance_per_review, featureList_best
+
+#Returns EVALUATION existance matrix        
+def setup_evaluation_feature_matrix_decision_tree(featureList,evaluation_reviews):
+    feature_existance_per_review =[]
+    
+    for i in evaluation_reviews:
+        row = []
+        for j in featureList:
+            if j in i:
+                row.append(1)
+            else:
+                row.append(0)
+        feature_existance_per_review.append(row)
+        
+    return feature_existance_per_review, featureList
+
+
+
 # TASK 3 : Generate output file with classification and performance evaluation
+
+# This method is used to classify new data using a decision tree
+# As input it needs: the feature matrix and labels of the training reviews and the feature matrix of the evaluation reviews
+def classify_decision_tree(feature_existance_per_training_review,feature_existance_per_evaluation_review,training_polarity_labels):
+
+    # build decision tree and fit it with training data
+    clf = tree.DecisionTreeClassifier(criterion='entropy')
+    clf = clf.fit(feature_existance_per_training_review,training_polarity_labels)
+    
+    # evaluate new samples with tree
+    guesses = clf.predict(feature_existance_per_evaluation_review[0])
+    
+    return guesses
+    
+
+def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, evaluation_polarity_labels, split_point_index):
+    base_tree_file = open(file_name_with_ext, "w")
+    base_tree_file.write("Base Decision Tree Model\n")
+    base_tree_file.write("\n")
+    counterCheck = 0
+    numCorrect = 0
+    for i in base_guesses:
+        
+        if i == evaluation_polarity_labels[counterCheck]:
+            numCorrect += 1
+        counterCheck+=1
+    
+    
+    y_true = evaluation_polarity_labels
+    y_pred = base_guesses
+    cm = confusion_matrix(y_true, y_pred, labels=["pos","neg"])
+    
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
+    disp.plot()
+    
+    scores = precision_recall_fscore_support(y_true,y_pred,average=None, labels=['pos','neg'])
+    precision_POS = scores[0][0]
+    precision_NEG = scores[0][1]
+    recall_POS = scores[1][0]
+    recall_NEG = scores[1][1]
+    f1_measure_POS = scores[2][0]
+    f1_measure_NEG = scores[2][1]
+    
+    tp = cm[0][0]
+    fp = cm[0][1]
+    fn = cm[1][0]
+    tn = cm[1][1]
+    
+    accuracy = numCorrect/len(evaluation_polarity_labels)
+    
+    
+    row = split_point_index
+  
+    
+    for i in base_guesses:
+        base_tree_file.write(str(row) + ", "+i+"\n")
+        row+=1
+    
+    base_tree_file.write("\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("Confusion Matrix\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("_________________________\n")
+    base_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
+    base_tree_file.write("-----------------------------\n")
+    base_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
+    base_tree_file.write("-------------------------\n")
+    base_tree_file.write("\n")
+    base_tree_file.write("\n\n")
+    base_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
+    
+    base_tree_file.write("\n\n")
+    base_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
+    base_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
+    base_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
+    
+    base_tree_file.write("\n")
+    base_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
+    base_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
+    base_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
+    base_tree_file.close()
+   
+def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, evaluation_polarity_labels, split_point_index):
+    best_tree_file = open(file_name_with_ext, "w")
+    best_tree_file.write("Best Decision Tree Model\n")
+    best_tree_file.write("\n")
+    counterCheck = 0
+    numCorrect = 0
+    for i in best_guesses:
+        
+        if i == evaluation_polarity_labels[counterCheck]:
+            numCorrect += 1
+        counterCheck+=1
+    
+    
+    y_true = evaluation_polarity_labels
+    y_pred = best_guesses
+    cm = confusion_matrix(y_true, y_pred, labels=["pos","neg"])
+    
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
+    disp.plot()
+    
+    scores = precision_recall_fscore_support(y_true,y_pred,average=None, labels=['pos','neg'])
+    precision_POS = scores[0][0]
+    precision_NEG = scores[0][1]
+    recall_POS = scores[1][0]
+    recall_NEG = scores[1][1]
+    f1_measure_POS = scores[2][0]
+    f1_measure_NEG = scores[2][1]
+    
+    
+    tp = cm[0][0]
+    fp = cm[0][1]
+    fn = cm[1][0]
+    tn = cm[1][1]
+    
+    accuracy = numCorrect/len(evaluation_polarity_labels)
+  
+    
+    row = split_point_index
+    for i in best_guesses:
+        best_tree_file.write(str(row) + ", "+i+"\n")
+        row+=1
+    best_tree_file.write("\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("Confusion Matrix\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("_________________________\n")
+    best_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
+    best_tree_file.write("-----------------------------\n")
+    best_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
+    best_tree_file.write("-------------------------\n")
+    best_tree_file.write("\n")
+    best_tree_file.write("\n\n")
+    best_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
+    
+    best_tree_file.write("\n\n")
+    best_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
+    best_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
+    best_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
+    
+    best_tree_file.write("\n")
+    best_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
+    best_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
+    best_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
+    best_tree_file.close()
+    
+    
+
 
 # This method prints the output classification file and performance evaluation of a NB model
 # Assumes the there is only 2 classes: NEG and POS
@@ -174,34 +495,42 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
             
         counter += 1
     
-    output_file.write("\n\n")
-    output_file.write( "True positive:  " + str(true_positive_count) 
-                            + "      " + "False positive: " + str(false_positive_count) + "\n")
-    output_file.write( "False negative: " + str(false_negative_count) 
-                            + "      " + "True negative:  " + str(true_negative_count) + "\n")
-    
     accuracy = (true_negative_count + true_positive_count) / (true_positive_count + true_negative_count + false_negative_count + false_positive_count)
-    output_file.write("\n\n")
-    output_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+    
+    precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
+    recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
+    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
     
     precision_POS = true_positive_count / (true_positive_count + false_positive_count)
     recall_POS = true_positive_count / (true_positive_count + false_negative_count)
     f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
+    
+    output_file.write("\n")
+    output_file.write("\n")
+    output_file.write("Confusion Matrix\n")
+    output_file.write("\n")
+    output_file.write("_________________________\n")
+    output_file.write("|TP: "+ str(true_positive_count)+ "|   FP: "+ str(false_positive_count)+" |\n")
+    output_file.write("-----------------------------\n")
+    output_file.write("|FN: "+ str(false_negative_count)+ "|   TN: "+ str(true_negative_count)+" |\n")
+    output_file.write("-------------------------\n")
+    output_file.write("\n")
+    output_file.write("\n\n")
+    output_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
     
     output_file.write("\n\n")
     output_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
     output_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
     output_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
     
-    precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
-    recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
-    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
-    
     output_file.write("\n")
     output_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
     output_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
     output_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
+    output_file.close()
     
+   
 
 
     
