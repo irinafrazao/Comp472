@@ -421,6 +421,7 @@ def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, eva
     fn = cm[1][0]
     tn = cm[1][1]
     
+    accuracy = numCorrect/len(evaluation_polarity_labels)
   
     
     row = split_point_index

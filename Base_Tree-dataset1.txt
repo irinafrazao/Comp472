@@ -1,2407 +1,2407 @@
 Base Decision Tree Model
 
-9531, pred: pos, actual: neg BAD
-9532, pred: pos, actual: pos GOOD
-9533, pred: pos, actual: neg BAD
-9534, pred: pos, actual: pos GOOD
-9535, pred: pos, actual: pos GOOD
-9536, pred: neg, actual: neg GOOD
-9537, pred: pos, actual: pos GOOD
-9538, pred: neg, actual: neg GOOD
-9539, pred: pos, actual: neg BAD
-9540, pred: neg, actual: neg GOOD
-9541, pred: neg, actual: neg GOOD
-9542, pred: pos, actual: pos GOOD
-9543, pred: neg, actual: neg GOOD
-9544, pred: neg, actual: neg GOOD
-9545, pred: neg, actual: pos BAD
-9546, pred: pos, actual: pos GOOD
-9547, pred: pos, actual: pos GOOD
-9548, pred: pos, actual: pos GOOD
-9549, pred: pos, actual: neg BAD
-9550, pred: pos, actual: pos GOOD
-9551, pred: neg, actual: pos BAD
-9552, pred: pos, actual: pos GOOD
-9553, pred: neg, actual: neg GOOD
-9554, pred: neg, actual: pos BAD
-9555, pred: neg, actual: neg GOOD
-9556, pred: neg, actual: pos BAD
-9557, pred: neg, actual: pos BAD
-9558, pred: neg, actual: neg GOOD
-9559, pred: pos, actual: pos GOOD
-9560, pred: pos, actual: pos GOOD
-9561, pred: pos, actual: pos GOOD
-9562, pred: neg, actual: pos BAD
-9563, pred: pos, actual: pos GOOD
-9564, pred: neg, actual: neg GOOD
-9565, pred: pos, actual: pos GOOD
-9566, pred: neg, actual: pos BAD
-9567, pred: pos, actual: pos GOOD
-9568, pred: neg, actual: neg GOOD
-9569, pred: neg, actual: neg GOOD
-9570, pred: neg, actual: neg GOOD
-9571, pred: neg, actual: neg GOOD
-9572, pred: neg, actual: neg GOOD
-9573, pred: neg, actual: neg GOOD
-9574, pred: neg, actual: pos BAD
-9575, pred: pos, actual: pos GOOD
-9576, pred: neg, actual: pos BAD
-9577, pred: neg, actual: neg GOOD
-9578, pred: neg, actual: neg GOOD
-9579, pred: pos, actual: neg BAD
-9580, pred: pos, actual: pos GOOD
-9581, pred: neg, actual: pos BAD
-9582, pred: pos, actual: neg BAD
-9583, pred: neg, actual: pos BAD
-9584, pred: neg, actual: neg GOOD
-9585, pred: neg, actual: neg GOOD
-9586, pred: neg, actual: pos BAD
-9587, pred: neg, actual: pos BAD
-9588, pred: neg, actual: neg GOOD
-9589, pred: neg, actual: pos BAD
-9590, pred: neg, actual: neg GOOD
-9591, pred: pos, actual: neg BAD
-9592, pred: pos, actual: neg BAD
-9593, pred: neg, actual: neg GOOD
-9594, pred: pos, actual: neg BAD
-9595, pred: pos, actual: neg BAD
-9596, pred: neg, actual: neg GOOD
-9597, pred: pos, actual: neg BAD
-9598, pred: pos, actual: pos GOOD
-9599, pred: neg, actual: neg GOOD
-9600, pred: neg, actual: pos BAD
-9601, pred: neg, actual: neg GOOD
-9602, pred: pos, actual: pos GOOD
-9603, pred: neg, actual: neg GOOD
-9604, pred: pos, actual: neg BAD
-9605, pred: pos, actual: pos GOOD
-9606, pred: neg, actual: neg GOOD
-9607, pred: pos, actual: pos GOOD
-9608, pred: pos, actual: pos GOOD
-9609, pred: neg, actual: neg GOOD
-9610, pred: neg, actual: pos BAD
-9611, pred: neg, actual: neg GOOD
-9612, pred: neg, actual: neg GOOD
-9613, pred: neg, actual: neg GOOD
-9614, pred: neg, actual: pos BAD
-9615, pred: neg, actual: neg GOOD
-9616, pred: neg, actual: neg GOOD
-9617, pred: pos, actual: pos GOOD
-9618, pred: pos, actual: pos GOOD
-9619, pred: pos, actual: pos GOOD
-9620, pred: neg, actual: neg GOOD
-9621, pred: pos, actual: pos GOOD
-9622, pred: pos, actual: pos GOOD
-9623, pred: neg, actual: neg GOOD
-9624, pred: neg, actual: neg GOOD
-9625, pred: pos, actual: pos GOOD
-9626, pred: neg, actual: pos BAD
-9627, pred: neg, actual: neg GOOD
-9628, pred: pos, actual: neg BAD
-9629, pred: neg, actual: neg GOOD
-9630, pred: neg, actual: pos BAD
-9631, pred: neg, actual: neg GOOD
-9632, pred: neg, actual: neg GOOD
-9633, pred: pos, actual: neg BAD
-9634, pred: neg, actual: neg GOOD
-9635, pred: pos, actual: neg BAD
-9636, pred: neg, actual: neg GOOD
-9637, pred: neg, actual: neg GOOD
-9638, pred: pos, actual: pos GOOD
-9639, pred: pos, actual: pos GOOD
-9640, pred: pos, actual: neg BAD
-9641, pred: neg, actual: neg GOOD
-9642, pred: pos, actual: pos GOOD
-9643, pred: pos, actual: pos GOOD
-9644, pred: pos, actual: pos GOOD
-9645, pred: neg, actual: pos BAD
-9646, pred: pos, actual: pos GOOD
-9647, pred: neg, actual: neg GOOD
-9648, pred: pos, actual: pos GOOD
-9649, pred: pos, actual: pos GOOD
-9650, pred: neg, actual: neg GOOD
-9651, pred: pos, actual: neg BAD
-9652, pred: neg, actual: pos BAD
-9653, pred: neg, actual: neg GOOD
-9654, pred: neg, actual: neg GOOD
-9655, pred: neg, actual: neg GOOD
-9656, pred: pos, actual: neg BAD
-9657, pred: neg, actual: pos BAD
-9658, pred: neg, actual: pos BAD
-9659, pred: pos, actual: neg BAD
-9660, pred: neg, actual: pos BAD
-9661, pred: neg, actual: neg GOOD
-9662, pred: pos, actual: pos GOOD
-9663, pred: pos, actual: pos GOOD
-9664, pred: neg, actual: neg GOOD
-9665, pred: pos, actual: neg BAD
-9666, pred: pos, actual: pos GOOD
-9667, pred: pos, actual: neg BAD
-9668, pred: pos, actual: pos GOOD
-9669, pred: pos, actual: neg BAD
-9670, pred: neg, actual: pos BAD
-9671, pred: pos, actual: pos GOOD
-9672, pred: pos, actual: pos GOOD
-9673, pred: neg, actual: neg GOOD
-9674, pred: neg, actual: neg GOOD
-9675, pred: pos, actual: neg BAD
-9676, pred: neg, actual: neg GOOD
-9677, pred: pos, actual: pos GOOD
-9678, pred: neg, actual: pos BAD
-9679, pred: pos, actual: neg BAD
-9680, pred: pos, actual: pos GOOD
-9681, pred: pos, actual: neg BAD
-9682, pred: neg, actual: neg GOOD
-9683, pred: pos, actual: pos GOOD
-9684, pred: neg, actual: neg GOOD
-9685, pred: pos, actual: neg BAD
-9686, pred: pos, actual: pos GOOD
-9687, pred: pos, actual: pos GOOD
-9688, pred: pos, actual: pos GOOD
-9689, pred: pos, actual: neg BAD
-9690, pred: pos, actual: pos GOOD
-9691, pred: pos, actual: pos GOOD
-9692, pred: pos, actual: pos GOOD
-9693, pred: pos, actual: neg BAD
-9694, pred: pos, actual: neg BAD
-9695, pred: pos, actual: pos GOOD
-9696, pred: neg, actual: pos BAD
-9697, pred: neg, actual: neg GOOD
-9698, pred: neg, actual: neg GOOD
-9699, pred: neg, actual: neg GOOD
-9700, pred: neg, actual: neg GOOD
-9701, pred: pos, actual: pos GOOD
-9702, pred: pos, actual: pos GOOD
-9703, pred: neg, actual: neg GOOD
-9704, pred: pos, actual: neg BAD
-9705, pred: neg, actual: pos BAD
-9706, pred: pos, actual: pos GOOD
-9707, pred: pos, actual: pos GOOD
-9708, pred: neg, actual: neg GOOD
-9709, pred: pos, actual: pos GOOD
-9710, pred: pos, actual: pos GOOD
-9711, pred: pos, actual: pos GOOD
-9712, pred: neg, actual: neg GOOD
-9713, pred: pos, actual: neg BAD
-9714, pred: neg, actual: pos BAD
-9715, pred: neg, actual: neg GOOD
-9716, pred: neg, actual: neg GOOD
-9717, pred: pos, actual: pos GOOD
-9718, pred: neg, actual: neg GOOD
-9719, pred: pos, actual: pos GOOD
-9720, pred: neg, actual: neg GOOD
-9721, pred: pos, actual: neg BAD
-9722, pred: pos, actual: neg BAD
-9723, pred: pos, actual: neg BAD
-9724, pred: neg, actual: neg GOOD
-9725, pred: neg, actual: neg GOOD
-9726, pred: neg, actual: neg GOOD
-9727, pred: pos, actual: pos GOOD
-9728, pred: neg, actual: neg GOOD
-9729, pred: pos, actual: pos GOOD
-9730, pred: pos, actual: pos GOOD
-9731, pred: neg, actual: neg GOOD
-9732, pred: pos, actual: pos GOOD
-9733, pred: neg, actual: neg GOOD
-9734, pred: neg, actual: pos BAD
-9735, pred: pos, actual: pos GOOD
-9736, pred: pos, actual: neg BAD
-9737, pred: neg, actual: neg GOOD
-9738, pred: pos, actual: pos GOOD
-9739, pred: neg, actual: neg GOOD
-9740, pred: pos, actual: pos GOOD
-9741, pred: neg, actual: pos BAD
-9742, pred: pos, actual: pos GOOD
-9743, pred: pos, actual: neg BAD
-9744, pred: pos, actual: pos GOOD
-9745, pred: pos, actual: pos GOOD
-9746, pred: neg, actual: neg GOOD
-9747, pred: neg, actual: pos BAD
-9748, pred: neg, actual: neg GOOD
-9749, pred: pos, actual: pos GOOD
-9750, pred: neg, actual: neg GOOD
-9751, pred: neg, actual: neg GOOD
-9752, pred: pos, actual: pos GOOD
-9753, pred: neg, actual: neg GOOD
-9754, pred: pos, actual: pos GOOD
-9755, pred: pos, actual: pos GOOD
-9756, pred: neg, actual: neg GOOD
-9757, pred: pos, actual: neg BAD
-9758, pred: pos, actual: neg BAD
-9759, pred: pos, actual: pos GOOD
-9760, pred: neg, actual: neg GOOD
-9761, pred: neg, actual: neg GOOD
-9762, pred: pos, actual: neg BAD
-9763, pred: neg, actual: neg GOOD
-9764, pred: neg, actual: pos BAD
-9765, pred: pos, actual: neg BAD
-9766, pred: neg, actual: neg GOOD
-9767, pred: neg, actual: pos BAD
-9768, pred: pos, actual: pos GOOD
-9769, pred: neg, actual: pos BAD
-9770, pred: neg, actual: neg GOOD
-9771, pred: neg, actual: pos BAD
-9772, pred: pos, actual: neg BAD
-9773, pred: neg, actual: neg GOOD
-9774, pred: neg, actual: neg GOOD
-9775, pred: pos, actual: pos GOOD
-9776, pred: neg, actual: neg GOOD
-9777, pred: pos, actual: neg BAD
-9778, pred: pos, actual: pos GOOD
-9779, pred: pos, actual: pos GOOD
-9780, pred: pos, actual: neg BAD
-9781, pred: pos, actual: pos GOOD
-9782, pred: neg, actual: neg GOOD
-9783, pred: neg, actual: neg GOOD
-9784, pred: neg, actual: neg GOOD
-9785, pred: neg, actual: pos BAD
-9786, pred: neg, actual: pos BAD
-9787, pred: pos, actual: neg BAD
-9788, pred: neg, actual: pos BAD
-9789, pred: neg, actual: neg GOOD
-9790, pred: neg, actual: neg GOOD
-9791, pred: neg, actual: neg GOOD
-9792, pred: neg, actual: neg GOOD
-9793, pred: pos, actual: pos GOOD
-9794, pred: neg, actual: pos BAD
-9795, pred: neg, actual: pos BAD
-9796, pred: pos, actual: neg BAD
-9797, pred: neg, actual: neg GOOD
-9798, pred: pos, actual: neg BAD
-9799, pred: pos, actual: neg BAD
-9800, pred: neg, actual: neg GOOD
-9801, pred: pos, actual: pos GOOD
-9802, pred: neg, actual: pos BAD
-9803, pred: pos, actual: pos GOOD
-9804, pred: pos, actual: neg BAD
-9805, pred: pos, actual: neg BAD
-9806, pred: pos, actual: neg BAD
-9807, pred: neg, actual: neg GOOD
-9808, pred: pos, actual: neg BAD
-9809, pred: neg, actual: neg GOOD
-9810, pred: pos, actual: pos GOOD
-9811, pred: pos, actual: pos GOOD
-9812, pred: neg, actual: neg GOOD
-9813, pred: neg, actual: neg GOOD
-9814, pred: neg, actual: neg GOOD
-9815, pred: neg, actual: neg GOOD
-9816, pred: neg, actual: neg GOOD
-9817, pred: pos, actual: neg BAD
-9818, pred: pos, actual: neg BAD
-9819, pred: neg, actual: neg GOOD
-9820, pred: neg, actual: neg GOOD
-9821, pred: neg, actual: neg GOOD
-9822, pred: neg, actual: pos BAD
-9823, pred: pos, actual: pos GOOD
-9824, pred: pos, actual: pos GOOD
-9825, pred: neg, actual: neg GOOD
-9826, pred: pos, actual: pos GOOD
-9827, pred: pos, actual: neg BAD
-9828, pred: neg, actual: neg GOOD
-9829, pred: pos, actual: pos GOOD
-9830, pred: neg, actual: pos BAD
-9831, pred: pos, actual: neg BAD
-9832, pred: pos, actual: pos GOOD
-9833, pred: pos, actual: pos GOOD
-9834, pred: pos, actual: neg BAD
-9835, pred: pos, actual: pos GOOD
-9836, pred: pos, actual: pos GOOD
-9837, pred: pos, actual: neg BAD
-9838, pred: neg, actual: pos BAD
-9839, pred: pos, actual: pos GOOD
-9840, pred: pos, actual: pos GOOD
-9841, pred: neg, actual: neg GOOD
-9842, pred: pos, actual: pos GOOD
-9843, pred: neg, actual: pos BAD
-9844, pred: neg, actual: pos BAD
-9845, pred: pos, actual: pos GOOD
-9846, pred: neg, actual: pos BAD
-9847, pred: pos, actual: pos GOOD
-9848, pred: pos, actual: pos GOOD
-9849, pred: pos, actual: neg BAD
-9850, pred: pos, actual: pos GOOD
-9851, pred: pos, actual: pos GOOD
-9852, pred: neg, actual: neg GOOD
-9853, pred: neg, actual: pos BAD
-9854, pred: neg, actual: neg GOOD
-9855, pred: pos, actual: neg BAD
-9856, pred: pos, actual: neg BAD
-9857, pred: neg, actual: neg GOOD
-9858, pred: neg, actual: pos BAD
-9859, pred: neg, actual: neg GOOD
-9860, pred: pos, actual: pos GOOD
-9861, pred: pos, actual: pos GOOD
-9862, pred: pos, actual: pos GOOD
-9863, pred: neg, actual: neg GOOD
-9864, pred: neg, actual: neg GOOD
-9865, pred: neg, actual: neg GOOD
-9866, pred: pos, actual: neg BAD
-9867, pred: neg, actual: neg GOOD
-9868, pred: pos, actual: pos GOOD
-9869, pred: neg, actual: neg GOOD
-9870, pred: pos, actual: pos GOOD
-9871, pred: pos, actual: pos GOOD
-9872, pred: neg, actual: neg GOOD
-9873, pred: pos, actual: pos GOOD
-9874, pred: pos, actual: neg BAD
-9875, pred: pos, actual: pos GOOD
-9876, pred: pos, actual: neg BAD
-9877, pred: neg, actual: neg GOOD
-9878, pred: neg, actual: neg GOOD
-9879, pred: neg, actual: pos BAD
-9880, pred: neg, actual: neg GOOD
-9881, pred: pos, actual: neg BAD
-9882, pred: neg, actual: pos BAD
-9883, pred: pos, actual: pos GOOD
-9884, pred: neg, actual: neg GOOD
-9885, pred: neg, actual: neg GOOD
-9886, pred: neg, actual: pos BAD
-9887, pred: pos, actual: neg BAD
-9888, pred: neg, actual: pos BAD
-9889, pred: pos, actual: pos GOOD
-9890, pred: neg, actual: neg GOOD
-9891, pred: neg, actual: neg GOOD
-9892, pred: neg, actual: neg GOOD
-9893, pred: pos, actual: neg BAD
-9894, pred: pos, actual: neg BAD
-9895, pred: neg, actual: neg GOOD
-9896, pred: pos, actual: neg BAD
-9897, pred: pos, actual: pos GOOD
-9898, pred: pos, actual: pos GOOD
-9899, pred: pos, actual: pos GOOD
-9900, pred: neg, actual: neg GOOD
-9901, pred: neg, actual: pos BAD
-9902, pred: neg, actual: neg GOOD
-9903, pred: pos, actual: pos GOOD
-9904, pred: pos, actual: neg BAD
-9905, pred: neg, actual: pos BAD
-9906, pred: neg, actual: neg GOOD
-9907, pred: pos, actual: pos GOOD
-9908, pred: pos, actual: neg BAD
-9909, pred: neg, actual: pos BAD
-9910, pred: neg, actual: neg GOOD
-9911, pred: pos, actual: pos GOOD
-9912, pred: pos, actual: pos GOOD
-9913, pred: neg, actual: neg GOOD
-9914, pred: pos, actual: neg BAD
-9915, pred: neg, actual: neg GOOD
-9916, pred: neg, actual: pos BAD
-9917, pred: pos, actual: pos GOOD
-9918, pred: pos, actual: pos GOOD
-9919, pred: neg, actual: neg GOOD
-9920, pred: pos, actual: pos GOOD
-9921, pred: pos, actual: pos GOOD
-9922, pred: pos, actual: pos GOOD
-9923, pred: pos, actual: pos GOOD
-9924, pred: neg, actual: neg GOOD
-9925, pred: pos, actual: pos GOOD
-9926, pred: neg, actual: neg GOOD
-9927, pred: neg, actual: pos BAD
-9928, pred: pos, actual: pos GOOD
-9929, pred: neg, actual: pos BAD
-9930, pred: neg, actual: neg GOOD
-9931, pred: pos, actual: neg BAD
-9932, pred: pos, actual: pos GOOD
-9933, pred: neg, actual: neg GOOD
-9934, pred: pos, actual: pos GOOD
-9935, pred: pos, actual: pos GOOD
-9936, pred: neg, actual: neg GOOD
-9937, pred: pos, actual: pos GOOD
-9938, pred: neg, actual: neg GOOD
-9939, pred: pos, actual: pos GOOD
-9940, pred: pos, actual: neg BAD
-9941, pred: pos, actual: neg BAD
-9942, pred: neg, actual: neg GOOD
-9943, pred: pos, actual: pos GOOD
-9944, pred: pos, actual: pos GOOD
-9945, pred: pos, actual: neg BAD
-9946, pred: pos, actual: pos GOOD
-9947, pred: pos, actual: neg BAD
-9948, pred: pos, actual: pos GOOD
-9949, pred: neg, actual: pos BAD
-9950, pred: pos, actual: pos GOOD
-9951, pred: neg, actual: pos BAD
-9952, pred: pos, actual: pos GOOD
-9953, pred: neg, actual: neg GOOD
-9954, pred: pos, actual: pos GOOD
-9955, pred: pos, actual: pos GOOD
-9956, pred: neg, actual: neg GOOD
-9957, pred: pos, actual: pos GOOD
-9958, pred: neg, actual: neg GOOD
-9959, pred: neg, actual: pos BAD
-9960, pred: neg, actual: neg GOOD
-9961, pred: neg, actual: neg GOOD
-9962, pred: pos, actual: pos GOOD
-9963, pred: pos, actual: pos GOOD
-9964, pred: neg, actual: pos BAD
-9965, pred: pos, actual: pos GOOD
-9966, pred: pos, actual: pos GOOD
-9967, pred: pos, actual: pos GOOD
-9968, pred: pos, actual: pos GOOD
-9969, pred: neg, actual: neg GOOD
-9970, pred: neg, actual: neg GOOD
-9971, pred: pos, actual: pos GOOD
-9972, pred: pos, actual: pos GOOD
-9973, pred: neg, actual: neg GOOD
-9974, pred: pos, actual: neg BAD
-9975, pred: neg, actual: neg GOOD
-9976, pred: neg, actual: neg GOOD
-9977, pred: pos, actual: pos GOOD
-9978, pred: neg, actual: neg GOOD
-9979, pred: pos, actual: pos GOOD
-9980, pred: pos, actual: pos GOOD
-9981, pred: neg, actual: neg GOOD
-9982, pred: neg, actual: neg GOOD
-9983, pred: pos, actual: neg BAD
-9984, pred: pos, actual: pos GOOD
-9985, pred: pos, actual: pos GOOD
-9986, pred: pos, actual: pos GOOD
-9987, pred: neg, actual: pos BAD
-9988, pred: pos, actual: pos GOOD
-9989, pred: pos, actual: pos GOOD
-9990, pred: pos, actual: neg BAD
-9991, pred: pos, actual: neg BAD
-9992, pred: neg, actual: neg GOOD
-9993, pred: pos, actual: neg BAD
-9994, pred: pos, actual: pos GOOD
-9995, pred: neg, actual: neg GOOD
-9996, pred: neg, actual: neg GOOD
-9997, pred: pos, actual: pos GOOD
-9998, pred: pos, actual: neg BAD
-9999, pred: neg, actual: neg GOOD
-10000, pred: neg, actual: neg GOOD
-10001, pred: pos, actual: neg BAD
-10002, pred: pos, actual: pos GOOD
-10003, pred: pos, actual: neg BAD
-10004, pred: pos, actual: pos GOOD
-10005, pred: pos, actual: neg BAD
-10006, pred: pos, actual: neg BAD
-10007, pred: pos, actual: pos GOOD
-10008, pred: pos, actual: neg BAD
-10009, pred: pos, actual: pos GOOD
-10010, pred: neg, actual: neg GOOD
-10011, pred: neg, actual: neg GOOD
-10012, pred: neg, actual: neg GOOD
-10013, pred: neg, actual: pos BAD
-10014, pred: pos, actual: pos GOOD
-10015, pred: pos, actual: pos GOOD
-10016, pred: neg, actual: neg GOOD
-10017, pred: neg, actual: pos BAD
-10018, pred: neg, actual: neg GOOD
-10019, pred: pos, actual: pos GOOD
-10020, pred: neg, actual: neg GOOD
-10021, pred: neg, actual: neg GOOD
-10022, pred: pos, actual: pos GOOD
-10023, pred: pos, actual: neg BAD
-10024, pred: pos, actual: pos GOOD
-10025, pred: neg, actual: neg GOOD
-10026, pred: neg, actual: neg GOOD
-10027, pred: neg, actual: neg GOOD
-10028, pred: pos, actual: pos GOOD
-10029, pred: pos, actual: neg BAD
-10030, pred: pos, actual: pos GOOD
-10031, pred: neg, actual: neg GOOD
-10032, pred: neg, actual: neg GOOD
-10033, pred: neg, actual: neg GOOD
-10034, pred: pos, actual: neg BAD
-10035, pred: pos, actual: pos GOOD
-10036, pred: pos, actual: pos GOOD
-10037, pred: neg, actual: neg GOOD
-10038, pred: neg, actual: pos BAD
-10039, pred: neg, actual: pos BAD
-10040, pred: neg, actual: pos BAD
-10041, pred: pos, actual: pos GOOD
-10042, pred: neg, actual: pos BAD
-10043, pred: neg, actual: pos BAD
-10044, pred: pos, actual: pos GOOD
-10045, pred: pos, actual: neg BAD
-10046, pred: neg, actual: neg GOOD
-10047, pred: pos, actual: pos GOOD
-10048, pred: neg, actual: pos BAD
-10049, pred: neg, actual: neg GOOD
-10050, pred: neg, actual: neg GOOD
-10051, pred: neg, actual: neg GOOD
-10052, pred: neg, actual: neg GOOD
-10053, pred: neg, actual: pos BAD
-10054, pred: neg, actual: neg GOOD
-10055, pred: neg, actual: pos BAD
-10056, pred: neg, actual: pos BAD
-10057, pred: pos, actual: pos GOOD
-10058, pred: pos, actual: neg BAD
-10059, pred: neg, actual: pos BAD
-10060, pred: pos, actual: pos GOOD
-10061, pred: neg, actual: neg GOOD
-10062, pred: pos, actual: neg BAD
-10063, pred: pos, actual: neg BAD
-10064, pred: pos, actual: pos GOOD
-10065, pred: pos, actual: pos GOOD
-10066, pred: pos, actual: pos GOOD
-10067, pred: pos, actual: pos GOOD
-10068, pred: neg, actual: neg GOOD
-10069, pred: pos, actual: neg BAD
-10070, pred: pos, actual: pos GOOD
-10071, pred: neg, actual: neg GOOD
-10072, pred: pos, actual: pos GOOD
-10073, pred: pos, actual: pos GOOD
-10074, pred: neg, actual: neg GOOD
-10075, pred: pos, actual: neg BAD
-10076, pred: neg, actual: neg GOOD
-10077, pred: pos, actual: neg BAD
-10078, pred: pos, actual: pos GOOD
-10079, pred: neg, actual: neg GOOD
-10080, pred: neg, actual: pos BAD
-10081, pred: neg, actual: neg GOOD
-10082, pred: pos, actual: pos GOOD
-10083, pred: neg, actual: neg GOOD
-10084, pred: pos, actual: pos GOOD
-10085, pred: pos, actual: pos GOOD
-10086, pred: neg, actual: neg GOOD
-10087, pred: neg, actual: neg GOOD
-10088, pred: pos, actual: pos GOOD
-10089, pred: pos, actual: pos GOOD
-10090, pred: pos, actual: neg BAD
-10091, pred: pos, actual: pos GOOD
-10092, pred: neg, actual: pos BAD
-10093, pred: pos, actual: neg BAD
-10094, pred: neg, actual: neg GOOD
-10095, pred: pos, actual: pos GOOD
-10096, pred: neg, actual: neg GOOD
-10097, pred: neg, actual: neg GOOD
-10098, pred: pos, actual: neg BAD
-10099, pred: pos, actual: neg BAD
-10100, pred: neg, actual: neg GOOD
-10101, pred: neg, actual: pos BAD
-10102, pred: pos, actual: neg BAD
-10103, pred: neg, actual: pos BAD
-10104, pred: pos, actual: pos GOOD
-10105, pred: pos, actual: neg BAD
-10106, pred: neg, actual: neg GOOD
-10107, pred: neg, actual: neg GOOD
-10108, pred: neg, actual: neg GOOD
-10109, pred: neg, actual: neg GOOD
-10110, pred: neg, actual: pos BAD
-10111, pred: neg, actual: neg GOOD
-10112, pred: neg, actual: pos BAD
-10113, pred: pos, actual: pos GOOD
-10114, pred: pos, actual: neg BAD
-10115, pred: neg, actual: neg GOOD
-10116, pred: pos, actual: pos GOOD
-10117, pred: neg, actual: pos BAD
-10118, pred: neg, actual: neg GOOD
-10119, pred: pos, actual: pos GOOD
-10120, pred: neg, actual: neg GOOD
-10121, pred: pos, actual: neg BAD
-10122, pred: pos, actual: pos GOOD
-10123, pred: pos, actual: pos GOOD
-10124, pred: pos, actual: pos GOOD
-10125, pred: neg, actual: pos BAD
-10126, pred: pos, actual: pos GOOD
-10127, pred: pos, actual: neg BAD
-10128, pred: pos, actual: neg BAD
-10129, pred: neg, actual: neg GOOD
-10130, pred: neg, actual: neg GOOD
-10131, pred: pos, actual: neg BAD
-10132, pred: neg, actual: neg GOOD
-10133, pred: pos, actual: neg BAD
-10134, pred: neg, actual: neg GOOD
-10135, pred: neg, actual: neg GOOD
-10136, pred: pos, actual: pos GOOD
-10137, pred: pos, actual: neg BAD
-10138, pred: neg, actual: pos BAD
-10139, pred: pos, actual: neg BAD
-10140, pred: neg, actual: neg GOOD
-10141, pred: pos, actual: pos GOOD
-10142, pred: neg, actual: pos BAD
-10143, pred: pos, actual: neg BAD
-10144, pred: pos, actual: pos GOOD
-10145, pred: neg, actual: neg GOOD
-10146, pred: neg, actual: neg GOOD
-10147, pred: neg, actual: neg GOOD
-10148, pred: pos, actual: pos GOOD
-10149, pred: pos, actual: neg BAD
-10150, pred: pos, actual: pos GOOD
-10151, pred: pos, actual: pos GOOD
-10152, pred: pos, actual: pos GOOD
-10153, pred: neg, actual: neg GOOD
-10154, pred: neg, actual: neg GOOD
-10155, pred: neg, actual: neg GOOD
-10156, pred: neg, actual: pos BAD
-10157, pred: neg, actual: neg GOOD
-10158, pred: neg, actual: neg GOOD
-10159, pred: neg, actual: neg GOOD
-10160, pred: pos, actual: neg BAD
-10161, pred: pos, actual: neg BAD
-10162, pred: neg, actual: pos BAD
-10163, pred: pos, actual: pos GOOD
-10164, pred: neg, actual: neg GOOD
-10165, pred: pos, actual: pos GOOD
-10166, pred: pos, actual: pos GOOD
-10167, pred: pos, actual: pos GOOD
-10168, pred: neg, actual: neg GOOD
-10169, pred: neg, actual: neg GOOD
-10170, pred: pos, actual: pos GOOD
-10171, pred: pos, actual: pos GOOD
-10172, pred: neg, actual: neg GOOD
-10173, pred: neg, actual: neg GOOD
-10174, pred: neg, actual: neg GOOD
-10175, pred: neg, actual: neg GOOD
-10176, pred: pos, actual: pos GOOD
-10177, pred: pos, actual: pos GOOD
-10178, pred: pos, actual: pos GOOD
-10179, pred: pos, actual: pos GOOD
-10180, pred: neg, actual: pos BAD
-10181, pred: neg, actual: pos BAD
-10182, pred: pos, actual: neg BAD
-10183, pred: pos, actual: pos GOOD
-10184, pred: pos, actual: pos GOOD
-10185, pred: neg, actual: pos BAD
-10186, pred: neg, actual: neg GOOD
-10187, pred: neg, actual: neg GOOD
-10188, pred: pos, actual: pos GOOD
-10189, pred: neg, actual: pos BAD
-10190, pred: pos, actual: pos GOOD
-10191, pred: pos, actual: pos GOOD
-10192, pred: pos, actual: pos GOOD
-10193, pred: neg, actual: neg GOOD
-10194, pred: neg, actual: pos BAD
-10195, pred: pos, actual: neg BAD
-10196, pred: pos, actual: neg BAD
-10197, pred: pos, actual: pos GOOD
-10198, pred: neg, actual: neg GOOD
-10199, pred: pos, actual: pos GOOD
-10200, pred: neg, actual: pos BAD
-10201, pred: pos, actual: neg BAD
-10202, pred: neg, actual: neg GOOD
-10203, pred: neg, actual: neg GOOD
-10204, pred: neg, actual: pos BAD
-10205, pred: neg, actual: neg GOOD
-10206, pred: pos, actual: pos GOOD
-10207, pred: pos, actual: pos GOOD
-10208, pred: neg, actual: neg GOOD
-10209, pred: pos, actual: pos GOOD
-10210, pred: pos, actual: pos GOOD
-10211, pred: neg, actual: neg GOOD
-10212, pred: pos, actual: pos GOOD
-10213, pred: pos, actual: neg BAD
-10214, pred: neg, actual: neg GOOD
-10215, pred: pos, actual: pos GOOD
-10216, pred: neg, actual: neg GOOD
-10217, pred: pos, actual: neg BAD
-10218, pred: neg, actual: neg GOOD
-10219, pred: neg, actual: neg GOOD
-10220, pred: pos, actual: pos GOOD
-10221, pred: pos, actual: pos GOOD
-10222, pred: pos, actual: pos GOOD
-10223, pred: neg, actual: neg GOOD
-10224, pred: neg, actual: neg GOOD
-10225, pred: neg, actual: neg GOOD
-10226, pred: neg, actual: pos BAD
-10227, pred: pos, actual: pos GOOD
-10228, pred: pos, actual: pos GOOD
-10229, pred: pos, actual: pos GOOD
-10230, pred: pos, actual: pos GOOD
-10231, pred: pos, actual: pos GOOD
-10232, pred: neg, actual: neg GOOD
-10233, pred: pos, actual: neg BAD
-10234, pred: pos, actual: pos GOOD
-10235, pred: neg, actual: neg GOOD
-10236, pred: pos, actual: pos GOOD
-10237, pred: pos, actual: pos GOOD
-10238, pred: neg, actual: pos BAD
-10239, pred: pos, actual: neg BAD
-10240, pred: neg, actual: pos BAD
-10241, pred: pos, actual: neg BAD
-10242, pred: pos, actual: pos GOOD
-10243, pred: pos, actual: pos GOOD
-10244, pred: pos, actual: neg BAD
-10245, pred: neg, actual: pos BAD
-10246, pred: pos, actual: pos GOOD
-10247, pred: pos, actual: pos GOOD
-10248, pred: pos, actual: pos GOOD
-10249, pred: pos, actual: pos GOOD
-10250, pred: pos, actual: pos GOOD
-10251, pred: neg, actual: neg GOOD
-10252, pred: neg, actual: neg GOOD
-10253, pred: pos, actual: pos GOOD
-10254, pred: pos, actual: pos GOOD
-10255, pred: pos, actual: pos GOOD
-10256, pred: neg, actual: neg GOOD
-10257, pred: pos, actual: pos GOOD
-10258, pred: neg, actual: neg GOOD
-10259, pred: neg, actual: pos BAD
-10260, pred: neg, actual: neg GOOD
-10261, pred: pos, actual: pos GOOD
-10262, pred: neg, actual: neg GOOD
-10263, pred: pos, actual: pos GOOD
-10264, pred: neg, actual: pos BAD
-10265, pred: neg, actual: pos BAD
-10266, pred: pos, actual: neg BAD
-10267, pred: neg, actual: neg GOOD
-10268, pred: pos, actual: pos GOOD
-10269, pred: pos, actual: pos GOOD
-10270, pred: neg, actual: neg GOOD
-10271, pred: pos, actual: neg BAD
-10272, pred: pos, actual: pos GOOD
-10273, pred: neg, actual: pos BAD
-10274, pred: pos, actual: pos GOOD
-10275, pred: neg, actual: neg GOOD
-10276, pred: neg, actual: pos BAD
-10277, pred: neg, actual: neg GOOD
-10278, pred: pos, actual: pos GOOD
-10279, pred: pos, actual: pos GOOD
-10280, pred: neg, actual: neg GOOD
-10281, pred: pos, actual: pos GOOD
-10282, pred: pos, actual: pos GOOD
-10283, pred: pos, actual: pos GOOD
-10284, pred: pos, actual: neg BAD
-10285, pred: pos, actual: neg BAD
-10286, pred: pos, actual: neg BAD
-10287, pred: neg, actual: neg GOOD
-10288, pred: neg, actual: neg GOOD
-10289, pred: pos, actual: pos GOOD
-10290, pred: neg, actual: neg GOOD
-10291, pred: neg, actual: neg GOOD
-10292, pred: neg, actual: neg GOOD
-10293, pred: pos, actual: pos GOOD
-10294, pred: pos, actual: neg BAD
-10295, pred: neg, actual: neg GOOD
-10296, pred: neg, actual: neg GOOD
-10297, pred: neg, actual: pos BAD
-10298, pred: pos, actual: pos GOOD
-10299, pred: pos, actual: neg BAD
-10300, pred: pos, actual: neg BAD
-10301, pred: pos, actual: pos GOOD
-10302, pred: neg, actual: neg GOOD
-10303, pred: pos, actual: neg BAD
-10304, pred: neg, actual: pos BAD
-10305, pred: neg, actual: neg GOOD
-10306, pred: pos, actual: pos GOOD
-10307, pred: pos, actual: pos GOOD
-10308, pred: neg, actual: pos BAD
-10309, pred: pos, actual: pos GOOD
-10310, pred: neg, actual: neg GOOD
-10311, pred: pos, actual: pos GOOD
-10312, pred: neg, actual: neg GOOD
-10313, pred: pos, actual: pos GOOD
-10314, pred: pos, actual: pos GOOD
-10315, pred: pos, actual: pos GOOD
-10316, pred: pos, actual: pos GOOD
-10317, pred: pos, actual: neg BAD
-10318, pred: neg, actual: neg GOOD
-10319, pred: pos, actual: pos GOOD
-10320, pred: pos, actual: neg BAD
-10321, pred: neg, actual: neg GOOD
-10322, pred: neg, actual: neg GOOD
-10323, pred: pos, actual: pos GOOD
-10324, pred: neg, actual: neg GOOD
-10325, pred: pos, actual: pos GOOD
-10326, pred: neg, actual: neg GOOD
-10327, pred: pos, actual: neg BAD
-10328, pred: neg, actual: neg GOOD
-10329, pred: neg, actual: neg GOOD
-10330, pred: pos, actual: neg BAD
-10331, pred: pos, actual: pos GOOD
-10332, pred: neg, actual: neg GOOD
-10333, pred: pos, actual: pos GOOD
-10334, pred: pos, actual: pos GOOD
-10335, pred: neg, actual: pos BAD
-10336, pred: pos, actual: pos GOOD
-10337, pred: neg, actual: pos BAD
-10338, pred: neg, actual: neg GOOD
-10339, pred: neg, actual: neg GOOD
-10340, pred: neg, actual: neg GOOD
-10341, pred: neg, actual: pos BAD
-10342, pred: neg, actual: neg GOOD
-10343, pred: pos, actual: pos GOOD
-10344, pred: pos, actual: pos GOOD
-10345, pred: pos, actual: pos GOOD
-10346, pred: neg, actual: neg GOOD
-10347, pred: pos, actual: pos GOOD
-10348, pred: neg, actual: pos BAD
-10349, pred: pos, actual: pos GOOD
-10350, pred: neg, actual: neg GOOD
-10351, pred: pos, actual: neg BAD
-10352, pred: pos, actual: neg BAD
-10353, pred: pos, actual: pos GOOD
-10354, pred: pos, actual: pos GOOD
-10355, pred: pos, actual: neg BAD
-10356, pred: pos, actual: pos GOOD
-10357, pred: pos, actual: pos GOOD
-10358, pred: pos, actual: pos GOOD
-10359, pred: neg, actual: pos BAD
-10360, pred: pos, actual: pos GOOD
-10361, pred: neg, actual: neg GOOD
-10362, pred: neg, actual: pos BAD
-10363, pred: neg, actual: pos BAD
-10364, pred: pos, actual: pos GOOD
-10365, pred: neg, actual: neg GOOD
-10366, pred: neg, actual: pos BAD
-10367, pred: pos, actual: pos GOOD
-10368, pred: pos, actual: pos GOOD
-10369, pred: pos, actual: pos GOOD
-10370, pred: neg, actual: neg GOOD
-10371, pred: neg, actual: neg GOOD
-10372, pred: neg, actual: neg GOOD
-10373, pred: pos, actual: pos GOOD
-10374, pred: pos, actual: neg BAD
-10375, pred: neg, actual: neg GOOD
-10376, pred: pos, actual: pos GOOD
-10377, pred: neg, actual: pos BAD
-10378, pred: pos, actual: pos GOOD
-10379, pred: pos, actual: neg BAD
-10380, pred: pos, actual: neg BAD
-10381, pred: neg, actual: neg GOOD
-10382, pred: neg, actual: neg GOOD
-10383, pred: pos, actual: pos GOOD
-10384, pred: neg, actual: neg GOOD
-10385, pred: pos, actual: pos GOOD
-10386, pred: pos, actual: neg BAD
-10387, pred: pos, actual: neg BAD
-10388, pred: neg, actual: pos BAD
-10389, pred: pos, actual: pos GOOD
-10390, pred: pos, actual: pos GOOD
-10391, pred: pos, actual: pos GOOD
-10392, pred: pos, actual: pos GOOD
-10393, pred: pos, actual: pos GOOD
-10394, pred: pos, actual: pos GOOD
-10395, pred: neg, actual: neg GOOD
-10396, pred: neg, actual: neg GOOD
-10397, pred: neg, actual: neg GOOD
-10398, pred: pos, actual: pos GOOD
-10399, pred: pos, actual: pos GOOD
-10400, pred: neg, actual: neg GOOD
-10401, pred: pos, actual: pos GOOD
-10402, pred: pos, actual: neg BAD
-10403, pred: pos, actual: pos GOOD
-10404, pred: neg, actual: neg GOOD
-10405, pred: neg, actual: neg GOOD
-10406, pred: neg, actual: neg GOOD
-10407, pred: neg, actual: pos BAD
-10408, pred: neg, actual: neg GOOD
-10409, pred: neg, actual: pos BAD
-10410, pred: neg, actual: pos BAD
-10411, pred: pos, actual: pos GOOD
-10412, pred: pos, actual: neg BAD
-10413, pred: pos, actual: pos GOOD
-10414, pred: neg, actual: neg GOOD
-10415, pred: neg, actual: neg GOOD
-10416, pred: pos, actual: neg BAD
-10417, pred: neg, actual: neg GOOD
-10418, pred: neg, actual: neg GOOD
-10419, pred: pos, actual: pos GOOD
-10420, pred: pos, actual: pos GOOD
-10421, pred: neg, actual: neg GOOD
-10422, pred: neg, actual: neg GOOD
-10423, pred: pos, actual: pos GOOD
-10424, pred: neg, actual: neg GOOD
-10425, pred: neg, actual: pos BAD
-10426, pred: pos, actual: pos GOOD
-10427, pred: pos, actual: pos GOOD
-10428, pred: neg, actual: pos BAD
-10429, pred: pos, actual: neg BAD
-10430, pred: neg, actual: neg GOOD
-10431, pred: neg, actual: neg GOOD
-10432, pred: pos, actual: pos GOOD
-10433, pred: pos, actual: pos GOOD
-10434, pred: pos, actual: pos GOOD
-10435, pred: neg, actual: pos BAD
-10436, pred: pos, actual: neg BAD
-10437, pred: pos, actual: neg BAD
-10438, pred: pos, actual: pos GOOD
-10439, pred: pos, actual: pos GOOD
-10440, pred: neg, actual: neg GOOD
-10441, pred: neg, actual: neg GOOD
-10442, pred: pos, actual: pos GOOD
-10443, pred: pos, actual: pos GOOD
-10444, pred: pos, actual: neg BAD
-10445, pred: neg, actual: pos BAD
-10446, pred: neg, actual: neg GOOD
-10447, pred: neg, actual: neg GOOD
-10448, pred: pos, actual: pos GOOD
-10449, pred: pos, actual: pos GOOD
-10450, pred: pos, actual: pos GOOD
-10451, pred: pos, actual: pos GOOD
-10452, pred: neg, actual: neg GOOD
-10453, pred: neg, actual: neg GOOD
-10454, pred: pos, actual: pos GOOD
-10455, pred: neg, actual: neg GOOD
-10456, pred: pos, actual: pos GOOD
-10457, pred: neg, actual: neg GOOD
-10458, pred: neg, actual: neg GOOD
-10459, pred: neg, actual: neg GOOD
-10460, pred: pos, actual: pos GOOD
-10461, pred: pos, actual: pos GOOD
-10462, pred: pos, actual: pos GOOD
-10463, pred: pos, actual: pos GOOD
-10464, pred: neg, actual: pos BAD
-10465, pred: pos, actual: pos GOOD
-10466, pred: pos, actual: neg BAD
-10467, pred: neg, actual: pos BAD
-10468, pred: neg, actual: neg GOOD
-10469, pred: pos, actual: pos GOOD
-10470, pred: pos, actual: pos GOOD
-10471, pred: neg, actual: neg GOOD
-10472, pred: pos, actual: pos GOOD
-10473, pred: pos, actual: pos GOOD
-10474, pred: neg, actual: neg GOOD
-10475, pred: pos, actual: pos GOOD
-10476, pred: neg, actual: neg GOOD
-10477, pred: neg, actual: neg GOOD
-10478, pred: pos, actual: pos GOOD
-10479, pred: pos, actual: pos GOOD
-10480, pred: neg, actual: neg GOOD
-10481, pred: pos, actual: pos GOOD
-10482, pred: neg, actual: neg GOOD
-10483, pred: neg, actual: neg GOOD
-10484, pred: pos, actual: neg BAD
-10485, pred: pos, actual: pos GOOD
-10486, pred: pos, actual: neg BAD
-10487, pred: neg, actual: pos BAD
-10488, pred: neg, actual: neg GOOD
-10489, pred: pos, actual: pos GOOD
-10490, pred: neg, actual: neg GOOD
-10491, pred: pos, actual: neg BAD
-10492, pred: pos, actual: neg BAD
-10493, pred: pos, actual: pos GOOD
-10494, pred: pos, actual: pos GOOD
-10495, pred: pos, actual: neg BAD
-10496, pred: pos, actual: pos GOOD
-10497, pred: neg, actual: neg GOOD
-10498, pred: neg, actual: neg GOOD
-10499, pred: neg, actual: neg GOOD
-10500, pred: neg, actual: pos BAD
-10501, pred: pos, actual: pos GOOD
-10502, pred: neg, actual: pos BAD
-10503, pred: pos, actual: pos GOOD
-10504, pred: neg, actual: neg GOOD
-10505, pred: pos, actual: pos GOOD
-10506, pred: neg, actual: neg GOOD
-10507, pred: neg, actual: neg GOOD
-10508, pred: pos, actual: neg BAD
-10509, pred: pos, actual: pos GOOD
-10510, pred: neg, actual: pos BAD
-10511, pred: pos, actual: pos GOOD
-10512, pred: pos, actual: pos GOOD
-10513, pred: pos, actual: pos GOOD
-10514, pred: neg, actual: pos BAD
-10515, pred: pos, actual: neg BAD
-10516, pred: neg, actual: neg GOOD
-10517, pred: neg, actual: neg GOOD
-10518, pred: neg, actual: neg GOOD
-10519, pred: pos, actual: pos GOOD
-10520, pred: neg, actual: pos BAD
-10521, pred: neg, actual: neg GOOD
-10522, pred: pos, actual: neg BAD
-10523, pred: neg, actual: pos BAD
-10524, pred: pos, actual: pos GOOD
-10525, pred: neg, actual: pos BAD
-10526, pred: neg, actual: neg GOOD
-10527, pred: pos, actual: pos GOOD
-10528, pred: neg, actual: pos BAD
-10529, pred: neg, actual: neg GOOD
-10530, pred: neg, actual: neg GOOD
-10531, pred: pos, actual: pos GOOD
-10532, pred: pos, actual: pos GOOD
-10533, pred: pos, actual: pos GOOD
-10534, pred: pos, actual: neg BAD
-10535, pred: pos, actual: neg BAD
-10536, pred: neg, actual: neg GOOD
-10537, pred: pos, actual: neg BAD
-10538, pred: neg, actual: neg GOOD
-10539, pred: pos, actual: pos GOOD
-10540, pred: neg, actual: neg GOOD
-10541, pred: pos, actual: pos GOOD
-10542, pred: pos, actual: pos GOOD
-10543, pred: neg, actual: neg GOOD
-10544, pred: neg, actual: neg GOOD
-10545, pred: pos, actual: neg BAD
-10546, pred: neg, actual: pos BAD
-10547, pred: neg, actual: neg GOOD
-10548, pred: pos, actual: neg BAD
-10549, pred: neg, actual: neg GOOD
-10550, pred: pos, actual: neg BAD
-10551, pred: neg, actual: pos BAD
-10552, pred: pos, actual: pos GOOD
-10553, pred: pos, actual: neg BAD
-10554, pred: neg, actual: pos BAD
-10555, pred: neg, actual: pos BAD
-10556, pred: pos, actual: pos GOOD
-10557, pred: pos, actual: neg BAD
-10558, pred: pos, actual: pos GOOD
-10559, pred: pos, actual: neg BAD
-10560, pred: neg, actual: neg GOOD
-10561, pred: pos, actual: pos GOOD
-10562, pred: neg, actual: neg GOOD
-10563, pred: pos, actual: pos GOOD
-10564, pred: pos, actual: pos GOOD
-10565, pred: pos, actual: pos GOOD
-10566, pred: neg, actual: neg GOOD
-10567, pred: neg, actual: neg GOOD
-10568, pred: neg, actual: neg GOOD
-10569, pred: neg, actual: neg GOOD
-10570, pred: neg, actual: neg GOOD
-10571, pred: pos, actual: pos GOOD
-10572, pred: neg, actual: pos BAD
-10573, pred: neg, actual: neg GOOD
-10574, pred: neg, actual: neg GOOD
-10575, pred: pos, actual: neg BAD
-10576, pred: pos, actual: pos GOOD
-10577, pred: neg, actual: neg GOOD
-10578, pred: neg, actual: neg GOOD
-10579, pred: pos, actual: neg BAD
-10580, pred: neg, actual: neg GOOD
-10581, pred: pos, actual: neg BAD
-10582, pred: neg, actual: neg GOOD
-10583, pred: neg, actual: pos BAD
-10584, pred: pos, actual: pos GOOD
-10585, pred: pos, actual: pos GOOD
-10586, pred: neg, actual: neg GOOD
-10587, pred: neg, actual: pos BAD
-10588, pred: neg, actual: neg GOOD
-10589, pred: pos, actual: pos GOOD
-10590, pred: pos, actual: pos GOOD
-10591, pred: neg, actual: pos BAD
-10592, pred: pos, actual: neg BAD
-10593, pred: pos, actual: neg BAD
-10594, pred: pos, actual: pos GOOD
-10595, pred: pos, actual: neg BAD
-10596, pred: pos, actual: pos GOOD
-10597, pred: neg, actual: neg GOOD
-10598, pred: pos, actual: pos GOOD
-10599, pred: pos, actual: pos GOOD
-10600, pred: pos, actual: pos GOOD
-10601, pred: pos, actual: pos GOOD
-10602, pred: pos, actual: pos GOOD
-10603, pred: neg, actual: neg GOOD
-10604, pred: neg, actual: pos BAD
-10605, pred: pos, actual: neg BAD
-10606, pred: neg, actual: pos BAD
-10607, pred: neg, actual: pos BAD
-10608, pred: pos, actual: pos GOOD
-10609, pred: neg, actual: pos BAD
-10610, pred: neg, actual: neg GOOD
-10611, pred: pos, actual: pos GOOD
-10612, pred: pos, actual: pos GOOD
-10613, pred: neg, actual: neg GOOD
-10614, pred: pos, actual: neg BAD
-10615, pred: pos, actual: pos GOOD
-10616, pred: neg, actual: neg GOOD
-10617, pred: neg, actual: pos BAD
-10618, pred: pos, actual: pos GOOD
-10619, pred: neg, actual: neg GOOD
-10620, pred: pos, actual: pos GOOD
-10621, pred: pos, actual: neg BAD
-10622, pred: pos, actual: pos GOOD
-10623, pred: neg, actual: neg GOOD
-10624, pred: neg, actual: neg GOOD
-10625, pred: neg, actual: neg GOOD
-10626, pred: pos, actual: pos GOOD
-10627, pred: neg, actual: neg GOOD
-10628, pred: neg, actual: neg GOOD
-10629, pred: pos, actual: neg BAD
-10630, pred: neg, actual: pos BAD
-10631, pred: pos, actual: pos GOOD
-10632, pred: neg, actual: neg GOOD
-10633, pred: neg, actual: neg GOOD
-10634, pred: neg, actual: neg GOOD
-10635, pred: neg, actual: neg GOOD
-10636, pred: neg, actual: neg GOOD
-10637, pred: neg, actual: neg GOOD
-10638, pred: neg, actual: neg GOOD
-10639, pred: pos, actual: pos GOOD
-10640, pred: pos, actual: neg BAD
-10641, pred: pos, actual: neg BAD
-10642, pred: pos, actual: pos GOOD
-10643, pred: neg, actual: neg GOOD
-10644, pred: pos, actual: pos GOOD
-10645, pred: neg, actual: pos BAD
-10646, pred: neg, actual: neg GOOD
-10647, pred: neg, actual: neg GOOD
-10648, pred: neg, actual: pos BAD
-10649, pred: pos, actual: pos GOOD
-10650, pred: neg, actual: neg GOOD
-10651, pred: neg, actual: neg GOOD
-10652, pred: neg, actual: neg GOOD
-10653, pred: pos, actual: pos GOOD
-10654, pred: pos, actual: pos GOOD
-10655, pred: pos, actual: pos GOOD
-10656, pred: neg, actual: neg GOOD
-10657, pred: pos, actual: neg BAD
-10658, pred: pos, actual: pos GOOD
-10659, pred: pos, actual: pos GOOD
-10660, pred: neg, actual: neg GOOD
-10661, pred: pos, actual: pos GOOD
-10662, pred: neg, actual: pos BAD
-10663, pred: pos, actual: pos GOOD
-10664, pred: pos, actual: pos GOOD
-10665, pred: pos, actual: neg BAD
-10666, pred: pos, actual: pos GOOD
-10667, pred: neg, actual: neg GOOD
-10668, pred: pos, actual: neg BAD
-10669, pred: pos, actual: pos GOOD
-10670, pred: neg, actual: neg GOOD
-10671, pred: pos, actual: pos GOOD
-10672, pred: neg, actual: pos BAD
-10673, pred: neg, actual: pos BAD
-10674, pred: pos, actual: pos GOOD
-10675, pred: neg, actual: pos BAD
-10676, pred: pos, actual: pos GOOD
-10677, pred: pos, actual: pos GOOD
-10678, pred: pos, actual: neg BAD
-10679, pred: neg, actual: neg GOOD
-10680, pred: pos, actual: pos GOOD
-10681, pred: neg, actual: neg GOOD
-10682, pred: neg, actual: pos BAD
-10683, pred: pos, actual: neg BAD
-10684, pred: neg, actual: neg GOOD
-10685, pred: neg, actual: pos BAD
-10686, pred: neg, actual: neg GOOD
-10687, pred: pos, actual: pos GOOD
-10688, pred: neg, actual: neg GOOD
-10689, pred: pos, actual: pos GOOD
-10690, pred: pos, actual: pos GOOD
-10691, pred: pos, actual: pos GOOD
-10692, pred: pos, actual: pos GOOD
-10693, pred: neg, actual: pos BAD
-10694, pred: neg, actual: neg GOOD
-10695, pred: pos, actual: neg BAD
-10696, pred: pos, actual: neg BAD
-10697, pred: neg, actual: neg GOOD
-10698, pred: pos, actual: neg BAD
-10699, pred: neg, actual: neg GOOD
-10700, pred: pos, actual: pos GOOD
-10701, pred: neg, actual: neg GOOD
-10702, pred: pos, actual: pos GOOD
-10703, pred: neg, actual: neg GOOD
-10704, pred: pos, actual: neg BAD
-10705, pred: neg, actual: pos BAD
-10706, pred: neg, actual: neg GOOD
-10707, pred: neg, actual: pos BAD
-10708, pred: neg, actual: neg GOOD
-10709, pred: pos, actual: pos GOOD
-10710, pred: pos, actual: neg BAD
-10711, pred: pos, actual: neg BAD
-10712, pred: pos, actual: pos GOOD
-10713, pred: pos, actual: neg BAD
-10714, pred: pos, actual: pos GOOD
-10715, pred: neg, actual: pos BAD
-10716, pred: pos, actual: pos GOOD
-10717, pred: neg, actual: pos BAD
-10718, pred: pos, actual: neg BAD
-10719, pred: pos, actual: pos GOOD
-10720, pred: neg, actual: neg GOOD
-10721, pred: neg, actual: neg GOOD
-10722, pred: neg, actual: neg GOOD
-10723, pred: pos, actual: neg BAD
-10724, pred: pos, actual: pos GOOD
-10725, pred: neg, actual: neg GOOD
-10726, pred: pos, actual: pos GOOD
-10727, pred: pos, actual: pos GOOD
-10728, pred: pos, actual: pos GOOD
-10729, pred: neg, actual: neg GOOD
-10730, pred: neg, actual: neg GOOD
-10731, pred: pos, actual: pos GOOD
-10732, pred: neg, actual: pos BAD
-10733, pred: pos, actual: neg BAD
-10734, pred: neg, actual: neg GOOD
-10735, pred: neg, actual: neg GOOD
-10736, pred: neg, actual: neg GOOD
-10737, pred: neg, actual: neg GOOD
-10738, pred: pos, actual: neg BAD
-10739, pred: neg, actual: neg GOOD
-10740, pred: pos, actual: pos GOOD
-10741, pred: pos, actual: pos GOOD
-10742, pred: pos, actual: pos GOOD
-10743, pred: neg, actual: neg GOOD
-10744, pred: pos, actual: neg BAD
-10745, pred: neg, actual: neg GOOD
-10746, pred: neg, actual: pos BAD
-10747, pred: pos, actual: pos GOOD
-10748, pred: neg, actual: neg GOOD
-10749, pred: pos, actual: neg BAD
-10750, pred: neg, actual: pos BAD
-10751, pred: pos, actual: pos GOOD
-10752, pred: neg, actual: pos BAD
-10753, pred: neg, actual: neg GOOD
-10754, pred: pos, actual: pos GOOD
-10755, pred: pos, actual: pos GOOD
-10756, pred: pos, actual: neg BAD
-10757, pred: pos, actual: pos GOOD
-10758, pred: neg, actual: neg GOOD
-10759, pred: neg, actual: neg GOOD
-10760, pred: neg, actual: pos BAD
-10761, pred: neg, actual: neg GOOD
-10762, pred: pos, actual: pos GOOD
-10763, pred: neg, actual: neg GOOD
-10764, pred: neg, actual: pos BAD
-10765, pred: pos, actual: pos GOOD
-10766, pred: neg, actual: neg GOOD
-10767, pred: neg, actual: neg GOOD
-10768, pred: neg, actual: pos BAD
-10769, pred: neg, actual: neg GOOD
-10770, pred: neg, actual: pos BAD
-10771, pred: pos, actual: pos GOOD
-10772, pred: neg, actual: pos BAD
-10773, pred: neg, actual: pos BAD
-10774, pred: neg, actual: neg GOOD
-10775, pred: neg, actual: pos BAD
-10776, pred: pos, actual: pos GOOD
-10777, pred: neg, actual: neg GOOD
-10778, pred: neg, actual: neg GOOD
-10779, pred: neg, actual: neg GOOD
-10780, pred: pos, actual: neg BAD
-10781, pred: neg, actual: neg GOOD
-10782, pred: neg, actual: neg GOOD
-10783, pred: neg, actual: neg GOOD
-10784, pred: neg, actual: pos BAD
-10785, pred: pos, actual: pos GOOD
-10786, pred: neg, actual: neg GOOD
-10787, pred: neg, actual: neg GOOD
-10788, pred: pos, actual: neg BAD
-10789, pred: pos, actual: pos GOOD
-10790, pred: pos, actual: pos GOOD
-10791, pred: neg, actual: neg GOOD
-10792, pred: neg, actual: pos BAD
-10793, pred: neg, actual: pos BAD
-10794, pred: neg, actual: pos BAD
-10795, pred: neg, actual: neg GOOD
-10796, pred: pos, actual: neg BAD
-10797, pred: neg, actual: neg GOOD
-10798, pred: pos, actual: neg BAD
-10799, pred: neg, actual: neg GOOD
-10800, pred: neg, actual: neg GOOD
-10801, pred: pos, actual: pos GOOD
-10802, pred: neg, actual: neg GOOD
-10803, pred: neg, actual: pos BAD
-10804, pred: neg, actual: neg GOOD
-10805, pred: neg, actual: neg GOOD
-10806, pred: neg, actual: neg GOOD
-10807, pred: neg, actual: pos BAD
-10808, pred: neg, actual: neg GOOD
-10809, pred: neg, actual: neg GOOD
-10810, pred: pos, actual: pos GOOD
-10811, pred: pos, actual: pos GOOD
-10812, pred: pos, actual: pos GOOD
-10813, pred: pos, actual: neg BAD
-10814, pred: neg, actual: neg GOOD
-10815, pred: pos, actual: pos GOOD
-10816, pred: pos, actual: pos GOOD
-10817, pred: pos, actual: pos GOOD
-10818, pred: neg, actual: pos BAD
-10819, pred: pos, actual: pos GOOD
-10820, pred: neg, actual: neg GOOD
-10821, pred: pos, actual: neg BAD
-10822, pred: neg, actual: neg GOOD
-10823, pred: pos, actual: pos GOOD
-10824, pred: pos, actual: neg BAD
-10825, pred: neg, actual: neg GOOD
-10826, pred: pos, actual: pos GOOD
-10827, pred: neg, actual: neg GOOD
-10828, pred: pos, actual: pos GOOD
-10829, pred: pos, actual: pos GOOD
-10830, pred: pos, actual: neg BAD
-10831, pred: pos, actual: pos GOOD
-10832, pred: neg, actual: neg GOOD
-10833, pred: neg, actual: pos BAD
-10834, pred: pos, actual: pos GOOD
-10835, pred: neg, actual: pos BAD
-10836, pred: neg, actual: pos BAD
-10837, pred: pos, actual: neg BAD
-10838, pred: pos, actual: pos GOOD
-10839, pred: neg, actual: neg GOOD
-10840, pred: neg, actual: neg GOOD
-10841, pred: neg, actual: neg GOOD
-10842, pred: neg, actual: neg GOOD
-10843, pred: neg, actual: pos BAD
-10844, pred: neg, actual: neg GOOD
-10845, pred: neg, actual: neg GOOD
-10846, pred: pos, actual: pos GOOD
-10847, pred: pos, actual: neg BAD
-10848, pred: neg, actual: pos BAD
-10849, pred: neg, actual: neg GOOD
-10850, pred: neg, actual: pos BAD
-10851, pred: neg, actual: neg GOOD
-10852, pred: neg, actual: pos BAD
-10853, pred: pos, actual: pos GOOD
-10854, pred: pos, actual: neg BAD
-10855, pred: neg, actual: neg GOOD
-10856, pred: neg, actual: neg GOOD
-10857, pred: pos, actual: neg BAD
-10858, pred: neg, actual: neg GOOD
-10859, pred: pos, actual: neg BAD
-10860, pred: neg, actual: neg GOOD
-10861, pred: pos, actual: pos GOOD
-10862, pred: pos, actual: neg BAD
-10863, pred: pos, actual: pos GOOD
-10864, pred: pos, actual: neg BAD
-10865, pred: neg, actual: neg GOOD
-10866, pred: neg, actual: neg GOOD
-10867, pred: pos, actual: neg BAD
-10868, pred: neg, actual: neg GOOD
-10869, pred: pos, actual: pos GOOD
-10870, pred: pos, actual: pos GOOD
-10871, pred: pos, actual: neg BAD
-10872, pred: neg, actual: pos BAD
-10873, pred: neg, actual: neg GOOD
-10874, pred: pos, actual: neg BAD
-10875, pred: neg, actual: neg GOOD
-10876, pred: pos, actual: neg BAD
-10877, pred: pos, actual: pos GOOD
-10878, pred: neg, actual: pos BAD
-10879, pred: pos, actual: pos GOOD
-10880, pred: pos, actual: neg BAD
-10881, pred: neg, actual: neg GOOD
-10882, pred: neg, actual: neg GOOD
-10883, pred: neg, actual: pos BAD
-10884, pred: pos, actual: neg BAD
-10885, pred: neg, actual: neg GOOD
-10886, pred: neg, actual: neg GOOD
-10887, pred: pos, actual: neg BAD
-10888, pred: neg, actual: pos BAD
-10889, pred: neg, actual: pos BAD
-10890, pred: neg, actual: neg GOOD
-10891, pred: pos, actual: neg BAD
-10892, pred: pos, actual: pos GOOD
-10893, pred: pos, actual: pos GOOD
-10894, pred: neg, actual: neg GOOD
-10895, pred: pos, actual: pos GOOD
-10896, pred: pos, actual: neg BAD
-10897, pred: neg, actual: neg GOOD
-10898, pred: pos, actual: neg BAD
-10899, pred: neg, actual: neg GOOD
-10900, pred: neg, actual: neg GOOD
-10901, pred: neg, actual: neg GOOD
-10902, pred: neg, actual: neg GOOD
-10903, pred: neg, actual: neg GOOD
-10904, pred: neg, actual: pos BAD
-10905, pred: pos, actual: neg BAD
-10906, pred: neg, actual: neg GOOD
-10907, pred: neg, actual: neg GOOD
-10908, pred: pos, actual: neg BAD
-10909, pred: pos, actual: neg BAD
-10910, pred: neg, actual: neg GOOD
-10911, pred: neg, actual: neg GOOD
-10912, pred: pos, actual: pos GOOD
-10913, pred: neg, actual: neg GOOD
-10914, pred: neg, actual: pos BAD
-10915, pred: pos, actual: pos GOOD
-10916, pred: neg, actual: pos BAD
-10917, pred: neg, actual: neg GOOD
-10918, pred: pos, actual: neg BAD
-10919, pred: pos, actual: neg BAD
-10920, pred: pos, actual: pos GOOD
-10921, pred: neg, actual: pos BAD
-10922, pred: neg, actual: pos BAD
-10923, pred: neg, actual: neg GOOD
-10924, pred: neg, actual: neg GOOD
-10925, pred: pos, actual: pos GOOD
-10926, pred: pos, actual: pos GOOD
-10927, pred: neg, actual: neg GOOD
-10928, pred: pos, actual: pos GOOD
-10929, pred: neg, actual: pos BAD
-10930, pred: neg, actual: pos BAD
-10931, pred: pos, actual: neg BAD
-10932, pred: pos, actual: pos GOOD
-10933, pred: pos, actual: pos GOOD
-10934, pred: neg, actual: pos BAD
-10935, pred: neg, actual: neg GOOD
-10936, pred: neg, actual: pos BAD
-10937, pred: neg, actual: pos BAD
-10938, pred: pos, actual: pos GOOD
-10939, pred: neg, actual: neg GOOD
-10940, pred: neg, actual: neg GOOD
-10941, pred: pos, actual: pos GOOD
-10942, pred: pos, actual: pos GOOD
-10943, pred: neg, actual: pos BAD
-10944, pred: pos, actual: pos GOOD
-10945, pred: pos, actual: pos GOOD
-10946, pred: pos, actual: neg BAD
-10947, pred: neg, actual: neg GOOD
-10948, pred: pos, actual: neg BAD
-10949, pred: neg, actual: pos BAD
-10950, pred: neg, actual: pos BAD
-10951, pred: neg, actual: neg GOOD
-10952, pred: pos, actual: pos GOOD
-10953, pred: neg, actual: neg GOOD
-10954, pred: neg, actual: neg GOOD
-10955, pred: neg, actual: neg GOOD
-10956, pred: pos, actual: pos GOOD
-10957, pred: neg, actual: neg GOOD
-10958, pred: neg, actual: neg GOOD
-10959, pred: neg, actual: neg GOOD
-10960, pred: neg, actual: pos BAD
-10961, pred: neg, actual: neg GOOD
-10962, pred: neg, actual: neg GOOD
-10963, pred: pos, actual: pos GOOD
-10964, pred: pos, actual: pos GOOD
-10965, pred: neg, actual: neg GOOD
-10966, pred: pos, actual: neg BAD
-10967, pred: pos, actual: neg BAD
-10968, pred: neg, actual: neg GOOD
-10969, pred: neg, actual: neg GOOD
-10970, pred: neg, actual: neg GOOD
-10971, pred: neg, actual: neg GOOD
-10972, pred: pos, actual: neg BAD
-10973, pred: neg, actual: neg GOOD
-10974, pred: pos, actual: pos GOOD
-10975, pred: pos, actual: pos GOOD
-10976, pred: pos, actual: pos GOOD
-10977, pred: neg, actual: neg GOOD
-10978, pred: pos, actual: pos GOOD
-10979, pred: pos, actual: neg BAD
-10980, pred: pos, actual: pos GOOD
-10981, pred: neg, actual: neg GOOD
-10982, pred: pos, actual: neg BAD
-10983, pred: pos, actual: neg BAD
-10984, pred: neg, actual: neg GOOD
-10985, pred: pos, actual: neg BAD
-10986, pred: pos, actual: neg BAD
-10987, pred: pos, actual: pos GOOD
-10988, pred: pos, actual: pos GOOD
-10989, pred: pos, actual: pos GOOD
-10990, pred: neg, actual: pos BAD
-10991, pred: pos, actual: pos GOOD
-10992, pred: neg, actual: neg GOOD
-10993, pred: pos, actual: pos GOOD
-10994, pred: neg, actual: neg GOOD
-10995, pred: neg, actual: pos BAD
-10996, pred: pos, actual: pos GOOD
-10997, pred: pos, actual: neg BAD
-10998, pred: neg, actual: neg GOOD
-10999, pred: neg, actual: neg GOOD
-11000, pred: neg, actual: pos BAD
-11001, pred: neg, actual: pos BAD
-11002, pred: neg, actual: neg GOOD
-11003, pred: neg, actual: neg GOOD
-11004, pred: pos, actual: pos GOOD
-11005, pred: neg, actual: neg GOOD
-11006, pred: pos, actual: neg BAD
-11007, pred: neg, actual: neg GOOD
-11008, pred: neg, actual: neg GOOD
-11009, pred: pos, actual: pos GOOD
-11010, pred: pos, actual: neg BAD
-11011, pred: pos, actual: neg BAD
-11012, pred: neg, actual: neg GOOD
-11013, pred: pos, actual: neg BAD
-11014, pred: neg, actual: pos BAD
-11015, pred: pos, actual: neg BAD
-11016, pred: neg, actual: pos BAD
-11017, pred: pos, actual: pos GOOD
-11018, pred: pos, actual: pos GOOD
-11019, pred: neg, actual: pos BAD
-11020, pred: pos, actual: neg BAD
-11021, pred: pos, actual: neg BAD
-11022, pred: neg, actual: neg GOOD
-11023, pred: pos, actual: pos GOOD
-11024, pred: pos, actual: neg BAD
-11025, pred: neg, actual: neg GOOD
-11026, pred: neg, actual: neg GOOD
-11027, pred: pos, actual: neg BAD
-11028, pred: pos, actual: pos GOOD
-11029, pred: pos, actual: pos GOOD
-11030, pred: pos, actual: pos GOOD
-11031, pred: neg, actual: pos BAD
-11032, pred: pos, actual: pos GOOD
-11033, pred: pos, actual: neg BAD
-11034, pred: neg, actual: neg GOOD
-11035, pred: pos, actual: pos GOOD
-11036, pred: neg, actual: neg GOOD
-11037, pred: neg, actual: neg GOOD
-11038, pred: neg, actual: pos BAD
-11039, pred: pos, actual: pos GOOD
-11040, pred: pos, actual: pos GOOD
-11041, pred: pos, actual: neg BAD
-11042, pred: pos, actual: neg BAD
-11043, pred: neg, actual: neg GOOD
-11044, pred: neg, actual: neg GOOD
-11045, pred: pos, actual: pos GOOD
-11046, pred: pos, actual: pos GOOD
-11047, pred: neg, actual: neg GOOD
-11048, pred: neg, actual: pos BAD
-11049, pred: neg, actual: pos BAD
-11050, pred: pos, actual: neg BAD
-11051, pred: neg, actual: neg GOOD
-11052, pred: pos, actual: pos GOOD
-11053, pred: pos, actual: pos GOOD
-11054, pred: neg, actual: pos BAD
-11055, pred: neg, actual: neg GOOD
-11056, pred: neg, actual: pos BAD
-11057, pred: pos, actual: pos GOOD
-11058, pred: pos, actual: pos GOOD
-11059, pred: neg, actual: neg GOOD
-11060, pred: pos, actual: pos GOOD
-11061, pred: pos, actual: pos GOOD
-11062, pred: neg, actual: pos BAD
-11063, pred: neg, actual: pos BAD
-11064, pred: pos, actual: pos GOOD
-11065, pred: neg, actual: neg GOOD
-11066, pred: pos, actual: pos GOOD
-11067, pred: pos, actual: neg BAD
-11068, pred: neg, actual: neg GOOD
-11069, pred: neg, actual: neg GOOD
-11070, pred: neg, actual: neg GOOD
-11071, pred: neg, actual: neg GOOD
-11072, pred: neg, actual: neg GOOD
-11073, pred: pos, actual: pos GOOD
-11074, pred: neg, actual: neg GOOD
-11075, pred: pos, actual: pos GOOD
-11076, pred: pos, actual: pos GOOD
-11077, pred: neg, actual: pos BAD
-11078, pred: pos, actual: neg BAD
-11079, pred: pos, actual: pos GOOD
-11080, pred: neg, actual: pos BAD
-11081, pred: pos, actual: neg BAD
-11082, pred: neg, actual: pos BAD
-11083, pred: pos, actual: pos GOOD
-11084, pred: neg, actual: pos BAD
-11085, pred: neg, actual: pos BAD
-11086, pred: pos, actual: pos GOOD
-11087, pred: pos, actual: neg BAD
-11088, pred: neg, actual: pos BAD
-11089, pred: pos, actual: neg BAD
-11090, pred: pos, actual: neg BAD
-11091, pred: pos, actual: neg BAD
-11092, pred: neg, actual: pos BAD
-11093, pred: neg, actual: neg GOOD
-11094, pred: pos, actual: pos GOOD
-11095, pred: pos, actual: neg BAD
-11096, pred: neg, actual: neg GOOD
-11097, pred: neg, actual: neg GOOD
-11098, pred: pos, actual: pos GOOD
-11099, pred: pos, actual: pos GOOD
-11100, pred: pos, actual: pos GOOD
-11101, pred: neg, actual: neg GOOD
-11102, pred: neg, actual: pos BAD
-11103, pred: pos, actual: neg BAD
-11104, pred: pos, actual: pos GOOD
-11105, pred: pos, actual: pos GOOD
-11106, pred: pos, actual: pos GOOD
-11107, pred: neg, actual: pos BAD
-11108, pred: pos, actual: neg BAD
-11109, pred: pos, actual: pos GOOD
-11110, pred: pos, actual: pos GOOD
-11111, pred: neg, actual: pos BAD
-11112, pred: neg, actual: neg GOOD
-11113, pred: pos, actual: neg BAD
-11114, pred: pos, actual: neg BAD
-11115, pred: neg, actual: pos BAD
-11116, pred: neg, actual: neg GOOD
-11117, pred: pos, actual: pos GOOD
-11118, pred: pos, actual: pos GOOD
-11119, pred: pos, actual: neg BAD
-11120, pred: pos, actual: neg BAD
-11121, pred: neg, actual: neg GOOD
-11122, pred: pos, actual: pos GOOD
-11123, pred: pos, actual: neg BAD
-11124, pred: neg, actual: neg GOOD
-11125, pred: pos, actual: neg BAD
-11126, pred: pos, actual: pos GOOD
-11127, pred: neg, actual: neg GOOD
-11128, pred: neg, actual: neg GOOD
-11129, pred: neg, actual: neg GOOD
-11130, pred: neg, actual: neg GOOD
-11131, pred: neg, actual: neg GOOD
-11132, pred: neg, actual: neg GOOD
-11133, pred: pos, actual: pos GOOD
-11134, pred: pos, actual: pos GOOD
-11135, pred: neg, actual: neg GOOD
-11136, pred: pos, actual: pos GOOD
-11137, pred: neg, actual: neg GOOD
-11138, pred: neg, actual: neg GOOD
-11139, pred: pos, actual: neg BAD
-11140, pred: neg, actual: neg GOOD
-11141, pred: neg, actual: neg GOOD
-11142, pred: neg, actual: pos BAD
-11143, pred: neg, actual: neg GOOD
-11144, pred: neg, actual: pos BAD
-11145, pred: pos, actual: pos GOOD
-11146, pred: pos, actual: pos GOOD
-11147, pred: pos, actual: pos GOOD
-11148, pred: pos, actual: pos GOOD
-11149, pred: pos, actual: pos GOOD
-11150, pred: neg, actual: neg GOOD
-11151, pred: neg, actual: neg GOOD
-11152, pred: pos, actual: pos GOOD
-11153, pred: pos, actual: pos GOOD
-11154, pred: neg, actual: neg GOOD
-11155, pred: neg, actual: pos BAD
-11156, pred: pos, actual: pos GOOD
-11157, pred: neg, actual: pos BAD
-11158, pred: neg, actual: pos BAD
-11159, pred: pos, actual: pos GOOD
-11160, pred: neg, actual: neg GOOD
-11161, pred: neg, actual: neg GOOD
-11162, pred: neg, actual: neg GOOD
-11163, pred: pos, actual: neg BAD
-11164, pred: pos, actual: pos GOOD
-11165, pred: neg, actual: neg GOOD
-11166, pred: neg, actual: pos BAD
-11167, pred: pos, actual: neg BAD
-11168, pred: pos, actual: pos GOOD
-11169, pred: neg, actual: neg GOOD
-11170, pred: neg, actual: neg GOOD
-11171, pred: neg, actual: neg GOOD
-11172, pred: pos, actual: pos GOOD
-11173, pred: pos, actual: pos GOOD
-11174, pred: neg, actual: pos BAD
-11175, pred: neg, actual: neg GOOD
-11176, pred: neg, actual: neg GOOD
-11177, pred: neg, actual: neg GOOD
-11178, pred: neg, actual: neg GOOD
-11179, pred: neg, actual: neg GOOD
-11180, pred: pos, actual: pos GOOD
-11181, pred: neg, actual: pos BAD
-11182, pred: neg, actual: neg GOOD
-11183, pred: pos, actual: neg BAD
-11184, pred: neg, actual: neg GOOD
-11185, pred: pos, actual: pos GOOD
-11186, pred: pos, actual: pos GOOD
-11187, pred: neg, actual: neg GOOD
-11188, pred: pos, actual: pos GOOD
-11189, pred: pos, actual: pos GOOD
-11190, pred: pos, actual: pos GOOD
-11191, pred: neg, actual: neg GOOD
-11192, pred: pos, actual: pos GOOD
-11193, pred: pos, actual: neg BAD
-11194, pred: pos, actual: pos GOOD
-11195, pred: pos, actual: pos GOOD
-11196, pred: pos, actual: neg BAD
-11197, pred: neg, actual: neg GOOD
-11198, pred: neg, actual: pos BAD
-11199, pred: neg, actual: neg GOOD
-11200, pred: neg, actual: neg GOOD
-11201, pred: neg, actual: neg GOOD
-11202, pred: pos, actual: pos GOOD
-11203, pred: neg, actual: neg GOOD
-11204, pred: pos, actual: pos GOOD
-11205, pred: neg, actual: neg GOOD
-11206, pred: neg, actual: pos BAD
-11207, pred: pos, actual: pos GOOD
-11208, pred: pos, actual: neg BAD
-11209, pred: pos, actual: pos GOOD
-11210, pred: pos, actual: neg BAD
-11211, pred: neg, actual: neg GOOD
-11212, pred: neg, actual: pos BAD
-11213, pred: neg, actual: neg GOOD
-11214, pred: neg, actual: neg GOOD
-11215, pred: pos, actual: neg BAD
-11216, pred: pos, actual: neg BAD
-11217, pred: pos, actual: neg BAD
-11218, pred: neg, actual: neg GOOD
-11219, pred: pos, actual: neg BAD
-11220, pred: pos, actual: pos GOOD
-11221, pred: neg, actual: neg GOOD
-11222, pred: pos, actual: pos GOOD
-11223, pred: pos, actual: pos GOOD
-11224, pred: pos, actual: pos GOOD
-11225, pred: pos, actual: pos GOOD
-11226, pred: pos, actual: pos GOOD
-11227, pred: neg, actual: pos BAD
-11228, pred: pos, actual: pos GOOD
-11229, pred: neg, actual: pos BAD
-11230, pred: neg, actual: pos BAD
-11231, pred: pos, actual: pos GOOD
-11232, pred: neg, actual: neg GOOD
-11233, pred: neg, actual: neg GOOD
-11234, pred: neg, actual: neg GOOD
-11235, pred: neg, actual: neg GOOD
-11236, pred: pos, actual: pos GOOD
-11237, pred: neg, actual: neg GOOD
-11238, pred: pos, actual: pos GOOD
-11239, pred: pos, actual: pos GOOD
-11240, pred: pos, actual: neg BAD
-11241, pred: pos, actual: neg BAD
-11242, pred: pos, actual: pos GOOD
-11243, pred: pos, actual: pos GOOD
-11244, pred: neg, actual: neg GOOD
-11245, pred: pos, actual: pos GOOD
-11246, pred: pos, actual: pos GOOD
-11247, pred: pos, actual: neg BAD
-11248, pred: pos, actual: pos GOOD
-11249, pred: pos, actual: pos GOOD
-11250, pred: pos, actual: pos GOOD
-11251, pred: pos, actual: pos GOOD
-11252, pred: pos, actual: pos GOOD
-11253, pred: neg, actual: neg GOOD
-11254, pred: neg, actual: neg GOOD
-11255, pred: pos, actual: neg BAD
-11256, pred: pos, actual: pos GOOD
-11257, pred: neg, actual: neg GOOD
-11258, pred: neg, actual: pos BAD
-11259, pred: neg, actual: neg GOOD
-11260, pred: pos, actual: pos GOOD
-11261, pred: pos, actual: pos GOOD
-11262, pred: neg, actual: neg GOOD
-11263, pred: pos, actual: pos GOOD
-11264, pred: pos, actual: neg BAD
-11265, pred: pos, actual: neg BAD
-11266, pred: pos, actual: neg BAD
-11267, pred: neg, actual: neg GOOD
-11268, pred: pos, actual: pos GOOD
-11269, pred: neg, actual: pos BAD
-11270, pred: neg, actual: neg GOOD
-11271, pred: neg, actual: pos BAD
-11272, pred: pos, actual: neg BAD
-11273, pred: pos, actual: neg BAD
-11274, pred: neg, actual: neg GOOD
-11275, pred: neg, actual: pos BAD
-11276, pred: neg, actual: neg GOOD
-11277, pred: neg, actual: neg GOOD
-11278, pred: pos, actual: pos GOOD
-11279, pred: neg, actual: neg GOOD
-11280, pred: pos, actual: pos GOOD
-11281, pred: neg, actual: neg GOOD
-11282, pred: pos, actual: pos GOOD
-11283, pred: pos, actual: pos GOOD
-11284, pred: pos, actual: neg BAD
-11285, pred: pos, actual: pos GOOD
-11286, pred: neg, actual: neg GOOD
-11287, pred: pos, actual: pos GOOD
-11288, pred: neg, actual: neg GOOD
-11289, pred: neg, actual: neg GOOD
-11290, pred: pos, actual: neg BAD
-11291, pred: neg, actual: neg GOOD
-11292, pred: pos, actual: neg BAD
-11293, pred: pos, actual: neg BAD
-11294, pred: pos, actual: pos GOOD
-11295, pred: pos, actual: neg BAD
-11296, pred: pos, actual: pos GOOD
-11297, pred: pos, actual: pos GOOD
-11298, pred: pos, actual: pos GOOD
-11299, pred: neg, actual: pos BAD
-11300, pred: pos, actual: pos GOOD
-11301, pred: neg, actual: neg GOOD
-11302, pred: neg, actual: neg GOOD
-11303, pred: pos, actual: pos GOOD
-11304, pred: neg, actual: neg GOOD
-11305, pred: neg, actual: neg GOOD
-11306, pred: pos, actual: neg BAD
-11307, pred: neg, actual: pos BAD
-11308, pred: pos, actual: pos GOOD
-11309, pred: neg, actual: pos BAD
-11310, pred: neg, actual: pos BAD
-11311, pred: neg, actual: pos BAD
-11312, pred: neg, actual: neg GOOD
-11313, pred: neg, actual: neg GOOD
-11314, pred: neg, actual: neg GOOD
-11315, pred: pos, actual: pos GOOD
-11316, pred: pos, actual: neg BAD
-11317, pred: pos, actual: pos GOOD
-11318, pred: neg, actual: neg GOOD
-11319, pred: pos, actual: pos GOOD
-11320, pred: pos, actual: pos GOOD
-11321, pred: pos, actual: neg BAD
-11322, pred: neg, actual: neg GOOD
-11323, pred: neg, actual: pos BAD
-11324, pred: neg, actual: neg GOOD
-11325, pred: neg, actual: pos BAD
-11326, pred: neg, actual: pos BAD
-11327, pred: pos, actual: neg BAD
-11328, pred: pos, actual: pos GOOD
-11329, pred: pos, actual: pos GOOD
-11330, pred: neg, actual: neg GOOD
-11331, pred: pos, actual: pos GOOD
-11332, pred: pos, actual: pos GOOD
-11333, pred: pos, actual: pos GOOD
-11334, pred: pos, actual: pos GOOD
-11335, pred: pos, actual: pos GOOD
-11336, pred: neg, actual: neg GOOD
-11337, pred: pos, actual: neg BAD
-11338, pred: neg, actual: neg GOOD
-11339, pred: neg, actual: neg GOOD
-11340, pred: pos, actual: pos GOOD
-11341, pred: neg, actual: neg GOOD
-11342, pred: neg, actual: pos BAD
-11343, pred: pos, actual: neg BAD
-11344, pred: neg, actual: pos BAD
-11345, pred: neg, actual: neg GOOD
-11346, pred: neg, actual: neg GOOD
-11347, pred: neg, actual: neg GOOD
-11348, pred: pos, actual: pos GOOD
-11349, pred: neg, actual: neg GOOD
-11350, pred: pos, actual: neg BAD
-11351, pred: neg, actual: pos BAD
-11352, pred: neg, actual: neg GOOD
-11353, pred: neg, actual: neg GOOD
-11354, pred: neg, actual: neg GOOD
-11355, pred: neg, actual: neg GOOD
-11356, pred: pos, actual: pos GOOD
-11357, pred: neg, actual: neg GOOD
-11358, pred: pos, actual: neg BAD
-11359, pred: neg, actual: neg GOOD
-11360, pred: pos, actual: pos GOOD
-11361, pred: neg, actual: neg GOOD
-11362, pred: pos, actual: neg BAD
-11363, pred: neg, actual: pos BAD
-11364, pred: pos, actual: pos GOOD
-11365, pred: neg, actual: pos BAD
-11366, pred: pos, actual: pos GOOD
-11367, pred: neg, actual: neg GOOD
-11368, pred: neg, actual: pos BAD
-11369, pred: pos, actual: pos GOOD
-11370, pred: neg, actual: neg GOOD
-11371, pred: pos, actual: neg BAD
-11372, pred: pos, actual: pos GOOD
-11373, pred: pos, actual: pos GOOD
-11374, pred: neg, actual: pos BAD
-11375, pred: pos, actual: neg BAD
-11376, pred: neg, actual: pos BAD
-11377, pred: pos, actual: neg BAD
-11378, pred: pos, actual: pos GOOD
-11379, pred: pos, actual: neg BAD
-11380, pred: neg, actual: neg GOOD
-11381, pred: neg, actual: neg GOOD
-11382, pred: neg, actual: pos BAD
-11383, pred: neg, actual: neg GOOD
-11384, pred: neg, actual: neg GOOD
-11385, pred: pos, actual: pos GOOD
-11386, pred: neg, actual: pos BAD
-11387, pred: pos, actual: neg BAD
-11388, pred: pos, actual: pos GOOD
-11389, pred: neg, actual: neg GOOD
-11390, pred: neg, actual: neg GOOD
-11391, pred: pos, actual: pos GOOD
-11392, pred: pos, actual: pos GOOD
-11393, pred: neg, actual: neg GOOD
-11394, pred: neg, actual: neg GOOD
-11395, pred: neg, actual: neg GOOD
-11396, pred: pos, actual: neg BAD
-11397, pred: neg, actual: neg GOOD
-11398, pred: pos, actual: pos GOOD
-11399, pred: pos, actual: pos GOOD
-11400, pred: pos, actual: neg BAD
-11401, pred: pos, actual: pos GOOD
-11402, pred: pos, actual: neg BAD
-11403, pred: neg, actual: neg GOOD
-11404, pred: neg, actual: neg GOOD
-11405, pred: pos, actual: neg BAD
-11406, pred: neg, actual: neg GOOD
-11407, pred: neg, actual: neg GOOD
-11408, pred: pos, actual: pos GOOD
-11409, pred: pos, actual: neg BAD
-11410, pred: pos, actual: pos GOOD
-11411, pred: neg, actual: neg GOOD
-11412, pred: pos, actual: neg BAD
-11413, pred: pos, actual: pos GOOD
-11414, pred: pos, actual: neg BAD
-11415, pred: neg, actual: neg GOOD
-11416, pred: pos, actual: pos GOOD
-11417, pred: neg, actual: pos BAD
-11418, pred: neg, actual: neg GOOD
-11419, pred: pos, actual: pos GOOD
-11420, pred: pos, actual: neg BAD
-11421, pred: pos, actual: pos GOOD
-11422, pred: neg, actual: neg GOOD
-11423, pred: neg, actual: neg GOOD
-11424, pred: pos, actual: pos GOOD
-11425, pred: neg, actual: neg GOOD
-11426, pred: neg, actual: neg GOOD
-11427, pred: pos, actual: pos GOOD
-11428, pred: neg, actual: neg GOOD
-11429, pred: neg, actual: neg GOOD
-11430, pred: pos, actual: neg BAD
-11431, pred: pos, actual: pos GOOD
-11432, pred: pos, actual: pos GOOD
-11433, pred: neg, actual: neg GOOD
-11434, pred: neg, actual: neg GOOD
-11435, pred: pos, actual: neg BAD
-11436, pred: neg, actual: pos BAD
-11437, pred: pos, actual: pos GOOD
-11438, pred: neg, actual: neg GOOD
-11439, pred: pos, actual: neg BAD
-11440, pred: neg, actual: neg GOOD
-11441, pred: neg, actual: neg GOOD
-11442, pred: pos, actual: neg BAD
-11443, pred: neg, actual: pos BAD
-11444, pred: neg, actual: neg GOOD
-11445, pred: pos, actual: pos GOOD
-11446, pred: pos, actual: pos GOOD
-11447, pred: pos, actual: pos GOOD
-11448, pred: neg, actual: neg GOOD
-11449, pred: neg, actual: neg GOOD
-11450, pred: neg, actual: neg GOOD
-11451, pred: pos, actual: neg BAD
-11452, pred: pos, actual: pos GOOD
-11453, pred: pos, actual: neg BAD
-11454, pred: pos, actual: neg BAD
-11455, pred: neg, actual: neg GOOD
-11456, pred: pos, actual: pos GOOD
-11457, pred: pos, actual: neg BAD
-11458, pred: neg, actual: neg GOOD
-11459, pred: pos, actual: pos GOOD
-11460, pred: pos, actual: pos GOOD
-11461, pred: neg, actual: pos BAD
-11462, pred: neg, actual: pos BAD
-11463, pred: pos, actual: neg BAD
-11464, pred: pos, actual: neg BAD
-11465, pred: pos, actual: pos GOOD
-11466, pred: neg, actual: pos BAD
-11467, pred: pos, actual: pos GOOD
-11468, pred: pos, actual: pos GOOD
-11469, pred: neg, actual: neg GOOD
-11470, pred: neg, actual: neg GOOD
-11471, pred: neg, actual: pos BAD
-11472, pred: pos, actual: neg BAD
-11473, pred: neg, actual: pos BAD
-11474, pred: neg, actual: neg GOOD
-11475, pred: neg, actual: neg GOOD
-11476, pred: pos, actual: neg BAD
-11477, pred: neg, actual: neg GOOD
-11478, pred: neg, actual: neg GOOD
-11479, pred: pos, actual: pos GOOD
-11480, pred: neg, actual: pos BAD
-11481, pred: pos, actual: neg BAD
-11482, pred: pos, actual: pos GOOD
-11483, pred: pos, actual: neg BAD
-11484, pred: neg, actual: neg GOOD
-11485, pred: pos, actual: pos GOOD
-11486, pred: pos, actual: pos GOOD
-11487, pred: pos, actual: neg BAD
-11488, pred: neg, actual: pos BAD
-11489, pred: pos, actual: pos GOOD
-11490, pred: neg, actual: neg GOOD
-11491, pred: neg, actual: neg GOOD
-11492, pred: neg, actual: neg GOOD
-11493, pred: neg, actual: neg GOOD
-11494, pred: pos, actual: neg BAD
-11495, pred: pos, actual: pos GOOD
-11496, pred: neg, actual: neg GOOD
-11497, pred: pos, actual: pos GOOD
-11498, pred: neg, actual: neg GOOD
-11499, pred: pos, actual: pos GOOD
-11500, pred: neg, actual: neg GOOD
-11501, pred: neg, actual: neg GOOD
-11502, pred: neg, actual: neg GOOD
-11503, pred: pos, actual: neg BAD
-11504, pred: pos, actual: neg BAD
-11505, pred: neg, actual: neg GOOD
-11506, pred: pos, actual: neg BAD
-11507, pred: pos, actual: neg BAD
-11508, pred: neg, actual: neg GOOD
-11509, pred: pos, actual: pos GOOD
-11510, pred: neg, actual: pos BAD
-11511, pred: neg, actual: neg GOOD
-11512, pred: pos, actual: neg BAD
-11513, pred: neg, actual: neg GOOD
-11514, pred: pos, actual: neg BAD
-11515, pred: neg, actual: neg GOOD
-11516, pred: neg, actual: pos BAD
-11517, pred: pos, actual: pos GOOD
-11518, pred: neg, actual: neg GOOD
-11519, pred: neg, actual: neg GOOD
-11520, pred: neg, actual: neg GOOD
-11521, pred: neg, actual: neg GOOD
-11522, pred: pos, actual: neg BAD
-11523, pred: pos, actual: pos GOOD
-11524, pred: neg, actual: neg GOOD
-11525, pred: pos, actual: pos GOOD
-11526, pred: pos, actual: pos GOOD
-11527, pred: pos, actual: neg BAD
-11528, pred: pos, actual: neg BAD
-11529, pred: pos, actual: neg BAD
-11530, pred: pos, actual: neg BAD
-11531, pred: pos, actual: pos GOOD
-11532, pred: pos, actual: pos GOOD
-11533, pred: neg, actual: pos BAD
-11534, pred: pos, actual: neg BAD
-11535, pred: pos, actual: pos GOOD
-11536, pred: pos, actual: pos GOOD
-11537, pred: neg, actual: neg GOOD
-11538, pred: pos, actual: pos GOOD
-11539, pred: pos, actual: pos GOOD
-11540, pred: neg, actual: pos BAD
-11541, pred: neg, actual: neg GOOD
-11542, pred: pos, actual: neg BAD
-11543, pred: pos, actual: pos GOOD
-11544, pred: pos, actual: neg BAD
-11545, pred: neg, actual: neg GOOD
-11546, pred: pos, actual: pos GOOD
-11547, pred: neg, actual: pos BAD
-11548, pred: pos, actual: pos GOOD
-11549, pred: pos, actual: pos GOOD
-11550, pred: pos, actual: pos GOOD
-11551, pred: neg, actual: neg GOOD
-11552, pred: neg, actual: neg GOOD
-11553, pred: neg, actual: pos BAD
-11554, pred: neg, actual: pos BAD
-11555, pred: pos, actual: neg BAD
-11556, pred: pos, actual: neg BAD
-11557, pred: neg, actual: neg GOOD
-11558, pred: neg, actual: neg GOOD
-11559, pred: pos, actual: pos GOOD
-11560, pred: neg, actual: pos BAD
-11561, pred: neg, actual: pos BAD
-11562, pred: pos, actual: pos GOOD
-11563, pred: neg, actual: neg GOOD
-11564, pred: neg, actual: neg GOOD
-11565, pred: neg, actual: pos BAD
-11566, pred: pos, actual: pos GOOD
-11567, pred: neg, actual: neg GOOD
-11568, pred: neg, actual: pos BAD
-11569, pred: neg, actual: neg GOOD
-11570, pred: pos, actual: neg BAD
-11571, pred: pos, actual: pos GOOD
-11572, pred: neg, actual: pos BAD
-11573, pred: pos, actual: pos GOOD
-11574, pred: pos, actual: pos GOOD
-11575, pred: pos, actual: neg BAD
-11576, pred: pos, actual: neg BAD
-11577, pred: pos, actual: neg BAD
-11578, pred: pos, actual: neg BAD
-11579, pred: pos, actual: pos GOOD
-11580, pred: pos, actual: pos GOOD
-11581, pred: neg, actual: pos BAD
-11582, pred: pos, actual: pos GOOD
-11583, pred: pos, actual: pos GOOD
-11584, pred: neg, actual: neg GOOD
-11585, pred: neg, actual: neg GOOD
-11586, pred: neg, actual: neg GOOD
-11587, pred: pos, actual: pos GOOD
-11588, pred: neg, actual: neg GOOD
-11589, pred: neg, actual: pos BAD
-11590, pred: neg, actual: neg GOOD
-11591, pred: pos, actual: neg BAD
-11592, pred: pos, actual: pos GOOD
-11593, pred: pos, actual: neg BAD
-11594, pred: neg, actual: neg GOOD
-11595, pred: neg, actual: pos BAD
-11596, pred: pos, actual: pos GOOD
-11597, pred: pos, actual: neg BAD
-11598, pred: pos, actual: pos GOOD
-11599, pred: pos, actual: neg BAD
-11600, pred: neg, actual: pos BAD
-11601, pred: pos, actual: neg BAD
-11602, pred: neg, actual: pos BAD
-11603, pred: pos, actual: pos GOOD
-11604, pred: neg, actual: neg GOOD
-11605, pred: pos, actual: pos GOOD
-11606, pred: neg, actual: neg GOOD
-11607, pred: pos, actual: pos GOOD
-11608, pred: pos, actual: neg BAD
-11609, pred: pos, actual: pos GOOD
-11610, pred: neg, actual: neg GOOD
-11611, pred: neg, actual: pos BAD
-11612, pred: pos, actual: neg BAD
-11613, pred: neg, actual: neg GOOD
-11614, pred: neg, actual: neg GOOD
-11615, pred: neg, actual: pos BAD
-11616, pred: pos, actual: pos GOOD
-11617, pred: neg, actual: neg GOOD
-11618, pred: neg, actual: neg GOOD
-11619, pred: pos, actual: neg BAD
-11620, pred: pos, actual: pos GOOD
-11621, pred: pos, actual: pos GOOD
-11622, pred: pos, actual: neg BAD
-11623, pred: neg, actual: pos BAD
-11624, pred: pos, actual: pos GOOD
-11625, pred: pos, actual: neg BAD
-11626, pred: pos, actual: pos GOOD
-11627, pred: neg, actual: neg GOOD
-11628, pred: neg, actual: neg GOOD
-11629, pred: pos, actual: pos GOOD
-11630, pred: pos, actual: neg BAD
-11631, pred: neg, actual: pos BAD
-11632, pred: neg, actual: neg GOOD
-11633, pred: neg, actual: neg GOOD
-11634, pred: neg, actual: pos BAD
-11635, pred: neg, actual: pos BAD
-11636, pred: pos, actual: neg BAD
-11637, pred: neg, actual: neg GOOD
-11638, pred: neg, actual: neg GOOD
-11639, pred: pos, actual: pos GOOD
-11640, pred: pos, actual: pos GOOD
-11641, pred: neg, actual: neg GOOD
-11642, pred: pos, actual: pos GOOD
-11643, pred: pos, actual: pos GOOD
-11644, pred: neg, actual: pos BAD
-11645, pred: pos, actual: pos GOOD
-11646, pred: pos, actual: neg BAD
-11647, pred: neg, actual: neg GOOD
-11648, pred: neg, actual: neg GOOD
-11649, pred: neg, actual: pos BAD
-11650, pred: pos, actual: pos GOOD
-11651, pred: neg, actual: pos BAD
-11652, pred: pos, actual: pos GOOD
-11653, pred: pos, actual: pos GOOD
-11654, pred: pos, actual: pos GOOD
-11655, pred: pos, actual: neg BAD
-11656, pred: pos, actual: pos GOOD
-11657, pred: neg, actual: neg GOOD
-11658, pred: pos, actual: pos GOOD
-11659, pred: neg, actual: pos BAD
-11660, pred: neg, actual: neg GOOD
-11661, pred: neg, actual: neg GOOD
-11662, pred: pos, actual: pos GOOD
-11663, pred: neg, actual: pos BAD
-11664, pred: neg, actual: pos BAD
-11665, pred: pos, actual: pos GOOD
-11666, pred: pos, actual: neg BAD
-11667, pred: neg, actual: neg GOOD
-11668, pred: pos, actual: pos GOOD
-11669, pred: pos, actual: neg BAD
-11670, pred: pos, actual: pos GOOD
-11671, pred: pos, actual: pos GOOD
-11672, pred: neg, actual: neg GOOD
-11673, pred: pos, actual: pos GOOD
-11674, pred: pos, actual: neg BAD
-11675, pred: neg, actual: neg GOOD
-11676, pred: pos, actual: pos GOOD
-11677, pred: pos, actual: neg BAD
-11678, pred: neg, actual: neg GOOD
-11679, pred: pos, actual: pos GOOD
-11680, pred: pos, actual: neg BAD
-11681, pred: pos, actual: pos GOOD
-11682, pred: neg, actual: neg GOOD
-11683, pred: neg, actual: neg GOOD
-11684, pred: neg, actual: neg GOOD
-11685, pred: neg, actual: pos BAD
-11686, pred: pos, actual: pos GOOD
-11687, pred: pos, actual: pos GOOD
-11688, pred: neg, actual: pos BAD
-11689, pred: neg, actual: neg GOOD
-11690, pred: pos, actual: pos GOOD
-11691, pred: pos, actual: pos GOOD
-11692, pred: pos, actual: pos GOOD
-11693, pred: pos, actual: pos GOOD
-11694, pred: neg, actual: pos BAD
-11695, pred: neg, actual: pos BAD
-11696, pred: neg, actual: pos BAD
-11697, pred: pos, actual: neg BAD
-11698, pred: pos, actual: neg BAD
-11699, pred: neg, actual: neg GOOD
-11700, pred: neg, actual: neg GOOD
-11701, pred: pos, actual: pos GOOD
-11702, pred: pos, actual: pos GOOD
-11703, pred: pos, actual: pos GOOD
-11704, pred: pos, actual: pos GOOD
-11705, pred: pos, actual: pos GOOD
-11706, pred: neg, actual: neg GOOD
-11707, pred: pos, actual: neg BAD
-11708, pred: neg, actual: pos BAD
-11709, pred: pos, actual: pos GOOD
-11710, pred: pos, actual: pos GOOD
-11711, pred: pos, actual: pos GOOD
-11712, pred: pos, actual: pos GOOD
-11713, pred: pos, actual: pos GOOD
-11714, pred: neg, actual: pos BAD
-11715, pred: pos, actual: pos GOOD
-11716, pred: neg, actual: neg GOOD
-11717, pred: neg, actual: neg GOOD
-11718, pred: neg, actual: neg GOOD
-11719, pred: pos, actual: pos GOOD
-11720, pred: neg, actual: pos BAD
-11721, pred: pos, actual: neg BAD
-11722, pred: pos, actual: pos GOOD
-11723, pred: neg, actual: neg GOOD
-11724, pred: neg, actual: pos BAD
-11725, pred: neg, actual: neg GOOD
-11726, pred: neg, actual: pos BAD
-11727, pred: pos, actual: pos GOOD
-11728, pred: neg, actual: neg GOOD
-11729, pred: neg, actual: neg GOOD
-11730, pred: pos, actual: neg BAD
-11731, pred: neg, actual: neg GOOD
-11732, pred: neg, actual: neg GOOD
-11733, pred: pos, actual: pos GOOD
-11734, pred: pos, actual: neg BAD
-11735, pred: pos, actual: pos GOOD
-11736, pred: pos, actual: neg BAD
-11737, pred: neg, actual: neg GOOD
-11738, pred: pos, actual: neg BAD
-11739, pred: pos, actual: pos GOOD
-11740, pred: neg, actual: neg GOOD
-11741, pred: neg, actual: neg GOOD
-11742, pred: pos, actual: pos GOOD
-11743, pred: pos, actual: pos GOOD
-11744, pred: neg, actual: neg GOOD
-11745, pred: neg, actual: neg GOOD
-11746, pred: pos, actual: pos GOOD
-11747, pred: neg, actual: neg GOOD
-11748, pred: pos, actual: pos GOOD
-11749, pred: neg, actual: neg GOOD
-11750, pred: pos, actual: pos GOOD
-11751, pred: neg, actual: neg GOOD
-11752, pred: neg, actual: pos BAD
-11753, pred: pos, actual: pos GOOD
-11754, pred: neg, actual: neg GOOD
-11755, pred: pos, actual: neg BAD
-11756, pred: neg, actual: neg GOOD
-11757, pred: neg, actual: neg GOOD
-11758, pred: pos, actual: pos GOOD
-11759, pred: neg, actual: neg GOOD
-11760, pred: pos, actual: neg BAD
-11761, pred: neg, actual: neg GOOD
-11762, pred: neg, actual: neg GOOD
-11763, pred: pos, actual: pos GOOD
-11764, pred: pos, actual: pos GOOD
-11765, pred: neg, actual: neg GOOD
-11766, pred: pos, actual: neg BAD
-11767, pred: pos, actual: pos GOOD
-11768, pred: pos, actual: pos GOOD
-11769, pred: pos, actual: pos GOOD
-11770, pred: neg, actual: neg GOOD
-11771, pred: pos, actual: pos GOOD
-11772, pred: pos, actual: neg BAD
-11773, pred: neg, actual: pos BAD
-11774, pred: neg, actual: neg GOOD
-11775, pred: neg, actual: neg GOOD
-11776, pred: pos, actual: neg BAD
-11777, pred: pos, actual: pos GOOD
-11778, pred: neg, actual: pos BAD
-11779, pred: neg, actual: neg GOOD
-11780, pred: pos, actual: pos GOOD
-11781, pred: neg, actual: neg GOOD
-11782, pred: neg, actual: neg GOOD
-11783, pred: pos, actual: pos GOOD
-11784, pred: pos, actual: neg BAD
-11785, pred: neg, actual: pos BAD
-11786, pred: pos, actual: pos GOOD
-11787, pred: pos, actual: pos GOOD
-11788, pred: neg, actual: pos BAD
-11789, pred: neg, actual: neg GOOD
-11790, pred: neg, actual: pos BAD
-11791, pred: pos, actual: pos GOOD
-11792, pred: pos, actual: pos GOOD
-11793, pred: neg, actual: neg GOOD
-11794, pred: neg, actual: pos BAD
-11795, pred: neg, actual: neg GOOD
-11796, pred: pos, actual: pos GOOD
-11797, pred: neg, actual: neg GOOD
-11798, pred: neg, actual: pos BAD
-11799, pred: neg, actual: neg GOOD
-11800, pred: pos, actual: pos GOOD
-11801, pred: neg, actual: pos BAD
-11802, pred: neg, actual: neg GOOD
-11803, pred: neg, actual: pos BAD
-11804, pred: neg, actual: neg GOOD
-11805, pred: neg, actual: neg GOOD
-11806, pred: pos, actual: pos GOOD
-11807, pred: pos, actual: pos GOOD
-11808, pred: pos, actual: neg BAD
-11809, pred: pos, actual: pos GOOD
-11810, pred: neg, actual: pos BAD
-11811, pred: neg, actual: pos BAD
-11812, pred: neg, actual: pos BAD
-11813, pred: neg, actual: pos BAD
-11814, pred: pos, actual: neg BAD
-11815, pred: pos, actual: pos GOOD
-11816, pred: neg, actual: neg GOOD
-11817, pred: neg, actual: neg GOOD
-11818, pred: pos, actual: pos GOOD
-11819, pred: neg, actual: neg GOOD
-11820, pred: neg, actual: neg GOOD
-11821, pred: pos, actual: neg BAD
-11822, pred: neg, actual: pos BAD
-11823, pred: neg, actual: neg GOOD
-11824, pred: neg, actual: neg GOOD
-11825, pred: pos, actual: neg BAD
-11826, pred: neg, actual: pos BAD
-11827, pred: pos, actual: pos GOOD
-11828, pred: pos, actual: neg BAD
-11829, pred: pos, actual: pos GOOD
-11830, pred: pos, actual: pos GOOD
-11831, pred: neg, actual: pos BAD
-11832, pred: pos, actual: pos GOOD
-11833, pred: pos, actual: pos GOOD
-11834, pred: neg, actual: pos BAD
-11835, pred: pos, actual: pos GOOD
-11836, pred: pos, actual: neg BAD
-11837, pred: pos, actual: pos GOOD
-11838, pred: pos, actual: pos GOOD
-11839, pred: pos, actual: neg BAD
-11840, pred: pos, actual: neg BAD
-11841, pred: neg, actual: pos BAD
-11842, pred: pos, actual: pos GOOD
-11843, pred: neg, actual: neg GOOD
-11844, pred: pos, actual: neg BAD
-11845, pred: neg, actual: neg GOOD
-11846, pred: pos, actual: neg BAD
-11847, pred: neg, actual: neg GOOD
-11848, pred: neg, actual: pos BAD
-11849, pred: neg, actual: pos BAD
-11850, pred: neg, actual: neg GOOD
-11851, pred: neg, actual: neg GOOD
-11852, pred: pos, actual: pos GOOD
-11853, pred: pos, actual: pos GOOD
-11854, pred: pos, actual: pos GOOD
-11855, pred: neg, actual: neg GOOD
-11856, pred: pos, actual: pos GOOD
-11857, pred: neg, actual: neg GOOD
-11858, pred: neg, actual: neg GOOD
-11859, pred: neg, actual: neg GOOD
-11860, pred: neg, actual: neg GOOD
-11861, pred: neg, actual: neg GOOD
-11862, pred: pos, actual: pos GOOD
-11863, pred: neg, actual: neg GOOD
-11864, pred: neg, actual: neg GOOD
-11865, pred: neg, actual: neg GOOD
-11866, pred: neg, actual: pos BAD
-11867, pred: pos, actual: pos GOOD
-11868, pred: pos, actual: neg BAD
-11869, pred: neg, actual: pos BAD
-11870, pred: neg, actual: neg GOOD
-11871, pred: neg, actual: pos BAD
-11872, pred: neg, actual: neg GOOD
-11873, pred: neg, actual: neg GOOD
-11874, pred: pos, actual: pos GOOD
-11875, pred: pos, actual: neg BAD
-11876, pred: neg, actual: pos BAD
-11877, pred: neg, actual: pos BAD
-11878, pred: pos, actual: neg BAD
-11879, pred: neg, actual: neg GOOD
-11880, pred: pos, actual: pos GOOD
-11881, pred: neg, actual: pos BAD
-11882, pred: pos, actual: pos GOOD
-11883, pred: neg, actual: pos BAD
-11884, pred: neg, actual: neg GOOD
-11885, pred: pos, actual: neg BAD
-11886, pred: neg, actual: neg GOOD
-11887, pred: pos, actual: neg BAD
-11888, pred: neg, actual: pos BAD
-11889, pred: pos, actual: pos GOOD
-11890, pred: neg, actual: neg GOOD
-11891, pred: pos, actual: pos GOOD
-11892, pred: pos, actual: pos GOOD
-11893, pred: pos, actual: pos GOOD
-11894, pred: pos, actual: pos GOOD
-11895, pred: neg, actual: neg GOOD
-11896, pred: pos, actual: neg BAD
-11897, pred: pos, actual: neg BAD
-11898, pred: pos, actual: pos GOOD
-11899, pred: neg, actual: neg GOOD
-11900, pred: pos, actual: neg BAD
-11901, pred: neg, actual: pos BAD
-11902, pred: pos, actual: pos GOOD
-11903, pred: pos, actual: neg BAD
-11904, pred: pos, actual: neg BAD
-11905, pred: pos, actual: neg BAD
-11906, pred: neg, actual: pos BAD
-11907, pred: neg, actual: neg GOOD
-11908, pred: pos, actual: neg BAD
-11909, pred: neg, actual: neg GOOD
-11910, pred: pos, actual: pos GOOD
-11911, pred: neg, actual: pos BAD
-11912, pred: neg, actual: neg GOOD
-11913, pred: neg, actual: neg GOOD
+9531, pos
+9532, pos
+9533, neg
+9534, pos
+9535, pos
+9536, neg
+9537, pos
+9538, neg
+9539, pos
+9540, pos
+9541, neg
+9542, pos
+9543, neg
+9544, neg
+9545, neg
+9546, pos
+9547, pos
+9548, neg
+9549, pos
+9550, neg
+9551, neg
+9552, pos
+9553, neg
+9554, pos
+9555, neg
+9556, neg
+9557, neg
+9558, neg
+9559, pos
+9560, pos
+9561, neg
+9562, neg
+9563, pos
+9564, neg
+9565, pos
+9566, neg
+9567, pos
+9568, neg
+9569, neg
+9570, pos
+9571, neg
+9572, neg
+9573, neg
+9574, neg
+9575, neg
+9576, neg
+9577, neg
+9578, neg
+9579, pos
+9580, pos
+9581, neg
+9582, pos
+9583, neg
+9584, neg
+9585, neg
+9586, neg
+9587, pos
+9588, neg
+9589, neg
+9590, neg
+9591, pos
+9592, pos
+9593, neg
+9594, pos
+9595, pos
+9596, neg
+9597, pos
+9598, pos
+9599, neg
+9600, neg
+9601, neg
+9602, pos
+9603, neg
+9604, pos
+9605, pos
+9606, neg
+9607, pos
+9608, pos
+9609, neg
+9610, neg
+9611, neg
+9612, neg
+9613, neg
+9614, neg
+9615, neg
+9616, neg
+9617, pos
+9618, pos
+9619, pos
+9620, neg
+9621, pos
+9622, pos
+9623, neg
+9624, neg
+9625, neg
+9626, neg
+9627, neg
+9628, neg
+9629, neg
+9630, neg
+9631, neg
+9632, neg
+9633, pos
+9634, neg
+9635, pos
+9636, neg
+9637, neg
+9638, pos
+9639, pos
+9640, pos
+9641, neg
+9642, neg
+9643, pos
+9644, pos
+9645, neg
+9646, pos
+9647, neg
+9648, pos
+9649, pos
+9650, neg
+9651, pos
+9652, neg
+9653, neg
+9654, neg
+9655, neg
+9656, pos
+9657, neg
+9658, neg
+9659, pos
+9660, neg
+9661, neg
+9662, pos
+9663, pos
+9664, neg
+9665, pos
+9666, pos
+9667, pos
+9668, pos
+9669, pos
+9670, neg
+9671, pos
+9672, pos
+9673, neg
+9674, neg
+9675, pos
+9676, pos
+9677, pos
+9678, neg
+9679, pos
+9680, pos
+9681, pos
+9682, neg
+9683, pos
+9684, neg
+9685, pos
+9686, pos
+9687, pos
+9688, pos
+9689, pos
+9690, pos
+9691, pos
+9692, pos
+9693, pos
+9694, pos
+9695, pos
+9696, neg
+9697, neg
+9698, neg
+9699, neg
+9700, neg
+9701, neg
+9702, pos
+9703, pos
+9704, pos
+9705, pos
+9706, pos
+9707, pos
+9708, neg
+9709, pos
+9710, pos
+9711, pos
+9712, neg
+9713, pos
+9714, neg
+9715, neg
+9716, neg
+9717, pos
+9718, pos
+9719, pos
+9720, neg
+9721, pos
+9722, pos
+9723, pos
+9724, neg
+9725, neg
+9726, neg
+9727, pos
+9728, neg
+9729, pos
+9730, neg
+9731, neg
+9732, pos
+9733, neg
+9734, neg
+9735, pos
+9736, pos
+9737, neg
+9738, pos
+9739, neg
+9740, pos
+9741, neg
+9742, pos
+9743, pos
+9744, pos
+9745, pos
+9746, neg
+9747, neg
+9748, neg
+9749, pos
+9750, neg
+9751, neg
+9752, pos
+9753, neg
+9754, pos
+9755, pos
+9756, neg
+9757, pos
+9758, pos
+9759, pos
+9760, neg
+9761, pos
+9762, pos
+9763, neg
+9764, neg
+9765, pos
+9766, neg
+9767, neg
+9768, pos
+9769, pos
+9770, neg
+9771, neg
+9772, pos
+9773, neg
+9774, neg
+9775, pos
+9776, neg
+9777, neg
+9778, pos
+9779, pos
+9780, pos
+9781, pos
+9782, neg
+9783, neg
+9784, neg
+9785, neg
+9786, neg
+9787, pos
+9788, neg
+9789, neg
+9790, neg
+9791, neg
+9792, neg
+9793, neg
+9794, pos
+9795, neg
+9796, pos
+9797, pos
+9798, pos
+9799, pos
+9800, neg
+9801, pos
+9802, neg
+9803, pos
+9804, pos
+9805, neg
+9806, pos
+9807, pos
+9808, pos
+9809, neg
+9810, pos
+9811, pos
+9812, neg
+9813, neg
+9814, neg
+9815, neg
+9816, neg
+9817, pos
+9818, pos
+9819, neg
+9820, neg
+9821, neg
+9822, pos
+9823, pos
+9824, pos
+9825, neg
+9826, pos
+9827, pos
+9828, neg
+9829, pos
+9830, neg
+9831, pos
+9832, pos
+9833, pos
+9834, neg
+9835, pos
+9836, pos
+9837, pos
+9838, pos
+9839, pos
+9840, pos
+9841, neg
+9842, pos
+9843, neg
+9844, pos
+9845, pos
+9846, neg
+9847, pos
+9848, pos
+9849, pos
+9850, pos
+9851, pos
+9852, neg
+9853, neg
+9854, neg
+9855, pos
+9856, pos
+9857, pos
+9858, pos
+9859, neg
+9860, neg
+9861, pos
+9862, pos
+9863, pos
+9864, pos
+9865, neg
+9866, pos
+9867, neg
+9868, pos
+9869, neg
+9870, pos
+9871, pos
+9872, neg
+9873, pos
+9874, neg
+9875, pos
+9876, pos
+9877, neg
+9878, neg
+9879, neg
+9880, neg
+9881, pos
+9882, neg
+9883, pos
+9884, neg
+9885, neg
+9886, neg
+9887, pos
+9888, neg
+9889, pos
+9890, neg
+9891, neg
+9892, neg
+9893, pos
+9894, neg
+9895, neg
+9896, pos
+9897, pos
+9898, pos
+9899, pos
+9900, neg
+9901, pos
+9902, neg
+9903, pos
+9904, pos
+9905, neg
+9906, neg
+9907, pos
+9908, pos
+9909, neg
+9910, neg
+9911, pos
+9912, pos
+9913, neg
+9914, pos
+9915, neg
+9916, neg
+9917, pos
+9918, pos
+9919, neg
+9920, pos
+9921, pos
+9922, pos
+9923, pos
+9924, neg
+9925, pos
+9926, neg
+9927, neg
+9928, pos
+9929, neg
+9930, neg
+9931, pos
+9932, pos
+9933, neg
+9934, pos
+9935, pos
+9936, neg
+9937, pos
+9938, neg
+9939, pos
+9940, neg
+9941, pos
+9942, neg
+9943, neg
+9944, pos
+9945, pos
+9946, pos
+9947, pos
+9948, neg
+9949, neg
+9950, pos
+9951, neg
+9952, pos
+9953, neg
+9954, pos
+9955, neg
+9956, pos
+9957, pos
+9958, neg
+9959, neg
+9960, neg
+9961, neg
+9962, pos
+9963, pos
+9964, neg
+9965, pos
+9966, pos
+9967, pos
+9968, neg
+9969, neg
+9970, neg
+9971, pos
+9972, pos
+9973, neg
+9974, neg
+9975, neg
+9976, neg
+9977, pos
+9978, neg
+9979, pos
+9980, pos
+9981, neg
+9982, neg
+9983, pos
+9984, pos
+9985, pos
+9986, pos
+9987, neg
+9988, pos
+9989, pos
+9990, neg
+9991, pos
+9992, neg
+9993, pos
+9994, pos
+9995, neg
+9996, neg
+9997, pos
+9998, pos
+9999, neg
+10000, neg
+10001, pos
+10002, pos
+10003, neg
+10004, pos
+10005, pos
+10006, pos
+10007, neg
+10008, pos
+10009, pos
+10010, neg
+10011, neg
+10012, neg
+10013, pos
+10014, pos
+10015, pos
+10016, pos
+10017, neg
+10018, neg
+10019, pos
+10020, neg
+10021, neg
+10022, pos
+10023, neg
+10024, pos
+10025, neg
+10026, pos
+10027, neg
+10028, pos
+10029, pos
+10030, pos
+10031, neg
+10032, neg
+10033, neg
+10034, pos
+10035, pos
+10036, pos
+10037, neg
+10038, neg
+10039, neg
+10040, neg
+10041, pos
+10042, neg
+10043, neg
+10044, pos
+10045, pos
+10046, pos
+10047, pos
+10048, neg
+10049, neg
+10050, neg
+10051, neg
+10052, neg
+10053, neg
+10054, neg
+10055, neg
+10056, neg
+10057, neg
+10058, pos
+10059, neg
+10060, pos
+10061, neg
+10062, pos
+10063, pos
+10064, pos
+10065, pos
+10066, pos
+10067, pos
+10068, neg
+10069, pos
+10070, pos
+10071, neg
+10072, pos
+10073, pos
+10074, neg
+10075, pos
+10076, neg
+10077, pos
+10078, neg
+10079, neg
+10080, neg
+10081, neg
+10082, pos
+10083, neg
+10084, pos
+10085, pos
+10086, neg
+10087, neg
+10088, pos
+10089, pos
+10090, pos
+10091, pos
+10092, neg
+10093, pos
+10094, neg
+10095, pos
+10096, neg
+10097, neg
+10098, pos
+10099, pos
+10100, neg
+10101, neg
+10102, pos
+10103, neg
+10104, pos
+10105, pos
+10106, neg
+10107, neg
+10108, neg
+10109, neg
+10110, neg
+10111, neg
+10112, neg
+10113, pos
+10114, pos
+10115, neg
+10116, pos
+10117, neg
+10118, neg
+10119, pos
+10120, neg
+10121, neg
+10122, pos
+10123, pos
+10124, pos
+10125, pos
+10126, neg
+10127, pos
+10128, pos
+10129, neg
+10130, neg
+10131, pos
+10132, neg
+10133, pos
+10134, neg
+10135, neg
+10136, pos
+10137, pos
+10138, neg
+10139, pos
+10140, neg
+10141, pos
+10142, neg
+10143, pos
+10144, pos
+10145, neg
+10146, pos
+10147, neg
+10148, pos
+10149, pos
+10150, pos
+10151, pos
+10152, pos
+10153, pos
+10154, neg
+10155, neg
+10156, neg
+10157, neg
+10158, neg
+10159, neg
+10160, pos
+10161, pos
+10162, pos
+10163, pos
+10164, neg
+10165, pos
+10166, pos
+10167, pos
+10168, neg
+10169, neg
+10170, pos
+10171, pos
+10172, neg
+10173, neg
+10174, neg
+10175, neg
+10176, neg
+10177, neg
+10178, pos
+10179, pos
+10180, neg
+10181, neg
+10182, pos
+10183, pos
+10184, pos
+10185, pos
+10186, neg
+10187, neg
+10188, pos
+10189, neg
+10190, pos
+10191, pos
+10192, pos
+10193, neg
+10194, neg
+10195, pos
+10196, pos
+10197, neg
+10198, neg
+10199, pos
+10200, neg
+10201, pos
+10202, neg
+10203, neg
+10204, neg
+10205, neg
+10206, pos
+10207, neg
+10208, neg
+10209, pos
+10210, pos
+10211, neg
+10212, pos
+10213, pos
+10214, neg
+10215, pos
+10216, neg
+10217, neg
+10218, neg
+10219, neg
+10220, pos
+10221, pos
+10222, pos
+10223, pos
+10224, neg
+10225, neg
+10226, pos
+10227, pos
+10228, pos
+10229, pos
+10230, pos
+10231, pos
+10232, neg
+10233, pos
+10234, neg
+10235, neg
+10236, pos
+10237, pos
+10238, neg
+10239, pos
+10240, neg
+10241, pos
+10242, pos
+10243, pos
+10244, neg
+10245, neg
+10246, pos
+10247, pos
+10248, pos
+10249, pos
+10250, pos
+10251, neg
+10252, neg
+10253, neg
+10254, pos
+10255, pos
+10256, neg
+10257, pos
+10258, neg
+10259, neg
+10260, neg
+10261, pos
+10262, pos
+10263, pos
+10264, neg
+10265, neg
+10266, pos
+10267, neg
+10268, pos
+10269, pos
+10270, neg
+10271, pos
+10272, pos
+10273, neg
+10274, pos
+10275, neg
+10276, neg
+10277, neg
+10278, pos
+10279, neg
+10280, neg
+10281, pos
+10282, neg
+10283, pos
+10284, pos
+10285, pos
+10286, pos
+10287, neg
+10288, neg
+10289, pos
+10290, neg
+10291, neg
+10292, neg
+10293, pos
+10294, neg
+10295, neg
+10296, neg
+10297, neg
+10298, pos
+10299, neg
+10300, pos
+10301, pos
+10302, neg
+10303, pos
+10304, neg
+10305, neg
+10306, pos
+10307, pos
+10308, neg
+10309, neg
+10310, neg
+10311, pos
+10312, neg
+10313, pos
+10314, neg
+10315, pos
+10316, pos
+10317, pos
+10318, neg
+10319, pos
+10320, pos
+10321, pos
+10322, neg
+10323, pos
+10324, neg
+10325, pos
+10326, neg
+10327, pos
+10328, neg
+10329, neg
+10330, pos
+10331, neg
+10332, neg
+10333, pos
+10334, pos
+10335, neg
+10336, pos
+10337, neg
+10338, neg
+10339, neg
+10340, neg
+10341, neg
+10342, neg
+10343, neg
+10344, pos
+10345, pos
+10346, neg
+10347, pos
+10348, neg
+10349, pos
+10350, pos
+10351, neg
+10352, pos
+10353, pos
+10354, pos
+10355, neg
+10356, pos
+10357, pos
+10358, pos
+10359, neg
+10360, pos
+10361, neg
+10362, neg
+10363, neg
+10364, neg
+10365, pos
+10366, neg
+10367, pos
+10368, pos
+10369, pos
+10370, neg
+10371, neg
+10372, neg
+10373, pos
+10374, neg
+10375, neg
+10376, pos
+10377, neg
+10378, pos
+10379, pos
+10380, pos
+10381, neg
+10382, neg
+10383, pos
+10384, neg
+10385, pos
+10386, pos
+10387, pos
+10388, pos
+10389, pos
+10390, pos
+10391, pos
+10392, pos
+10393, neg
+10394, pos
+10395, neg
+10396, neg
+10397, neg
+10398, pos
+10399, neg
+10400, neg
+10401, pos
+10402, neg
+10403, pos
+10404, neg
+10405, neg
+10406, neg
+10407, neg
+10408, neg
+10409, pos
+10410, pos
+10411, pos
+10412, neg
+10413, pos
+10414, pos
+10415, neg
+10416, pos
+10417, neg
+10418, neg
+10419, pos
+10420, pos
+10421, pos
+10422, neg
+10423, pos
+10424, neg
+10425, neg
+10426, pos
+10427, pos
+10428, neg
+10429, pos
+10430, neg
+10431, neg
+10432, pos
+10433, pos
+10434, pos
+10435, neg
+10436, pos
+10437, pos
+10438, pos
+10439, pos
+10440, neg
+10441, neg
+10442, pos
+10443, pos
+10444, pos
+10445, neg
+10446, neg
+10447, neg
+10448, pos
+10449, pos
+10450, pos
+10451, pos
+10452, pos
+10453, neg
+10454, pos
+10455, neg
+10456, pos
+10457, neg
+10458, neg
+10459, neg
+10460, pos
+10461, pos
+10462, neg
+10463, pos
+10464, neg
+10465, pos
+10466, pos
+10467, neg
+10468, neg
+10469, pos
+10470, pos
+10471, neg
+10472, pos
+10473, pos
+10474, neg
+10475, pos
+10476, neg
+10477, pos
+10478, pos
+10479, pos
+10480, neg
+10481, neg
+10482, neg
+10483, neg
+10484, neg
+10485, pos
+10486, neg
+10487, neg
+10488, pos
+10489, pos
+10490, neg
+10491, pos
+10492, pos
+10493, pos
+10494, pos
+10495, pos
+10496, pos
+10497, neg
+10498, neg
+10499, neg
+10500, pos
+10501, pos
+10502, neg
+10503, pos
+10504, neg
+10505, pos
+10506, neg
+10507, neg
+10508, pos
+10509, pos
+10510, neg
+10511, pos
+10512, pos
+10513, pos
+10514, neg
+10515, pos
+10516, neg
+10517, neg
+10518, neg
+10519, pos
+10520, neg
+10521, neg
+10522, pos
+10523, pos
+10524, pos
+10525, neg
+10526, neg
+10527, pos
+10528, pos
+10529, neg
+10530, neg
+10531, pos
+10532, pos
+10533, pos
+10534, pos
+10535, pos
+10536, neg
+10537, pos
+10538, neg
+10539, pos
+10540, neg
+10541, pos
+10542, pos
+10543, neg
+10544, neg
+10545, pos
+10546, neg
+10547, neg
+10548, pos
+10549, neg
+10550, pos
+10551, pos
+10552, pos
+10553, pos
+10554, neg
+10555, neg
+10556, pos
+10557, pos
+10558, pos
+10559, pos
+10560, neg
+10561, neg
+10562, neg
+10563, pos
+10564, pos
+10565, neg
+10566, neg
+10567, neg
+10568, neg
+10569, neg
+10570, neg
+10571, pos
+10572, pos
+10573, neg
+10574, neg
+10575, neg
+10576, pos
+10577, neg
+10578, neg
+10579, pos
+10580, neg
+10581, pos
+10582, neg
+10583, pos
+10584, pos
+10585, neg
+10586, neg
+10587, neg
+10588, neg
+10589, neg
+10590, pos
+10591, neg
+10592, pos
+10593, pos
+10594, pos
+10595, pos
+10596, pos
+10597, neg
+10598, pos
+10599, pos
+10600, pos
+10601, pos
+10602, pos
+10603, pos
+10604, neg
+10605, pos
+10606, neg
+10607, neg
+10608, neg
+10609, neg
+10610, neg
+10611, pos
+10612, pos
+10613, pos
+10614, pos
+10615, pos
+10616, neg
+10617, neg
+10618, pos
+10619, neg
+10620, pos
+10621, pos
+10622, pos
+10623, neg
+10624, neg
+10625, neg
+10626, pos
+10627, neg
+10628, neg
+10629, pos
+10630, neg
+10631, pos
+10632, neg
+10633, neg
+10634, neg
+10635, neg
+10636, neg
+10637, neg
+10638, neg
+10639, pos
+10640, neg
+10641, pos
+10642, pos
+10643, neg
+10644, pos
+10645, neg
+10646, neg
+10647, neg
+10648, neg
+10649, pos
+10650, pos
+10651, neg
+10652, neg
+10653, pos
+10654, pos
+10655, neg
+10656, neg
+10657, neg
+10658, pos
+10659, pos
+10660, neg
+10661, pos
+10662, neg
+10663, pos
+10664, pos
+10665, pos
+10666, pos
+10667, neg
+10668, pos
+10669, pos
+10670, neg
+10671, pos
+10672, neg
+10673, neg
+10674, pos
+10675, neg
+10676, pos
+10677, pos
+10678, pos
+10679, neg
+10680, pos
+10681, neg
+10682, neg
+10683, neg
+10684, neg
+10685, neg
+10686, neg
+10687, pos
+10688, neg
+10689, pos
+10690, pos
+10691, pos
+10692, pos
+10693, neg
+10694, neg
+10695, pos
+10696, pos
+10697, pos
+10698, pos
+10699, neg
+10700, pos
+10701, neg
+10702, pos
+10703, neg
+10704, pos
+10705, neg
+10706, neg
+10707, neg
+10708, neg
+10709, pos
+10710, pos
+10711, pos
+10712, pos
+10713, pos
+10714, pos
+10715, neg
+10716, pos
+10717, neg
+10718, pos
+10719, pos
+10720, neg
+10721, neg
+10722, pos
+10723, pos
+10724, pos
+10725, neg
+10726, pos
+10727, pos
+10728, pos
+10729, neg
+10730, neg
+10731, pos
+10732, neg
+10733, pos
+10734, neg
+10735, neg
+10736, neg
+10737, neg
+10738, pos
+10739, neg
+10740, pos
+10741, pos
+10742, pos
+10743, pos
+10744, pos
+10745, neg
+10746, neg
+10747, pos
+10748, neg
+10749, pos
+10750, neg
+10751, pos
+10752, neg
+10753, neg
+10754, pos
+10755, pos
+10756, pos
+10757, pos
+10758, neg
+10759, pos
+10760, neg
+10761, neg
+10762, pos
+10763, neg
+10764, neg
+10765, pos
+10766, neg
+10767, neg
+10768, neg
+10769, neg
+10770, neg
+10771, pos
+10772, neg
+10773, neg
+10774, neg
+10775, neg
+10776, pos
+10777, neg
+10778, neg
+10779, neg
+10780, pos
+10781, neg
+10782, neg
+10783, neg
+10784, pos
+10785, pos
+10786, neg
+10787, neg
+10788, pos
+10789, pos
+10790, pos
+10791, neg
+10792, neg
+10793, neg
+10794, neg
+10795, neg
+10796, pos
+10797, neg
+10798, neg
+10799, neg
+10800, neg
+10801, neg
+10802, pos
+10803, neg
+10804, neg
+10805, neg
+10806, neg
+10807, neg
+10808, neg
+10809, neg
+10810, neg
+10811, pos
+10812, pos
+10813, pos
+10814, neg
+10815, pos
+10816, pos
+10817, pos
+10818, neg
+10819, pos
+10820, neg
+10821, pos
+10822, neg
+10823, pos
+10824, pos
+10825, neg
+10826, pos
+10827, neg
+10828, pos
+10829, pos
+10830, neg
+10831, pos
+10832, neg
+10833, neg
+10834, pos
+10835, neg
+10836, neg
+10837, pos
+10838, pos
+10839, neg
+10840, neg
+10841, neg
+10842, neg
+10843, neg
+10844, neg
+10845, neg
+10846, pos
+10847, pos
+10848, neg
+10849, neg
+10850, neg
+10851, neg
+10852, pos
+10853, pos
+10854, pos
+10855, neg
+10856, neg
+10857, pos
+10858, neg
+10859, pos
+10860, neg
+10861, pos
+10862, pos
+10863, pos
+10864, pos
+10865, neg
+10866, neg
+10867, pos
+10868, neg
+10869, pos
+10870, neg
+10871, pos
+10872, neg
+10873, neg
+10874, neg
+10875, neg
+10876, pos
+10877, pos
+10878, neg
+10879, pos
+10880, pos
+10881, neg
+10882, neg
+10883, neg
+10884, neg
+10885, neg
+10886, neg
+10887, pos
+10888, neg
+10889, neg
+10890, neg
+10891, pos
+10892, neg
+10893, pos
+10894, neg
+10895, pos
+10896, pos
+10897, neg
+10898, pos
+10899, neg
+10900, pos
+10901, neg
+10902, neg
+10903, neg
+10904, pos
+10905, pos
+10906, neg
+10907, neg
+10908, pos
+10909, pos
+10910, neg
+10911, neg
+10912, pos
+10913, neg
+10914, pos
+10915, pos
+10916, neg
+10917, neg
+10918, pos
+10919, pos
+10920, pos
+10921, neg
+10922, neg
+10923, neg
+10924, neg
+10925, pos
+10926, pos
+10927, neg
+10928, pos
+10929, neg
+10930, neg
+10931, pos
+10932, pos
+10933, pos
+10934, neg
+10935, neg
+10936, neg
+10937, neg
+10938, pos
+10939, neg
+10940, pos
+10941, pos
+10942, pos
+10943, neg
+10944, pos
+10945, pos
+10946, neg
+10947, neg
+10948, pos
+10949, neg
+10950, neg
+10951, neg
+10952, pos
+10953, neg
+10954, neg
+10955, neg
+10956, pos
+10957, neg
+10958, neg
+10959, neg
+10960, neg
+10961, neg
+10962, neg
+10963, pos
+10964, pos
+10965, neg
+10966, neg
+10967, neg
+10968, neg
+10969, neg
+10970, neg
+10971, neg
+10972, pos
+10973, neg
+10974, pos
+10975, pos
+10976, pos
+10977, neg
+10978, pos
+10979, neg
+10980, pos
+10981, neg
+10982, pos
+10983, pos
+10984, neg
+10985, pos
+10986, pos
+10987, pos
+10988, pos
+10989, pos
+10990, neg
+10991, pos
+10992, neg
+10993, pos
+10994, neg
+10995, pos
+10996, pos
+10997, pos
+10998, neg
+10999, pos
+11000, neg
+11001, neg
+11002, neg
+11003, neg
+11004, pos
+11005, neg
+11006, pos
+11007, pos
+11008, neg
+11009, pos
+11010, pos
+11011, pos
+11012, neg
+11013, pos
+11014, neg
+11015, pos
+11016, neg
+11017, pos
+11018, pos
+11019, neg
+11020, pos
+11021, pos
+11022, neg
+11023, pos
+11024, pos
+11025, neg
+11026, neg
+11027, pos
+11028, pos
+11029, pos
+11030, pos
+11031, neg
+11032, pos
+11033, pos
+11034, neg
+11035, neg
+11036, neg
+11037, neg
+11038, neg
+11039, pos
+11040, pos
+11041, pos
+11042, pos
+11043, neg
+11044, pos
+11045, pos
+11046, pos
+11047, neg
+11048, neg
+11049, pos
+11050, neg
+11051, neg
+11052, pos
+11053, pos
+11054, pos
+11055, neg
+11056, neg
+11057, pos
+11058, neg
+11059, neg
+11060, pos
+11061, pos
+11062, neg
+11063, neg
+11064, pos
+11065, neg
+11066, pos
+11067, pos
+11068, neg
+11069, neg
+11070, neg
+11071, neg
+11072, neg
+11073, pos
+11074, neg
+11075, pos
+11076, pos
+11077, neg
+11078, pos
+11079, pos
+11080, neg
+11081, pos
+11082, neg
+11083, pos
+11084, neg
+11085, neg
+11086, pos
+11087, pos
+11088, pos
+11089, pos
+11090, pos
+11091, pos
+11092, pos
+11093, neg
+11094, pos
+11095, pos
+11096, neg
+11097, neg
+11098, pos
+11099, pos
+11100, pos
+11101, neg
+11102, neg
+11103, pos
+11104, pos
+11105, pos
+11106, pos
+11107, neg
+11108, pos
+11109, pos
+11110, pos
+11111, neg
+11112, neg
+11113, pos
+11114, pos
+11115, neg
+11116, neg
+11117, pos
+11118, neg
+11119, neg
+11120, pos
+11121, neg
+11122, pos
+11123, pos
+11124, neg
+11125, neg
+11126, pos
+11127, neg
+11128, neg
+11129, neg
+11130, neg
+11131, neg
+11132, neg
+11133, pos
+11134, pos
+11135, neg
+11136, pos
+11137, neg
+11138, neg
+11139, pos
+11140, neg
+11141, neg
+11142, neg
+11143, neg
+11144, pos
+11145, pos
+11146, pos
+11147, pos
+11148, pos
+11149, pos
+11150, neg
+11151, neg
+11152, pos
+11153, pos
+11154, neg
+11155, neg
+11156, pos
+11157, neg
+11158, neg
+11159, pos
+11160, neg
+11161, neg
+11162, neg
+11163, pos
+11164, pos
+11165, neg
+11166, pos
+11167, pos
+11168, pos
+11169, neg
+11170, neg
+11171, neg
+11172, pos
+11173, pos
+11174, neg
+11175, neg
+11176, neg
+11177, neg
+11178, neg
+11179, neg
+11180, pos
+11181, neg
+11182, neg
+11183, pos
+11184, neg
+11185, pos
+11186, pos
+11187, neg
+11188, pos
+11189, neg
+11190, pos
+11191, neg
+11192, pos
+11193, neg
+11194, pos
+11195, pos
+11196, pos
+11197, neg
+11198, pos
+11199, neg
+11200, neg
+11201, neg
+11202, pos
+11203, neg
+11204, pos
+11205, pos
+11206, neg
+11207, pos
+11208, pos
+11209, pos
+11210, pos
+11211, pos
+11212, neg
+11213, neg
+11214, neg
+11215, pos
+11216, pos
+11217, neg
+11218, neg
+11219, pos
+11220, pos
+11221, neg
+11222, pos
+11223, pos
+11224, pos
+11225, pos
+11226, pos
+11227, neg
+11228, pos
+11229, pos
+11230, neg
+11231, pos
+11232, neg
+11233, neg
+11234, neg
+11235, neg
+11236, neg
+11237, neg
+11238, pos
+11239, pos
+11240, neg
+11241, neg
+11242, pos
+11243, pos
+11244, neg
+11245, pos
+11246, pos
+11247, pos
+11248, pos
+11249, pos
+11250, pos
+11251, pos
+11252, pos
+11253, neg
+11254, neg
+11255, neg
+11256, pos
+11257, neg
+11258, neg
+11259, neg
+11260, pos
+11261, pos
+11262, neg
+11263, pos
+11264, pos
+11265, pos
+11266, pos
+11267, neg
+11268, pos
+11269, neg
+11270, neg
+11271, neg
+11272, neg
+11273, pos
+11274, neg
+11275, neg
+11276, neg
+11277, neg
+11278, pos
+11279, neg
+11280, pos
+11281, neg
+11282, pos
+11283, neg
+11284, pos
+11285, pos
+11286, pos
+11287, pos
+11288, neg
+11289, neg
+11290, pos
+11291, neg
+11292, pos
+11293, pos
+11294, pos
+11295, pos
+11296, pos
+11297, pos
+11298, pos
+11299, neg
+11300, pos
+11301, neg
+11302, neg
+11303, pos
+11304, neg
+11305, neg
+11306, pos
+11307, neg
+11308, pos
+11309, neg
+11310, neg
+11311, neg
+11312, neg
+11313, neg
+11314, neg
+11315, pos
+11316, pos
+11317, pos
+11318, neg
+11319, pos
+11320, pos
+11321, pos
+11322, neg
+11323, pos
+11324, neg
+11325, neg
+11326, neg
+11327, pos
+11328, pos
+11329, pos
+11330, neg
+11331, pos
+11332, pos
+11333, pos
+11334, pos
+11335, pos
+11336, neg
+11337, pos
+11338, neg
+11339, neg
+11340, pos
+11341, neg
+11342, neg
+11343, pos
+11344, neg
+11345, neg
+11346, neg
+11347, neg
+11348, pos
+11349, neg
+11350, pos
+11351, neg
+11352, neg
+11353, neg
+11354, neg
+11355, neg
+11356, pos
+11357, neg
+11358, pos
+11359, neg
+11360, pos
+11361, neg
+11362, pos
+11363, neg
+11364, neg
+11365, neg
+11366, pos
+11367, neg
+11368, pos
+11369, pos
+11370, neg
+11371, neg
+11372, pos
+11373, pos
+11374, neg
+11375, pos
+11376, neg
+11377, pos
+11378, pos
+11379, pos
+11380, neg
+11381, neg
+11382, neg
+11383, neg
+11384, neg
+11385, pos
+11386, neg
+11387, pos
+11388, pos
+11389, neg
+11390, neg
+11391, pos
+11392, pos
+11393, neg
+11394, neg
+11395, pos
+11396, pos
+11397, neg
+11398, pos
+11399, pos
+11400, pos
+11401, pos
+11402, pos
+11403, neg
+11404, neg
+11405, pos
+11406, neg
+11407, neg
+11408, pos
+11409, pos
+11410, pos
+11411, neg
+11412, pos
+11413, pos
+11414, pos
+11415, neg
+11416, pos
+11417, neg
+11418, neg
+11419, pos
+11420, pos
+11421, pos
+11422, pos
+11423, neg
+11424, pos
+11425, neg
+11426, neg
+11427, pos
+11428, neg
+11429, neg
+11430, neg
+11431, pos
+11432, pos
+11433, neg
+11434, pos
+11435, pos
+11436, neg
+11437, pos
+11438, neg
+11439, pos
+11440, neg
+11441, neg
+11442, pos
+11443, neg
+11444, neg
+11445, pos
+11446, pos
+11447, pos
+11448, neg
+11449, neg
+11450, neg
+11451, pos
+11452, pos
+11453, pos
+11454, pos
+11455, neg
+11456, pos
+11457, pos
+11458, neg
+11459, pos
+11460, pos
+11461, neg
+11462, neg
+11463, neg
+11464, pos
+11465, pos
+11466, neg
+11467, pos
+11468, pos
+11469, neg
+11470, neg
+11471, neg
+11472, pos
+11473, neg
+11474, neg
+11475, neg
+11476, pos
+11477, neg
+11478, neg
+11479, pos
+11480, neg
+11481, pos
+11482, pos
+11483, neg
+11484, neg
+11485, pos
+11486, pos
+11487, pos
+11488, neg
+11489, pos
+11490, neg
+11491, neg
+11492, neg
+11493, neg
+11494, pos
+11495, pos
+11496, neg
+11497, neg
+11498, neg
+11499, pos
+11500, neg
+11501, neg
+11502, neg
+11503, pos
+11504, pos
+11505, neg
+11506, pos
+11507, pos
+11508, neg
+11509, pos
+11510, neg
+11511, neg
+11512, pos
+11513, neg
+11514, pos
+11515, neg
+11516, pos
+11517, pos
+11518, neg
+11519, neg
+11520, neg
+11521, pos
+11522, pos
+11523, pos
+11524, neg
+11525, pos
+11526, pos
+11527, pos
+11528, pos
+11529, pos
+11530, neg
+11531, pos
+11532, pos
+11533, neg
+11534, pos
+11535, neg
+11536, pos
+11537, neg
+11538, pos
+11539, pos
+11540, neg
+11541, neg
+11542, pos
+11543, pos
+11544, pos
+11545, pos
+11546, pos
+11547, neg
+11548, pos
+11549, pos
+11550, pos
+11551, neg
+11552, neg
+11553, neg
+11554, neg
+11555, neg
+11556, pos
+11557, neg
+11558, neg
+11559, pos
+11560, neg
+11561, neg
+11562, pos
+11563, neg
+11564, neg
+11565, neg
+11566, pos
+11567, neg
+11568, neg
+11569, neg
+11570, pos
+11571, pos
+11572, neg
+11573, pos
+11574, pos
+11575, pos
+11576, pos
+11577, pos
+11578, pos
+11579, pos
+11580, pos
+11581, neg
+11582, pos
+11583, pos
+11584, neg
+11585, neg
+11586, neg
+11587, pos
+11588, neg
+11589, neg
+11590, neg
+11591, pos
+11592, pos
+11593, pos
+11594, neg
+11595, neg
+11596, pos
+11597, neg
+11598, pos
+11599, pos
+11600, neg
+11601, pos
+11602, neg
+11603, pos
+11604, neg
+11605, pos
+11606, neg
+11607, pos
+11608, pos
+11609, pos
+11610, neg
+11611, neg
+11612, pos
+11613, neg
+11614, neg
+11615, pos
+11616, pos
+11617, neg
+11618, neg
+11619, pos
+11620, pos
+11621, pos
+11622, pos
+11623, neg
+11624, pos
+11625, pos
+11626, pos
+11627, neg
+11628, pos
+11629, pos
+11630, pos
+11631, neg
+11632, neg
+11633, neg
+11634, neg
+11635, neg
+11636, pos
+11637, neg
+11638, neg
+11639, pos
+11640, pos
+11641, neg
+11642, pos
+11643, pos
+11644, neg
+11645, pos
+11646, pos
+11647, neg
+11648, neg
+11649, neg
+11650, pos
+11651, neg
+11652, pos
+11653, pos
+11654, pos
+11655, pos
+11656, pos
+11657, neg
+11658, pos
+11659, pos
+11660, neg
+11661, neg
+11662, pos
+11663, neg
+11664, neg
+11665, pos
+11666, pos
+11667, neg
+11668, pos
+11669, pos
+11670, neg
+11671, pos
+11672, neg
+11673, pos
+11674, pos
+11675, neg
+11676, pos
+11677, pos
+11678, neg
+11679, pos
+11680, pos
+11681, pos
+11682, pos
+11683, neg
+11684, neg
+11685, neg
+11686, pos
+11687, pos
+11688, neg
+11689, neg
+11690, pos
+11691, pos
+11692, pos
+11693, pos
+11694, pos
+11695, neg
+11696, neg
+11697, pos
+11698, pos
+11699, neg
+11700, neg
+11701, pos
+11702, pos
+11703, pos
+11704, neg
+11705, pos
+11706, neg
+11707, pos
+11708, neg
+11709, pos
+11710, pos
+11711, pos
+11712, neg
+11713, pos
+11714, neg
+11715, pos
+11716, neg
+11717, neg
+11718, neg
+11719, pos
+11720, neg
+11721, pos
+11722, pos
+11723, neg
+11724, neg
+11725, neg
+11726, neg
+11727, pos
+11728, neg
+11729, pos
+11730, pos
+11731, neg
+11732, neg
+11733, pos
+11734, pos
+11735, pos
+11736, pos
+11737, neg
+11738, pos
+11739, pos
+11740, neg
+11741, neg
+11742, pos
+11743, pos
+11744, neg
+11745, neg
+11746, pos
+11747, neg
+11748, pos
+11749, neg
+11750, pos
+11751, neg
+11752, neg
+11753, pos
+11754, neg
+11755, pos
+11756, neg
+11757, neg
+11758, pos
+11759, pos
+11760, pos
+11761, neg
+11762, neg
+11763, pos
+11764, pos
+11765, neg
+11766, pos
+11767, pos
+11768, pos
+11769, pos
+11770, neg
+11771, pos
+11772, pos
+11773, neg
+11774, neg
+11775, neg
+11776, pos
+11777, pos
+11778, neg
+11779, neg
+11780, pos
+11781, neg
+11782, neg
+11783, pos
+11784, pos
+11785, neg
+11786, pos
+11787, pos
+11788, neg
+11789, pos
+11790, neg
+11791, pos
+11792, pos
+11793, neg
+11794, neg
+11795, neg
+11796, pos
+11797, neg
+11798, neg
+11799, neg
+11800, pos
+11801, neg
+11802, neg
+11803, neg
+11804, neg
+11805, neg
+11806, pos
+11807, pos
+11808, pos
+11809, pos
+11810, neg
+11811, neg
+11812, neg
+11813, neg
+11814, pos
+11815, pos
+11816, neg
+11817, neg
+11818, pos
+11819, neg
+11820, neg
+11821, neg
+11822, neg
+11823, neg
+11824, neg
+11825, pos
+11826, neg
+11827, pos
+11828, neg
+11829, neg
+11830, pos
+11831, neg
+11832, pos
+11833, neg
+11834, neg
+11835, pos
+11836, pos
+11837, pos
+11838, pos
+11839, pos
+11840, pos
+11841, neg
+11842, pos
+11843, neg
+11844, pos
+11845, pos
+11846, pos
+11847, neg
+11848, neg
+11849, neg
+11850, neg
+11851, neg
+11852, pos
+11853, pos
+11854, pos
+11855, neg
+11856, pos
+11857, neg
+11858, neg
+11859, neg
+11860, neg
+11861, neg
+11862, pos
+11863, neg
+11864, neg
+11865, neg
+11866, neg
+11867, pos
+11868, pos
+11869, neg
+11870, neg
+11871, neg
+11872, pos
+11873, neg
+11874, pos
+11875, pos
+11876, neg
+11877, neg
+11878, pos
+11879, neg
+11880, pos
+11881, neg
+11882, pos
+11883, neg
+11884, neg
+11885, neg
+11886, neg
+11887, neg
+11888, neg
+11889, pos
+11890, neg
+11891, pos
+11892, pos
+11893, pos
+11894, pos
+11895, neg
+11896, pos
+11897, pos
+11898, pos
+11899, neg
+11900, pos
+11901, neg
+11902, pos
+11903, pos
+11904, pos
+11905, neg
+11906, neg
+11907, neg
+11908, pos
+11909, neg
+11910, pos
+11911, neg
+11912, neg
+11913, neg
 
 
 Confusion Matrix
 
 _________________________
-|TP: 803|   FP: 350 |
+|TP: 787|   FP: 366 |
 -----------------------------
-|FN: 413|   TN: 817 |
+|FN: 411|   TN: 819 |
 -------------------------
 
 
 
-Accuracy: 67.98% 
+Accuracy: 67.39% 
 
 
-Precision POS: 66.04% 
-Recall POS: 69.64% 
-F1 Measure POS: 67.79% 
+Precision POS: 65.69% 
+Recall POS: 68.26% 
+F1 Measure POS: 66.95% 
 
-Precision NEG: 70.01% 
-Recall NEG: 66.42% 
-F1 Measure NEG: 68.17% 
+Precision NEG: 69.11% 
+Recall NEG: 66.59% 
+F1 Measure NEG: 67.83% 
