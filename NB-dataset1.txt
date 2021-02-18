@@ -2383,8 +2383,14 @@
 11913, neg
 
 
-True positive:  628      False positive: 499
-False negative: 525      True negative:  731
+Confusion Matrix
+
+_________________________
+|TP: 628|   FP: 499 |
+-----------------------------
+|FN: 525|   TN: 731 |
+-------------------------
+
 
 
 Accuracy: 57.03% 

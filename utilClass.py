@@ -9,7 +9,7 @@ import numpy as np
 import math
 import copy
 from sklearn import tree
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, precision_recall_fscore_support
 from codecs import open
 
 
@@ -339,6 +339,13 @@ def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, eva
     disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
     disp.plot()
     
+    scores = precision_recall_fscore_support(y_true,y_pred,average=None, labels=['pos','neg'])
+    precision_POS = scores[0][0]
+    precision_NEG = scores[0][1]
+    recall_POS = scores[1][0]
+    recall_NEG = scores[1][1]
+    f1_measure_POS = scores[2][0]
+    f1_measure_NEG = scores[2][1]
     
     tp = cm[0][0]
     fp = cm[0][1]
@@ -346,13 +353,15 @@ def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, eva
     tn = cm[1][1]
     
     accuracy = numCorrect/len(evaluation_polarity_labels)
-    precision = tp/(tp+fp)
-    recall = tp/(tp+fn)
+    
     
     row = split_point_index
+  
+    
     for i in base_guesses:
         base_tree_file.write(str(row) + ", "+i+"\n")
         row+=1
+    
     base_tree_file.write("\n")
     base_tree_file.write("\n")
     base_tree_file.write("Confusion Matrix\n")
@@ -363,9 +372,19 @@ def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, eva
     base_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
     base_tree_file.write("-------------------------\n")
     base_tree_file.write("\n")
-    base_tree_file.write("Accuracy: "+ str(numCorrect) + "/"+ str(len(evaluation_polarity_labels))+": "+ str(accuracy)+"\n")
-    base_tree_file.write("Precision: "+ str(precision)+"\n")
-    base_tree_file.write("Recall: "+ str(recall)+"\n") 
+    base_tree_file.write("\n\n")
+    base_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
+    
+    base_tree_file.write("\n\n")
+    base_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
+    base_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
+    base_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
+    
+    base_tree_file.write("\n")
+    base_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
+    base_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
+    base_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     base_tree_file.close()
    
 def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, evaluation_polarity_labels, split_point_index):
@@ -388,16 +407,21 @@ def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, eva
     disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=["pos","neg"])
     disp.plot()
     
+    scores = precision_recall_fscore_support(y_true,y_pred,average=None, labels=['pos','neg'])
+    precision_POS = scores[0][0]
+    precision_NEG = scores[0][1]
+    recall_POS = scores[1][0]
+    recall_NEG = scores[1][1]
+    f1_measure_POS = scores[2][0]
+    f1_measure_NEG = scores[2][1]
+    
     
     tp = cm[0][0]
     fp = cm[0][1]
     fn = cm[1][0]
     tn = cm[1][1]
     
-    accuracy = numCorrect/len(evaluation_polarity_labels)
-    precision = tp/(tp+fp)
-    recall = tp/(tp+fn)
-    
+  
     
     row = split_point_index
     for i in best_guesses:
@@ -413,11 +437,20 @@ def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, eva
     best_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
     best_tree_file.write("-------------------------\n")
     best_tree_file.write("\n")
-    best_tree_file.write("Accuracy: "+ str(numCorrect) + "/"+ str(len(evaluation_polarity_labels))+": "+ str(accuracy)+"\n")
-    best_tree_file.write("Precision: "+ str(precision)+"\n")
-    best_tree_file.write("Recall: "+ str(recall)+"\n") 
+    best_tree_file.write("\n\n")
+    best_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
+    
+    best_tree_file.write("\n\n")
+    best_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
+    best_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
+    best_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
+    
+    best_tree_file.write("\n")
+    best_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
+    best_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
+    best_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     best_tree_file.close()
-        
     
     
 
@@ -461,34 +494,42 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
             
         counter += 1
     
-    output_file.write("\n\n")
-    output_file.write( "True positive:  " + str(true_positive_count) 
-                            + "      " + "False positive: " + str(false_positive_count) + "\n")
-    output_file.write( "False negative: " + str(false_negative_count) 
-                            + "      " + "True negative:  " + str(true_negative_count) + "\n")
-    
     accuracy = (true_negative_count + true_positive_count) / (true_positive_count + true_negative_count + false_negative_count + false_positive_count)
-    output_file.write("\n\n")
-    output_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+    
+    precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
+    recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
+    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
     
     precision_POS = true_positive_count / (true_positive_count + false_positive_count)
     recall_POS = true_positive_count / (true_positive_count + false_negative_count)
     f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
+    
+    output_file.write("\n")
+    output_file.write("\n")
+    output_file.write("Confusion Matrix\n")
+    output_file.write("\n")
+    output_file.write("_________________________\n")
+    output_file.write("|TP: "+ str(true_positive_count)+ "|   FP: "+ str(false_positive_count)+" |\n")
+    output_file.write("-----------------------------\n")
+    output_file.write("|FN: "+ str(false_negative_count)+ "|   TN: "+ str(true_negative_count)+" |\n")
+    output_file.write("-------------------------\n")
+    output_file.write("\n")
+    output_file.write("\n\n")
+    output_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+
     
     output_file.write("\n\n")
     output_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
     output_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
     output_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
     
-    precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
-    recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
-    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
-    
     output_file.write("\n")
     output_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
     output_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
     output_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
+    output_file.close()
     
+   
 
 
     
