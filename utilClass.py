@@ -283,6 +283,26 @@ def classify_decision_tree(feature_existance_per_training_review,feature_existan
     
     return guesses
     
+# This method prints the output classification file and performance evaluation of a NB model
+# Assumes the there is only 2 classes: NEG and POS
+def print_NB_model_output_file_2_classes(filename_with_ext, index_evaluation_samples_start, evaluation_reviews,
+                                      evaluation_polarity_labels, prior, conditional):
+    bayes_output_file = open(filename_with_ext, "w")
+    bayes_output_file.write("Naive Bayes Classifier\n")
+    bayes_output_file.write("\n")
+    
+    sample_row_number = index_evaluation_samples_start
+    classified_labels = []
+    for test_review in evaluation_reviews:
+        classified_label = classify_naive_bayes(test_review, prior, conditional)   
+        classified_labels.append(classified_label)
+        bayes_output_file.write(str(sample_row_number) + ", " + classified_label + "\n")
+        sample_row_number += 1
+    
+    print_evaluation_parameters_2_classes(bayes_output_file, evaluation_polarity_labels, classified_labels)
+    
+    bayes_output_file.close()
+
 # This method is used to print the evaluation file of the base decision tree
 def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, evaluation_polarity_labels, split_point_index):
     base_tree_file = open(file_name_with_ext, "w")
@@ -319,37 +339,14 @@ def print_base_model_output_file_2_classes(file_name_with_ext, base_guesses, eva
     
     accuracy = numCorrect/len(evaluation_polarity_labels)
     
-    
     row = split_point_index
   
-    
     for i in base_guesses:
         base_tree_file.write(str(row) + ", "+i+"\n")
         row+=1
     
-    base_tree_file.write("\n")
-    base_tree_file.write("\n")
-    base_tree_file.write("Confusion Matrix\n")
-    base_tree_file.write("\n")
-    base_tree_file.write("_________________________\n")
-    base_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
-    base_tree_file.write("-----------------------------\n")
-    base_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
-    base_tree_file.write("-------------------------\n")
-    base_tree_file.write("\n")
-    base_tree_file.write("\n\n")
-    base_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+    write_confusion_matrix_and_performance_measures(base_tree_file, accuracy, precision_NEG, recall_NEG, f1_measure_NEG, precision_POS, recall_POS, f1_measure_POS, fn, fp, tn, tp)
 
-    
-    base_tree_file.write("\n\n")
-    base_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
-    base_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
-    base_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
-    
-    base_tree_file.write("\n")
-    base_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
-    base_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
-    base_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     base_tree_file.close()
    
     
@@ -395,54 +392,12 @@ def print_best_model_output_file_2_classes(file_name_with_ext, best_guesses, eva
     for i in best_guesses:
         best_tree_file.write(str(row) + ", "+i+"\n")
         row+=1
-    best_tree_file.write("\n")
-    best_tree_file.write("\n")
-    best_tree_file.write("Confusion Matrix\n")
-    best_tree_file.write("\n")
-    best_tree_file.write("_________________________\n")
-    best_tree_file.write("|TP: "+ str(tp)+ "|   FP: "+ str(fp)+" |\n")
-    best_tree_file.write("-----------------------------\n")
-    best_tree_file.write("|FN: "+ str(fn)+ "|   TN: "+ str(tn)+" |\n")
-    best_tree_file.write("-------------------------\n")
-    best_tree_file.write("\n")
-    best_tree_file.write("\n\n")
-    best_tree_file.write("Accuracy: " + str(round((accuracy * 100),2)) + "% \n")
+        
+    write_confusion_matrix_and_performance_measures(best_tree_file, accuracy, precision_NEG, recall_NEG, f1_measure_NEG, precision_POS, recall_POS, f1_measure_POS, fn, fp, tn, tp)    
 
-    
-    best_tree_file.write("\n\n")
-    best_tree_file.write("Precision POS: " + str(round((precision_POS * 100),2)) + "% \n")
-    best_tree_file.write("Recall POS: " + str(round((recall_POS * 100),2)) + "% \n")
-    best_tree_file.write("F1 Measure POS: " + str(round((f1_measure_POS * 100),2)) + "% \n")
-    
-    best_tree_file.write("\n")
-    best_tree_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
-    best_tree_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
-    best_tree_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
     best_tree_file.close()
     
     
-
-# This method prints the output classification file and performance evaluation of a NB model
-# Assumes the there is only 2 classes: NEG and POS
-def print_NB_model_output_file_2_classes(filename_with_ext, index_evaluation_samples_start, evaluation_reviews,
-                                      evaluation_polarity_labels, prior, conditional):
-    bayes_output_file = open(filename_with_ext, "w")
-    bayes_output_file.write("Naive Bayes Classifier\n")
-    bayes_output_file.write("\n")
-    
-    sample_row_number = index_evaluation_samples_start
-    classified_labels = []
-    for test_review in evaluation_reviews:
-        classified_label = classify_naive_bayes(test_review, prior, conditional)   
-        classified_labels.append(classified_label)
-        bayes_output_file.write(str(sample_row_number) + ", " + classified_label + "\n")
-        sample_row_number += 1
-    
-    print_evaluation_parameters_2_classes(bayes_output_file, evaluation_polarity_labels, classified_labels)
-    
-    bayes_output_file.close()
-
-
 # This method is used to print to a file the confusion matrix, accuracy, precision, recall and f1-measure of a model
 # Assumes the there is only 2 classes: NEG and POS
 def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_labels, classified_labels):
@@ -474,6 +429,12 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
     recall_POS = true_positive_count / (true_positive_count + false_negative_count)
     f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
     
+    write_confusion_matrix_and_performance_measures(output_file, accuracy, precision_NEG, recall_NEG, f1_measure_NEG, precision_POS, recall_POS, f1_measure_POS, false_negative_count, false_positive_count, true_negative_count, true_positive_count)
+    
+    output_file.close()
+      
+def write_confusion_matrix_and_performance_measures(output_file, accuracy, precision_NEG, recall_NEG, f1_measure_NEG, precision_POS, recall_POS, f1_measure_POS, false_negative_count, false_positive_count, true_negative_count, true_positive_count):
+    
     output_file.write("\n")
     output_file.write("\n")
     output_file.write("Confusion Matrix\n")
@@ -497,5 +458,4 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
     output_file.write("Precision NEG: " + str(round((precision_NEG * 100),2)) + "% \n")
     output_file.write("Recall NEG: " + str(round((recall_NEG * 100),2)) + "% \n")
     output_file.write("F1 Measure NEG: " + str(round((f1_measure_NEG * 100),2)) + "% \n")
-    output_file.close()
-      
+    
