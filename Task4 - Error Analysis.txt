@@ -1,9 +1,40 @@
-Naive Bayes Classifier
+Error Analysis 
 
-The reviews in the initial data set are coming from very different topics.
-The language used to describe dvds and musics is going to ve bery different than the language used in books and health.
-I think this very broad scope of languague messes with the probabilities used to classify the reviews.
+--- EXAMPLE 1 ---
 
-- 11784: talks about the negatives of product but says its perfect. That one perfect words doesnt overpower the other "negative" words
-- 11801: short. english mistakes. talks about personal story not really using "rating" words
-- 9764: short. confusing language. The person says they like one half of the product and dislikes the other half.
+software neg 760.txt before buying , i downloaded and installed a 30-day trial version of kis 6.0. first , i uninstalled windows live one care .
+after installing kis 6.0 and rebooting , my windows xp home edition computer just locked up . had to go through safe mode to remove the program via windows explorer ,
+since add / remove programs in control panel will not work in safe mode . when i reinstalled windows live one care , it offered to remove the remains of kis 6.0 that i couldn't .
+next , internet explorer 7 would not work at some sites . had to call microsoft support and a great technician in india took about an hour to straighten out the damaged files
+in ie7 at no charge . thanks a lot , kaspersky ! now , my computer is working fine . i am sorry that i did not have a chance to use kis 6.0 , but i will stick with one care
+and renew it when my 1st year of free updates expires soon 
+
+
+Classified as positive by all models. 
+This review uses mostly neutral language, which makes it hard for the models to classify. 
+It uses some positive words such as “safe”, “great”, “thanks” and “fine” which mislead the models.
+
+
+--- EXAMPLE 2 ---
+
+health pos 702.txt this product does wonders . it helped with blotchy skin and made my whole face feel softer yet firmer within a week . like another customer , i have sensitive skin . 
+i did n't feel this dried my skin out at all . but a word to the wise , make sure to read the directions carefully , this product is not meant for use around the eyes which might
+explain some complaints . if used properly , its fantastic 
+
+
+Classified as negative by all models.
+Uses negative words such as “blotchy”, “dried” and “complaints”.
+Although it uses positive words as well such as “wonders” and “fantastic”, the models weighed the negative words more heavily.
+ 
+ 
+ --- EXAMPLE 3 ---
+ 
+health neg 915.txt i originally planned to purchase locin floss to replace the dentek , but i 'm not too pleased with it so far . 
+pluses ======= -each individually wrapped floss . -does n't contain floride . minuses ======= -flimpsy handle- -almost not usable .
+ -wrap is not 100% sealed . -flossing head is shallower and narrower than the dentek 
+
+
+Classified as positive by all models.
+Uses mostly neutral words, except positive word “pleased”.
+Model fails to recognize the “not” in front of the “pleased”.
+Review also lists pluses & negatives, which may be misleading.
