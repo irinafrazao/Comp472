@@ -5,6 +5,8 @@ Irina Patrocinio-Frazao 40024714
 Emilie Mines 40045370
 Zach Eichler 40018021
 
+Git Hub link: https://github.com/irinafrazao/Comp472
+
 The project contains two python scripts: utilClass.py and mainClass.py.
 It also contains a dataset it will use called dataset1.txt.
 
