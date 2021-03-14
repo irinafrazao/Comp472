@@ -1,0 +1,27 @@
+Base Decision Tree Model
+
+9531, pos
+9532, neg
+9533, pos
+
+
+Confusion Matrix
+
+_________________________
+|TP: 1|   FP: 0 |
+-----------------------------
+|FN: 1|   TN: 1 |
+-------------------------
+
+
+
+Accuracy: 66.67% 
+
+
+Precision POS: 50.0% 
+Recall POS: 100.0% 
+F1 Measure POS: 66.67% 
+
+Precision NEG: 100.0% 
+Recall NEG: 50.0% 
+F1 Measure NEG: 66.67% 
