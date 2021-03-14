@@ -17,6 +17,11 @@ training_polarity_labels = all_polarity_labels[:split_point_index]
 evaluation_reviews = all_reviews[split_point_index:]
 evaluation_polarity_labels = all_polarity_labels[split_point_index:]
 
+# NEW FOR DEMO
+dataset_filename_with_extension2 = "test_1.txt"
+all_polarity_labels_DEMO, all_reviews_DEMO = util.read_document(dataset_filename_with_extension2)
+# NEW FOR DEMO
+
 
 # TASK 1: Plot the distribution of the number of the instances in each class (polarity label)
 util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Dataset (Training and Evaluation)")
@@ -32,24 +37,44 @@ util.show_distribution_plot(all_polarity_labels, "Distribution of Complete Datas
 # Base Decision Tree classifier
 # training matrix generation + feature list
 feature_existance_per_training_review_base, featureList_base = util.setup_base_decision_tree(training_reviews, training_polarity_labels)
-feature_existance_per_evaluation_review_base = util.setup_evaluation_feature_matrix_decision_tree(featureList_base, evaluation_reviews)
 
+#feature_existance_per_evaluation_review_base = util.setup_evaluation_feature_matrix_decision_tree(featureList_base, evaluation_reviews)
+
+# NEW FOR DEMO
+feature_existance_per_evaluation_review_base = util.setup_evaluation_feature_matrix_decision_tree(featureList_base, all_reviews_DEMO)
+# NEW FOR DEMO
 
 # Best decision tree classifier
 # training matrix generation + feature list
 feature_existance_per_training_review_best, featureList_best = util.setup_best_decision_tree(training_reviews, training_polarity_labels)
-feature_existance_per_evaluation_review_best = util.setup_evaluation_feature_matrix_decision_tree(featureList_best, evaluation_reviews)
 
+#feature_existance_per_evaluation_review_best = util.setup_evaluation_feature_matrix_decision_tree(featureList_best, evaluation_reviews)
+
+# NEW FOR DEMO
+feature_existance_per_evaluation_review_best = util.setup_evaluation_feature_matrix_decision_tree(featureList_best, all_reviews_DEMO)
+# NEW FOR DEMO
 
 # TASK 3 : Generate output file with classification and performance evaluation
 
 # Naive Bayes Classifier 
-util.print_NB_model_output_file_2_classes("NB-" + dataset_filename_with_extension, split_point_index, evaluation_reviews, evaluation_polarity_labels, prior, conditional)
+#util.print_NB_model_output_file_2_classes("NB-" + dataset_filename_with_extension, split_point_index, evaluation_reviews, evaluation_polarity_labels, prior, conditional)
+
+# NEW FOR DEMO
+util.print_NB_model_output_file_2_classes("NB-" + dataset_filename_with_extension2, split_point_index, all_reviews_DEMO, all_polarity_labels_DEMO, prior, conditional)
+# NEW FOR DEMO
 
 # Base Decision Tree classifier
 base_guesses = util.classify_decision_tree(feature_existance_per_training_review_base, feature_existance_per_evaluation_review_base, training_polarity_labels)
-util.print_base_model_output_file_2_classes("Base_Tree-" + dataset_filename_with_extension, base_guesses, evaluation_polarity_labels, split_point_index)
+#util.print_base_model_output_file_2_classes("Base_Tree-" + dataset_filename_with_extension, base_guesses, evaluation_polarity_labels, split_point_index)
+
+# NEW FOR DEMO
+util.print_base_model_output_file_2_classes("Base_Tree-" + dataset_filename_with_extension2, base_guesses, all_polarity_labels_DEMO, split_point_index)
+# NEW FOR DEMO
 
 # Best decision tree classifier
 best_guesses = util.classify_decision_tree(feature_existance_per_training_review_best, feature_existance_per_evaluation_review_best, training_polarity_labels)
-util.print_best_model_output_file_2_classes("Best_Tree-" + dataset_filename_with_extension, best_guesses, evaluation_polarity_labels, split_point_index)
+#util.print_best_model_output_file_2_classes("Best_Tree-" + dataset_filename_with_extension2, best_guesses, evaluation_polarity_labels, split_point_index)
+
+# NEW FOR DEMO
+util.print_best_model_output_file_2_classes("Best_Tree-" + dataset_filename_with_extension2, best_guesses, all_polarity_labels_DEMO, split_point_index)
+# NEW FOR DEMO

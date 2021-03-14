@@ -423,11 +423,23 @@ def print_evaluation_parameters_2_classes(output_file, evaluation_polarity_label
     
     precision_NEG = true_negative_count / (true_negative_count + false_negative_count)
     recall_NEG = true_negative_count / (true_negative_count + false_positive_count)
-    f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
+    
+    # bug found during demo. trying to divide by zero exception
+    x1 = (precision_NEG + recall_NEG)
+    if x1 == 0:
+        f1_measure_NEG = 0;
+    else:
+        f1_measure_NEG = (2 * precision_NEG * recall_NEG) / (precision_NEG + recall_NEG)
     
     precision_POS = true_positive_count / (true_positive_count + false_positive_count)
     recall_POS = true_positive_count / (true_positive_count + false_negative_count)
-    f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
+    
+    # bug found during demo. trying to divide by zero exception
+    x2 = (precision_POS + recall_POS)
+    if x2 == 0: 
+        f1_measure_POS = 0;
+    else:
+        f1_measure_POS = (2 * precision_POS * recall_POS) / (precision_POS + recall_POS)
     
     write_confusion_matrix_and_performance_measures(output_file, accuracy, precision_NEG, recall_NEG, f1_measure_NEG, precision_POS, recall_POS, f1_measure_POS, false_negative_count, false_positive_count, true_negative_count, true_positive_count)
     
