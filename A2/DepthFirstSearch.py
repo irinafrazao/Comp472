@@ -4,9 +4,8 @@
 # Emilie Mines 40045370
 
 from Node import Node
-from Node import Directions
-from random import randrange
 
+# apply depth first search algorithm on a puzzle to find the solution path
 def depth_first_search(initial_puzzle_board):
     #append() = add elements to the top of stack, pop() = removes the element in LIFO order. 
     open_stack = []
@@ -17,47 +16,49 @@ def depth_first_search(initial_puzzle_board):
     
     goal_state = get_goal_state_for_puzzle(initial_puzzle_board)
 
-    counter = 0
+    nodes_visited_counter = 0
     while len(open_stack) != 0:
         currentNode = open_stack.pop()
 
         if currentNode.state != goal_state:
-            print("not goal state yet")
+            print("searching..")
             closed_stack.append(currentNode)
             
             children = get_all_children_of_node(currentNode)
-            filtered_children = get_children_to_add_to_open_stack(open_stack, closed_stack, children)
+            filtered_children = filter_children_to_add_to_open_stack(open_stack, closed_stack, children)
 
             for child in filtered_children:
                 open_stack.append(child)
                 
-            print("loop " + str(counter))
-            print(len(open_stack))
+            print("nodes visited: " + str(nodes_visited_counter))
+            print("number of nodes in open stack: " + str(len(open_stack)) + "\n")
 
-            
-            counter = counter + 1
+            nodes_visited_counter = nodes_visited_counter + 1
             
         elif currentNode.state == goal_state:
-            print("success")
+            print("SUCCESS")
             return open_stack, closed_stack
     
-    # if it gets out of the loop, exit with failure
+    # if it returns here, FAILURE
+    return open_stack, closed_stack
     
+# make the initial node using the input puzzle
 def create_initial_node(initial_puzzle_board):
     
-    # initial node doesnt have a parent or direction, state didnt move yet
+    # initial node doesnt have a parent
     parent_state = None
-    direction = None
     
-    # Arbitrary take FIRST puzzle piece, this piece will move the whole time
-    index_to_move = (0,0)
+    # initial node didnt move anything yet
+    indexes_move_1 = None
+    indexes_move_2 = None
 
     state = initial_puzzle_board
     depth = 0
 
-    root_node = Node(parent_state,direction,index_to_move,state,depth)
+    root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth)
     return root_node
 
+# get the goal state to know when the puzzle is sloved
 def get_goal_state_for_puzzle(initial_puzzle_board):
     
     # get all values in puzzle
@@ -85,64 +86,27 @@ def get_goal_state_for_puzzle(initial_puzzle_board):
     return goal_state
     
 
-def get_children_to_add_to_open_stack(open_stack, closed_stack, children):
+# double check if children are already in the closed list to avoid cycles
+def filter_children_to_add_to_open_stack(open_stack, closed_stack, children):
     children_to_add = []
     
-    add_to_open_stack = True
     add_to_closed_stack = True
     
-    for child in children:
-        if open_stack != []:
-            for open_node in open_stack:
-                if open_node.state is not None:
-                    if Node.compare_equality_2_nodes(open_node, child):
-                        add_to_open_stack = False
-               
+    for child in children: 
         if closed_stack != []:
             for closed_node in closed_stack:
                 if closed_node.state is not None:
                     if Node.compare_equality_2_nodes(closed_node, child):
                         add_to_closed_stack = False
                         
-        if add_to_closed_stack == True and add_to_open_stack == True:
+        if add_to_closed_stack == True:
             children_to_add.append(child)
             
     return children_to_add
            
     
-def get_new_index_after_move(index_to_move, direction):
-    if direction is Directions.Up:
-        new_row_index = index_to_move[1] - 1
-        new_col_index = index_to_move[0]
-        
-    if direction is Directions.Down:
-        new_row_index = index_to_move[1] + 1
-        new_col_index = index_to_move[0]
-        
-    if direction is Directions.Left:
-        new_row_index = index_to_move[1]
-        new_col_index = index_to_move[0] - 1
-        
-    if direction is Directions.Right:
-        new_row_index = index_to_move[1]
-        new_col_index = index_to_move[0] + 1
-        
-    return (new_col_index, new_row_index)
-       
-
-def can_puzzle_move(index_to_move, size):
-    if index_to_move[0] < 0 or index_to_move[1] < 0:
-        return False
-    
-    if index_to_move[0] >= size or index_to_move[1] >= size:
-        return False
-    
-    return True
-
-
-def get_state_after_move(parent_state, index_to_move, direction):
-    
-    new_index = get_new_index_after_move(index_to_move, direction)
+# apply swap to a state
+def get_state_after_move(parent_state, indexes_move_1, indexes_move_2):
     
     # get all values in puzzle
     values = [] 
@@ -153,8 +117,8 @@ def get_state_after_move(parent_state, index_to_move, direction):
     size_board = len(parent_state)
 
     # switch 2 positions in puzzle
-    position1 = index_to_move[0] + (index_to_move[1]  * size_board)
-    position2 = new_index[0] + (new_index[1] * size_board)
+    position1 = (indexes_move_1[0] * size_board) + indexes_move_1[1]
+    position2 = (indexes_move_2[0] * size_board) + indexes_move_2[1]
     
     values[position1], values[position2] = values[position2], values[position1] 
     
@@ -173,39 +137,58 @@ def get_state_after_move(parent_state, index_to_move, direction):
     return children_state
 
 
+# getting all possibile sideways and updown swipes
+def get_possible_position_swaps(currentNode):
+    swaps = []
+    
+    size = len(currentNode.state)
+    
+    row_ctr = 0
+    col_ctr= 0
+    
+    # getting swap that are side to side.
+    while row_ctr != size:
+        pos1 = (row_ctr, col_ctr)
+        col_ctr = col_ctr + 1
+        pos2 = (row_ctr, col_ctr )
+        swap = (pos1, pos2)
+        swaps.append(swap)
+        if col_ctr == size - 1:
+            col_ctr = 0;
+            row_ctr = row_ctr + 1
+            
+    row_ctr = 0
+    col_ctr = 0
+            
+    # getting swap that are up and down.
+    while col_ctr != size:
+        pos1 = (row_ctr, col_ctr)
+        row_ctr = row_ctr + 1
+        pos2 = (row_ctr, col_ctr )
+        swap = (pos1, pos2)
+        swaps.append(swap)
+        if row_ctr == size - 1:
+            row_ctr = 0;
+            col_ctr = col_ctr + 1
+            
+    return swaps
+        
+
+# making all children nodes, one for each possible swap
 def get_all_children_of_node(currentNode):
     
     children = []
     
-    counter = 0
-    directionCtrs = []
-    while counter < len(Directions):
+    possible_swaps = get_possible_position_swaps(currentNode);
     
-        # bit of randomness in direction
-        directionCtr = randrange(4)
-        while directionCtr is directionCtrs:
-            directionCtr = randrange(4)
-        directionCtrs.append(directionCtr);
-        
-        # checking if this direction works
-        index_to_move = get_new_index_after_move(currentNode.index_move, Directions(directionCtr))
-        can_it_move = can_puzzle_move(index_to_move, len(currentNode.state))
+    for swap in possible_swaps:
+        parent = currentNode
+        depth = currentNode.depth + 1
+        indexes_move_1 = swap[0]
+        indexes_move_2 = swap[1]
+        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2)                        
 
-        if can_it_move == False:
-            counter = counter + 1
-            continue;
-        else:
-            # build node
-            parent = currentNode
-            depth = currentNode.depth + 1
-            direction = Directions(directionCtr)
-        
-            state = get_state_after_move(currentNode.state, currentNode.index_move, Directions(directionCtr))                                                       
-                                  
-            node = Node(parent, direction, index_to_move, state, depth)
-            children.append(node)  
-        
-            counter = counter + 1
+        node = Node(parent, indexes_move_1, indexes_move_2, state, depth)
+        children.append(node)   
 
-    return children;                                            
-        
+    return children                              
