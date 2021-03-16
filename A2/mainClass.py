@@ -5,7 +5,7 @@
 
 import DepthFirstSearch
 
-initial_state = ((5,1,2),(7,4,3),(6,8,9))
+initial_state = ((1,3,2),(4,5,6),(7,8,9))
 
 open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state) 
 

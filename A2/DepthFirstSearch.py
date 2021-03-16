@@ -7,6 +7,7 @@ from Node import Node
 
 # apply depth first search algorithm on a puzzle to find the solution path
 def depth_first_search(initial_puzzle_board):
+    
     #append() = add elements to the top of stack, pop() = removes the element in LIFO order. 
     open_stack = []
     closed_stack = []
@@ -15,17 +16,23 @@ def depth_first_search(initial_puzzle_board):
     open_stack.append(root_node)
     
     goal_state = get_goal_state_for_puzzle(initial_puzzle_board)
+    possible_swaps = get_possible_position_swaps(root_node);
 
     nodes_visited_counter = 0
+    
+    file = open("log2.txt", "w")
+    file.write("\n")
+    
     while len(open_stack) != 0:
         currentNode = open_stack.pop()
+        file.write("CURRENT " + str(currentNode.state) + "\n")
 
         if currentNode.state != goal_state:
             print("searching..")
             closed_stack.append(currentNode)
             
-            children = get_all_children_of_node(currentNode)
-            filtered_children = filter_children_to_add_to_open_stack(open_stack, closed_stack, children)
+            children = get_all_children_of_node(currentNode, possible_swaps)
+            filtered_children = filter_children_to_add_to_open_stack(open_stack, closed_stack, children, file)
 
             for child in filtered_children:
                 open_stack.append(child)
@@ -86,25 +93,42 @@ def get_goal_state_for_puzzle(initial_puzzle_board):
     return goal_state
     
 
+# ENDS BUT DOESNT LOOK AT THE WHOLE TREE SINCE IT FILTERS OUT EVERYTHING AFTER ONE WRONG MOVE
+#def filter_children_to_add_to_open_stack(open_stack, closed_stack, children):
+#    children_to_add = []
+#    
+#    add_to_closed_stack = True
+#    
+#    for child in children: 
+#        TO FIX IT: add_to_closed_stack = True
+#        if closed_stack != []:
+#            for closed_node in closed_stack:
+#                if closed_node.state is not None:
+#                    if Node.compare_equality_2_nodes(closed_node, child):
+#                        add_to_closed_stack = False
+#                        
+#        if add_to_closed_stack == True:
+#            children_to_add.append(child)
+#            
+#    return children_to_add
+	
+
+	
 # double check if children are already in the closed list to avoid cycles
-def filter_children_to_add_to_open_stack(open_stack, closed_stack, children):
+# SEEMS TO BE GOING TO THE WHOLE TREE BUT NEVER STOPS 
+def filter_children_to_add_to_open_stack(open_stack_nodes, closed_stack_nodes, children_nodes):
     children_to_add = []
-    
-    add_to_closed_stack = True
-    
-    for child in children: 
-        if closed_stack != []:
-            for closed_node in closed_stack:
-                if closed_node.state is not None:
-                    if Node.compare_equality_2_nodes(closed_node, child):
-                        add_to_closed_stack = False
+    closed_states = [c.state for c in closed_stack_nodes]
+    open_states = [o.state for o in open_stack_nodes]
+
+    if closed_stack_nodes != []:
+        for child in children_nodes: 
+            if child.state not in closed_states and child.state not in open_states:
+                children_to_add.append(child)
                         
-        if add_to_closed_stack == True:
-            children_to_add.append(child)
-            
     return children_to_add
+	
            
-    
 # apply swap to a state
 def get_state_after_move(parent_state, indexes_move_1, indexes_move_2):
     
@@ -134,6 +158,7 @@ def get_state_after_move(parent_state, indexes_move_1, indexes_move_2):
         end = end + size
 
     children_state = tuple(tuple(x) for x in temp_list)
+
     return children_state
 
 
@@ -174,12 +199,11 @@ def get_possible_position_swaps(currentNode):
     return swaps
         
 
+
 # making all children nodes, one for each possible swap
-def get_all_children_of_node(currentNode):
+def get_all_children_of_node(currentNode, possible_swaps):
     
     children = []
-    
-    possible_swaps = get_possible_position_swaps(currentNode);
     
     for swap in possible_swaps:
         parent = currentNode

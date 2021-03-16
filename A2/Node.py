@@ -40,5 +40,10 @@ class Node:
             for value in t:
                 values2.append(value)
             
-        return values1 == values2
+        stateEquality = values1 == values2
+
+        if stateEquality == True:
+            return True
+        else:
+            return False
         
