@@ -6,7 +6,7 @@
 from Node import Node
 
 # apply depth first search algorithm on a puzzle to find the solution path
-def depth_first_search(initial_puzzle_board):
+def depth_first_search(initial_puzzle_board, iterative_deepening, depth):
     
     #append() = add elements to the top of stack, pop() = removes the element in LIFO order. 
     open_stack = []
@@ -30,9 +30,11 @@ def depth_first_search(initial_puzzle_board):
         if currentNode.state != goal_state:
             print("searching..")
             closed_stack.append(currentNode)
+            print("depth: " + str(currentNode.depth))
+            print("number of nodes in CLOSED stack: " + str(len(closed_stack)))
             
             children = get_all_children_of_node(currentNode, possible_swaps)
-            filtered_children = filter_children_to_add_to_open_stack(open_stack, closed_stack, children, file)
+            filtered_children = filter_children_to_add_to_open_stack(open_stack, closed_stack, children, iterative_deepening, depth)
 
             for child in filtered_children:
                 open_stack.append(child)
@@ -115,16 +117,18 @@ def get_goal_state_for_puzzle(initial_puzzle_board):
 
 	
 # double check if children are already in the closed list to avoid cycles
-# SEEMS TO BE GOING TO THE WHOLE TREE BUT NEVER STOPS 
-def filter_children_to_add_to_open_stack(open_stack_nodes, closed_stack_nodes, children_nodes):
+# SEEMS TO BE GOING TO AN INFINITE LOOP
+def filter_children_to_add_to_open_stack(open_stack_nodes, closed_stack_nodes, children_nodes, iterative_deepening, depth):
     children_to_add = []
     closed_states = [c.state for c in closed_stack_nodes]
     open_states = [o.state for o in open_stack_nodes]
 
     if closed_stack_nodes != []:
         for child in children_nodes: 
-            if child.state not in closed_states and child.state not in open_states:
-                children_to_add.append(child)
+            if iterative_deepening == True:
+                if child.depth <= depth:
+                    if child.state not in closed_states and child.state not in open_states:
+                        children_to_add.append(child)
                         
     return children_to_add
 	

@@ -5,9 +5,16 @@
 
 import DepthFirstSearch
 
-initial_state = ((1,3,2),(4,5,6),(7,8,9))
+initial_state = ((6,1,2),(7,8,3),(5,4,9))
 
-open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state) 
+# if we put limit to size exponent size, so it can complete bigger puzzles, falls into a subtree loop
+size = len(initial_state)
+limit = pow(size, size-1)
+
+# cheat until we find why DPS goes into an infinite sub loop, use iterative deepening with high limit (size exponent size)
+open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state, True, limit) 
+
+
 
 # Need to generate text outputs for each algorithms:
 # solution output
