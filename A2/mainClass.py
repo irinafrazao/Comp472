@@ -3,22 +3,41 @@
 # Irina Patrocinio-Frazao 40024714
 # Emilie Mines 40045370
 
+import UtilClass
 import DepthFirstSearch
-
-initial_state = ((6,1,2),(7,8,3),(5,4,9))
-
-# if we put limit to size exponent size, so it can complete bigger puzzles, falls into a subtree loop
-size = len(initial_state)
-limit = pow(size, size-1)
-
-# cheat until we find why DPS goes into an infinite sub loop, use iterative deepening with high limit (size exponent size)
-open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state, True, limit) 
+import IterativeDeepeningSearch
 
 
+# example in assignment 6 moves
+initial_state = ((9,8,7),(6,5,4),(3,2,1))
 
-# Need to generate text outputs for each algorithms:
-# solution output
-# search output
+open_stack, closed_stack = IterativeDeepeningSearch.iterative_deepening_search(initial_state) 
+search_path = UtilClass.get_search_path(closed_stack)
+solution_path = UtilClass.get_solution_path(initial_state, closed_stack)
+
+file = open("results.txt", "w")
+
+file.write("Puzzle 1: " + str(initial_state) + "\n\n")
+file.write("Iterative Deepening \n")
+
+file.write("Solution path: \n")
+file.write(str(solution_path) + "\n")
+file.write("\n")
+
+file.write("Search path: \n")
+file.write(str(search_path) + "\n")
+file.write("\n")
+
+file.close()
+
+#open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state, False, limit) 
+# TODO: fix DPS? never stops
+
+#TODO: Add timer. (right now iterative deepening does a 4 move puzzle well in the 60 secs)
+#TODO: Add 20 random puzzles as input
+
+# TODO: heuristic 1
+# TODO: heuristic 2
 
 # TODO: Analysis
 
