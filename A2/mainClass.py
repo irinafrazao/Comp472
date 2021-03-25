@@ -4,43 +4,50 @@
 # Emilie Mines 40045370
 
 import UtilClass
+from time import perf_counter
 import DepthFirstSearch
 import IterativeDeepeningSearch
 
+results = open("results.txt", "w")
 
-# example in assignment 6 moves
-initial_state = ((9,8,7),(6,5,4),(3,2,1))
+# each line of file is one puzzle
+inputs = open("inputs.txt", "r")
 
-open_stack, closed_stack = IterativeDeepeningSearch.iterative_deepening_search(initial_state) 
-search_path = UtilClass.get_search_path(closed_stack)
-solution_path = UtilClass.get_solution_path(initial_state, closed_stack)
+for index, initial_state in enumerate(inputs):
+    results.write("Puzzle " + str(index + 1) + ": " + str(initial_state) + "\n")
+    
+    open_stack, closed_stack, computational_time = DepthFirstSearch.depth_first_search(initial_state, False, 0, perf_counter()) 
+    search_path = UtilClass.get_search_path(initial_state, closed_stack)
+    solution_path = UtilClass.get_solution_path(initial_state, closed_stack)
+    
+    results.write("Depth First Search => " + str(computational_time) + "secs \n")
+    
+    results.write("Solution path: \n")
+    results.write(str(solution_path) + "\n")
+    results.write("\n")
 
-file = open("results.txt", "w")
+    results.write("Search path: \n")
+    results.write(str(search_path) + "\n")
+    results.write("\n")
+    
+    open_stack, closed_stack, computational_time = IterativeDeepeningSearch.iterative_deepening_search(initial_state) 
+    search_path = UtilClass.get_search_path(initial_state, closed_stack)
+    solution_path = UtilClass.get_solution_path(initial_state, closed_stack)
 
-file.write("Puzzle 1: " + str(initial_state) + "\n\n")
-file.write("Iterative Deepening \n")
+    results.write("Iterative Deepening => " + str(computational_time) + "secs \n")
+    
+    results.write("Solution path: \n")
+    results.write(str(solution_path) + "\n")
+    results.write("\n")
 
-file.write("Solution path: \n")
-file.write(str(solution_path) + "\n")
-file.write("\n")
+    results.write("Search path: \n")
+    results.write(str(search_path) + "\n")
+    results.write("\n")
+    
+    # TODO: heuristic 1 RESULTS
+    # TODO: heuristic 2 RESULTS
+    
+    results.write("*********************************************************************************\n\n")
 
-file.write("Search path: \n")
-file.write(str(search_path) + "\n")
-file.write("\n")
-
-file.close()
-
-#open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_state, False, limit) 
-# TODO: fix DPS? never stops
-
-#TODO: Add timer. (right now iterative deepening does a 4 move puzzle well in the 60 secs)
-#TODO: Add 20 random puzzles as input
-
-# TODO: heuristic 1
-# TODO: heuristic 2
-
-# TODO: Analysis
-
-# TODO: Scale up
-
-
+results.close()
+inputs.close()

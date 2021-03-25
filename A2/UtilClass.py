@@ -4,6 +4,7 @@
 # Emilie Mines 40045370
 
 from Node import Node
+import math
    
 # make the initial node using the input puzzle
 def create_initial_node(initial_puzzle_board):
@@ -18,7 +19,14 @@ def create_initial_node(initial_puzzle_board):
     state = initial_puzzle_board
     depth = 0
 
-    root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth)
+    # assumes it will be boards NxN 
+    size = 0
+    for character in initial_puzzle_board:
+        if character.isnumeric() == True:
+            size = size + 1
+    size = int(math.sqrt(size))
+
+    root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth,size)
     return root_node
 
 # get the goal state to know when the puzzle is sloved
@@ -28,13 +36,18 @@ def get_goal_state_for_puzzle(initial_puzzle_board):
     values = [] 
     for t in initial_puzzle_board:
         for value in t:
-            values.append(value)
+            if str(value).isnumeric() == True:
+                values.append(int(value))
             
     # sort values (min to max)
     values.sort()
     
     # make new n-tuple of n-tuples in order
-    size = len(initial_puzzle_board)
+    size = 0
+    for character in initial_puzzle_board:
+        if character.isnumeric() == True:
+            size = size + 1
+    size = int(math.sqrt(size))
     
     start = 0
     end = size
@@ -71,32 +84,30 @@ def filter_children_to_add_to_open_stack(open_stack_nodes, closed_stack_nodes, c
 	
            
 # apply swap to a state
-def get_state_after_move(parent_state, indexes_move_1, indexes_move_2):
+def get_state_after_move(currentNode, indexes_move_1, indexes_move_2):
     
     # get all values in puzzle
-    values = [] 
-    for t in parent_state:
+    values = []
+    for t in currentNode.state:
         for value in t:
-            values.append(value)
-            
-    size_board = len(parent_state)
-
+            if str(value).isnumeric() == True:
+                values.append(int(value))
+        
+        
     # switch 2 positions in puzzle
-    position1 = (indexes_move_1[0] * size_board) + indexes_move_1[1]
-    position2 = (indexes_move_2[0] * size_board) + indexes_move_2[1]
+    position1 = (indexes_move_1[0] * currentNode.grid_size) + indexes_move_1[1]
+    position2 = (indexes_move_2[0] * currentNode.grid_size) + indexes_move_2[1]
     
     values[position1], values[position2] = values[position2], values[position1] 
     
     # make new n-tuple of n-tuples 
-    size = len(parent_state)
-    
     start = 0
-    end = size
+    end = currentNode.grid_size
     temp_list = []
     while end <= len(values):
         temp_list.append((values[start:end]))
-        start = start + size
-        end = end + size
+        start = start + currentNode.grid_size
+        end = end + currentNode.grid_size
 
     children_state = tuple(tuple(x) for x in temp_list)
 
@@ -107,19 +118,17 @@ def get_state_after_move(parent_state, indexes_move_1, indexes_move_2):
 def get_possible_position_swaps(currentNode):
     swaps = []
     
-    size = len(currentNode.state)
-    
     row_ctr = 0
     col_ctr= 0
     
     # getting swap that are side to side.
-    while row_ctr != size:
+    while row_ctr != currentNode.grid_size:
         pos1 = (row_ctr, col_ctr)
         col_ctr = col_ctr + 1
         pos2 = (row_ctr, col_ctr )
         swap = (pos1, pos2)
         swaps.append(swap)
-        if col_ctr == size - 1:
+        if col_ctr == currentNode.grid_size - 1:
             col_ctr = 0;
             row_ctr = row_ctr + 1
             
@@ -127,16 +136,16 @@ def get_possible_position_swaps(currentNode):
     col_ctr = 0
             
     # getting swap that are up and down.
-    while col_ctr != size:
+    while col_ctr != currentNode.grid_size:
         pos1 = (row_ctr, col_ctr)
         row_ctr = row_ctr + 1
         pos2 = (row_ctr, col_ctr )
         swap = (pos1, pos2)
         swaps.append(swap)
-        if row_ctr == size - 1:
+        if row_ctr == currentNode.grid_size - 1:
             row_ctr = 0;
             col_ctr = col_ctr + 1
-            
+                  
     return swaps
         
 
@@ -152,59 +161,72 @@ def get_all_children_of_node(currentNode, possible_swaps):
         depth = new_depth
         indexes_move_1 = swap[0]
         indexes_move_2 = swap[1]
-        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2)                        
+        state = get_state_after_move(currentNode, indexes_move_1, indexes_move_2)  
+        size = currentNode.grid_size                      
 
-        node = Node(parent, indexes_move_1, indexes_move_2, state, depth)    
+        node = Node(parent, indexes_move_1, indexes_move_2, state, depth, size)    
         children.append(node)   
 
     return children                              
 
 
 # get the solution path from the closed_list after search algorithm is over
-# TODO: no solution by timer
-# TODO: true no solution (ended in timer but last node visited is not goal)
 def get_solution_path(initial_puzzle_state, closed_stack):
     
-    solution_path = str(initial_puzzle_state) + "\n"
-    reversedPathStates = [];
+    if closed_stack == None :
+        return "no solution - timesUp"
+    else:
+        solution_path = str(initial_puzzle_state)
+        reversedPathStates = [];
     
-    goalNode = closed_stack.pop()
-    currentNode = goalNode
-    
-    while currentNode.parent.state != initial_puzzle_state:
-        for node in closed_stack:
-            if node.state == currentNode.parent.state:
-                reversedPathStates.append(node.state)
-                currentNode = node
-                break
-    
-    reversedPathStates.reverse()
-    for path_state in reversedPathStates:
-        solution_path = solution_path + str(path_state) + "\n"
+        goalNode = closed_stack.pop()
         
-    solution_path = solution_path + str(goalNode.state)
-    
-    return solution_path
+        # make sure the last node visited really is goal
+        realGoalState = get_goal_state_for_puzzle(initial_puzzle_state)
+        
+        if realGoalState != goalNode.state:
+            return "no solution - cannot reach goal state"
+        else:
+            currentNode = goalNode
+        
+            while currentNode.parent.state != initial_puzzle_state:
+                for node in closed_stack:
+                    if node.state == currentNode.parent.state:
+                        reversedPathStates.append(node.state)
+                        currentNode = node
+                        break
+        
+            reversedPathStates.reverse()
+            for path_state in reversedPathStates:
+                solution_path = solution_path + str(path_state) + "\n"
+            
+            solution_path = solution_path + str(goalNode.state)
+        
+            return solution_path
     
     
 # get the search path from the closed_list after search algorithm is over
-# TODO: no solution by timer
-# TODO: true no solution (ended in timer but last node visited is not goal)
-def get_search_path(closed_stack):
+def get_search_path(initial_puzzle_state, closed_stack):
     
-    search_path = ""
-    
-    closed_states = [c.state for c in closed_stack]
+    if closed_stack == None :
+        return "no solution - timesUp"
+    else:
+        closed_states = [c.state for c in closed_stack]
 
-    for state in closed_states:
-        search_path = search_path + str(state) + "\n"
-
-    return search_path
+        realGoalState = get_goal_state_for_puzzle(initial_puzzle_state)
+        
+        # making sure we actually reached goal state
+        if closed_states[-1] != realGoalState:
+            return "no solution - cannot reach goal state"
+        else:
+            initial_state = str(closed_states[0])
     
+            search_path = initial_state
     
+            for state in closed_states:
+                if state != initial_state:
+                    search_path = search_path + str(state) + "\n"
     
-    
-    
-    
-    
+            return search_path
+        
     

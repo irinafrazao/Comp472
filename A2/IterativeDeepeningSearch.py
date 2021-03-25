@@ -5,6 +5,7 @@
 
 import UtilClass
 import DepthFirstSearch 
+from time import perf_counter
 
 # apply iterative deepening search algorithm on a puzzle to find the solution path
 def iterative_deepening_search(initial_puzzle_board):
@@ -14,8 +15,13 @@ def iterative_deepening_search(initial_puzzle_board):
     
     goal_state = UtilClass.get_goal_state_for_puzzle(initial_puzzle_board)
     
+    startTime = perf_counter()
+    
     while foundGoal == False:
-        open_stack, closed_stack = DepthFirstSearch.depth_first_search(initial_puzzle_board, True, depth)
+        open_stack, closed_stack, computational_time = DepthFirstSearch.depth_first_search(initial_puzzle_board, True, depth, startTime)
+        
+        if open_stack == None or closed_stack == None: break;
+        
         lastNodeVisited = closed_stack.pop()
         
         if lastNodeVisited.state != goal_state:
@@ -26,4 +32,4 @@ def iterative_deepening_search(initial_puzzle_board):
             foundGoal = True
             break;
     
-    return open_stack, closed_stack
+    return open_stack, closed_stack, computational_time

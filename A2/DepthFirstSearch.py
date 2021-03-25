@@ -4,9 +4,12 @@
 # Emilie Mines 40045370
 
 import UtilClass
+from time import perf_counter
 
 # apply depth first search algorithm on a puzzle to find the solution path
-def depth_first_search(initial_puzzle_board, iterative_deepening, depth):
+def depth_first_search(initial_puzzle_board, iterative_deepening, depth, startTime):
+    timerThresholdInSeconds = 60
+    timesUp = False
     
     #append() = add elements to the top of stack, pop() = removes the element in LIFO order. 
     open_stack = []
@@ -18,15 +21,19 @@ def depth_first_search(initial_puzzle_board, iterative_deepening, depth):
     goal_state = UtilClass.get_goal_state_for_puzzle(initial_puzzle_board)
     possible_swaps = UtilClass.get_possible_position_swaps(root_node);
 
-    nodes_visited_counter = 0
-    
     while len(open_stack) != 0:
+        
+        # 60 secs timer for calculation
+        endTime = perf_counter()
+        if endTime - startTime >= timerThresholdInSeconds:
+            timesUp = True
+            break;
+        
         currentNode = open_stack.pop()
 
         if currentNode.state != goal_state:
-            print("searching..")
+            print("searching.. " + str(endTime - startTime) + "secs")
             closed_stack.append(currentNode)
-            print("depth: " + str(currentNode.depth))
             
             children = UtilClass.get_all_children_of_node(currentNode, possible_swaps)
             unique_children_nodes = list(set(children))
@@ -35,17 +42,16 @@ def depth_first_search(initial_puzzle_board, iterative_deepening, depth):
 
             for child in filtered_children:
                 open_stack.append(child)
-                
-            print("nodes visited/ in closed list: " + str(nodes_visited_counter))
-            print("number of nodes in open stack: " + str(len(open_stack)) + "\n")
-
-            nodes_visited_counter = nodes_visited_counter + 1
             
         elif currentNode.state == goal_state:
             print("SUCCESS")
             closed_stack.append(currentNode)
             break;
     
-    # if it returns here, FAILURE
-    return open_stack, closed_stack
+    # return outcome here
+    computational_time = perf_counter() - startTime
+    if timesUp == True:
+        return None, None, computational_time
+    else: 
+        return open_stack, closed_stack,computational_time
  
