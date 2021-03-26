@@ -4,7 +4,13 @@
 # Emilie Mines 40045370
 
 from Node import Node
+<<<<<<< Updated upstream
 import math
+=======
+from HeuristicNode import HeuristicNode
+
+
+>>>>>>> Stashed changes
    
 # make the initial node using the input puzzle
 def create_initial_node(initial_puzzle_board):
@@ -28,6 +34,8 @@ def create_initial_node(initial_puzzle_board):
 
     root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth,size)
     return root_node
+
+
 
 # get the goal state to know when the puzzle is sloved
 def get_goal_state_for_puzzle(initial_puzzle_board):
@@ -82,7 +90,7 @@ def filter_children_to_add_to_open_stack(open_stack_nodes, closed_stack_nodes, c
                                                   
     return children_to_add
 	
-           
+
 # apply swap to a state
 def get_state_after_move(currentNode, indexes_move_1, indexes_move_2):
     
@@ -170,6 +178,8 @@ def get_all_children_of_node(currentNode, possible_swaps):
     return children                              
 
 
+
+
 # get the solution path from the closed_list after search algorithm is over
 def get_solution_path(initial_puzzle_state, closed_stack):
     
@@ -213,6 +223,7 @@ def get_search_path(initial_puzzle_state, closed_stack):
     else:
         closed_states = [c.state for c in closed_stack]
 
+<<<<<<< Updated upstream
         realGoalState = get_goal_state_for_puzzle(initial_puzzle_state)
         
         # making sure we actually reached goal state
@@ -220,6 +231,177 @@ def get_search_path(initial_puzzle_state, closed_stack):
             return "no solution - cannot reach goal state"
         else:
             initial_state = str(closed_states[0])
+=======
+    for state in closed_states:
+        search_path = search_path + str(state) + "\n"
+
+    return search_path
+  
+
+
+
+
+
+#Stuff for heuristics
+
+
+
+#creates initial heuristic node
+def create_initial_heuristic_Node(initial_puzzle_board,initial_h):
+    # initial node doesnt have a parent
+    parent = None
+    indexes_move_1 = None
+    indexes_move_2 = None
+
+    state = initial_puzzle_board
+    depth = 0
+    fval = depth + initial_h
+
+    root_node = HeuristicNode(parent,indexes_move_1, indexes_move_2,state, depth, fval)
+    return root_node
+
+
+
+
+#creates children and defines g,h,f using manhattan distance
+def get_all_children_of_manhattan_distance_node(currentNode, possible_swaps, goal_state):
+    
+    children = []
+    new_depth = currentNode.depth + 1
+    
+    for swap in possible_swaps:
+        parent = currentNode
+        depth = new_depth
+        indexes_move_1 = swap[0]
+        indexes_move_2 = swap[1]
+        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2) 
+        
+        #calculates h with manhattan distance
+        h = get_manhattan_distance(goal_state, state)
+        
+                               
+
+        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h)    
+        children.append(node)   
+
+    return children                              
+
+#creates children and defines g,h,f using sum of permutations
+def get_all_children_of_sum_of_permutation_node(currentNode, possible_swaps):
+    
+    children = []
+    new_depth = currentNode.depth + 1
+    
+    for swap in possible_swaps:
+        parent = currentNode
+        depth = new_depth
+        indexes_move_1 = swap[0]
+        indexes_move_2 = swap[1]
+        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2) 
+        
+        #flattens state of current swap
+        the_2D_state = flatten(state)
+        
+        #calculates h
+        h = get_sum_of_permutations(the_2D_state)
+        
+        
+                               
+
+        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h)    
+        children.append(node)   
+
+    return children                              
+
+
+
+
+def filter_children_heuristic(open_stack,closed_stack,children):
+    
+    open_stack = open_stack
+    closed_stack = closed_stack
+    children = children
+    
+    children_to_add = []
+    
+    not_in_open = True
+    not_in_closed = True
+    
+    for i in children:
+        for j in open_stack:
+            if j.state == i.state:
+                not_in_open = False
+        for j in closed_stack:
+            if j.state == i.state:
+                not_in_closed = False
+        
+        if not_in_open and not_in_closed:
+            children_to_add.append(i)
+        
+        
+    return children_to_add
+
+
+#flattens state to calculate sum of permutations  
+def flatten(state):
+    new_state = []
+    for i in state:
+            for j in i:
+                new_state.append(j)
+    return new_state
+  
+
+#calculates h with sum of permutations  (this works)
+def get_sum_of_permutations(the_2D_State):
+    the_2D_State = the_2D_State
+    counter = 1
+    distance = 0
+    for i in the_2D_State:
+        for j in the_2D_State[counter:]:
+            if j < i:
+                distance += 1
+        counter +=1
+        
+    return distance
+    
+
+
+
+#finds row and column of actual location and target location to calculate row and column distance
+def find(l,value):
+    for i,v in enumerate(l):
+        if value in v:
+            return {'row':i+1,'col':v.index(value)+1}
+    return {'row':-1,'col':-1}
+
+
+
+# calculates manhattan distance using find (this works)
+def get_manhattan_distance(goal_state, state):
+    
+    total = len(state)*len(state)
+    m_distance = 0
+
+    for x in range(1,total+1):
+  
+        actual = find(state,x)
+        goal = find(goal_state,x)
+        row_distance = abs(actual.get("row") - goal.get("row"))
+        col_distance = abs(actual.get("col") - goal.get("col"))
+        distance = row_distance + col_distance
+        m_distance+= distance
+  
+
+    return m_distance
+        
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> Stashed changes
     
             search_path = initial_state
     
