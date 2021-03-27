@@ -4,14 +4,10 @@
 # Emilie Mines 40045370
 
 from Node import Node
-<<<<<<< Updated upstream
 import math
-=======
 from HeuristicNode import HeuristicNode
 
-
->>>>>>> Stashed changes
-   
+  
 # make the initial node using the input puzzle
 def create_initial_node(initial_puzzle_board):
     
@@ -34,7 +30,6 @@ def create_initial_node(initial_puzzle_board):
 
     root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth,size)
     return root_node
-
 
 
 # get the goal state to know when the puzzle is sloved
@@ -223,7 +218,6 @@ def get_search_path(initial_puzzle_state, closed_stack):
     else:
         closed_states = [c.state for c in closed_stack]
 
-<<<<<<< Updated upstream
         realGoalState = get_goal_state_for_puzzle(initial_puzzle_state)
         
         # making sure we actually reached goal state
@@ -231,20 +225,17 @@ def get_search_path(initial_puzzle_state, closed_stack):
             return "no solution - cannot reach goal state"
         else:
             initial_state = str(closed_states[0])
-=======
-    for state in closed_states:
-        search_path = search_path + str(state) + "\n"
-
-    return search_path
-  
-
-
-
-
+            
+            search_path = initial_state
+    
+            for state in closed_states:
+                if state != initial_state:
+                    search_path = search_path + str(state) + "\n"
+    
+            return search_path
+        
 
 #Stuff for heuristics
-
-
 
 #creates initial heuristic node
 def create_initial_heuristic_Node(initial_puzzle_board,initial_h):
@@ -256,11 +247,16 @@ def create_initial_heuristic_Node(initial_puzzle_board,initial_h):
     state = initial_puzzle_board
     depth = 0
     fval = depth + initial_h
+    
+    # assumes it will be boards NxN 
+    size = 0
+    for character in initial_puzzle_board:
+        if character.isnumeric() == True:
+            size = size + 1
+    size = int(math.sqrt(size))
 
-    root_node = HeuristicNode(parent,indexes_move_1, indexes_move_2,state, depth, fval)
+    root_node = HeuristicNode(parent,indexes_move_1, indexes_move_2,state, depth, fval, size)
     return root_node
-
-
 
 
 #creates children and defines g,h,f using manhattan distance
@@ -274,14 +270,15 @@ def get_all_children_of_manhattan_distance_node(currentNode, possible_swaps, goa
         depth = new_depth
         indexes_move_1 = swap[0]
         indexes_move_2 = swap[1]
-        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2) 
+        state = get_state_after_move(currentNode, indexes_move_1, indexes_move_2) 
         
         #calculates h with manhattan distance
         h = get_manhattan_distance(goal_state, state)
         
-                               
-
-        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h)    
+        # assumes it will be boards NxN 
+        size = currentNode.grid_size
+                  
+        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h, size)    
         children.append(node)   
 
     return children                              
@@ -297,7 +294,7 @@ def get_all_children_of_sum_of_permutation_node(currentNode, possible_swaps):
         depth = new_depth
         indexes_move_1 = swap[0]
         indexes_move_2 = swap[1]
-        state = get_state_after_move(currentNode.state, indexes_move_1, indexes_move_2) 
+        state = get_state_after_move(currentNode, indexes_move_1, indexes_move_2) 
         
         #flattens state of current swap
         the_2D_state = flatten(state)
@@ -305,10 +302,11 @@ def get_all_children_of_sum_of_permutation_node(currentNode, possible_swaps):
         #calculates h
         h = get_sum_of_permutations(the_2D_state)
         
-        
+        # assumes it will be boards NxN 
+        size = currentNode.grid_size
                                
 
-        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h)    
+        node = HeuristicNode(parent, indexes_move_1, indexes_move_2, state, depth, depth+h, size)    
         children.append(node)   
 
     return children                              
@@ -368,23 +366,38 @@ def get_sum_of_permutations(the_2D_State):
 
 
 #finds row and column of actual location and target location to calculate row and column distance
-def find(l,value):
-    for i,v in enumerate(l):
+def find(state,value):
+    
+    values = []
+    twoDimensionArray = []
+    size = len(state[0])
+
+    for tup in state:
+        for character in tup:
+            if str(character).isnumeric() == True:
+                values.append(character)
+                if len(values) == size :
+                    twoDimensionArray.append(values)
+                    values = []
+    
+    for i,v in enumerate(twoDimensionArray):
         if value in v:
             return {'row':i+1,'col':v.index(value)+1}
+        
     return {'row':-1,'col':-1}
+    
 
 
 
 # calculates manhattan distance using find (this works)
 def get_manhattan_distance(goal_state, state):
     
-    total = len(state)*len(state)
+    total = len(state) * len(state)
     m_distance = 0
 
     for x in range(1,total+1):
-  
-        actual = find(state,x)
+
+        actual = find(state, x)
         goal = find(goal_state,x)
         row_distance = abs(actual.get("row") - goal.get("row"))
         col_distance = abs(actual.get("col") - goal.get("col"))
@@ -400,15 +413,6 @@ def get_manhattan_distance(goal_state, state):
     
     
     
-    
->>>>>>> Stashed changes
-    
-            search_path = initial_state
-    
-            for state in closed_states:
-                if state != initial_state:
-                    search_path = search_path + str(state) + "\n"
-    
-            return search_path
+
         
     
