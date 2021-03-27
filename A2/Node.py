@@ -27,4 +27,4 @@ class Node:
         print("depth: ", self.depth)
         print("size: ", self.grid_size)
         print("\n")
-        
+
