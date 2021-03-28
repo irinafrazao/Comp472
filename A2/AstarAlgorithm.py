@@ -1,3 +1,8 @@
+# Team Members:
+# Zach Eichler 40018021
+# Irina Patrocinio-Frazao 40024714
+# Emilie Mines 40045370
+
 import UtilClass
 from time import perf_counter
 
@@ -30,7 +35,7 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
      
     #get all the possible swaps
     possible_swaps = UtilClass.get_possible_position_swaps(root_node);
-    
+
     #add initial node to stack
     open_stack.append(root_node)
     
@@ -63,10 +68,14 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
             children = UtilClass.get_all_children_of_sum_of_permutation_node(current_node, possible_swaps)
     
         #filter to find those not in closed or open
-        children_to_add = UtilClass.filter_children_heuristic(open_stack, closed_stack, children)
+        children_to_remove_from_open_list, children_to_add = UtilClass.filter_children_heuristic(open_stack, closed_stack, children)
+
+        for j in children_to_remove_from_open_list:
+            open_stack.remove(j);
 
         for i in children_to_add:
             open_stack.append(i)
+        
             
         #sort children by f value:
         open_stack.sort(key=lambda x: x.fval)

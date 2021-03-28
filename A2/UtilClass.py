@@ -316,28 +316,27 @@ def get_all_children_of_sum_of_permutation_node(currentNode, possible_swaps):
 
 def filter_children_heuristic(open_stack,closed_stack,children):
     
-    open_stack = open_stack
-    closed_stack = closed_stack
-    children = children
-    
     children_to_add = []
+    children_to_remove_from_open_list = []
     
     not_in_open = True
-    not_in_closed = True
+
+    for child in children:
+        
+        # if children is in open stack, only add to open stack if new child has lower f value and delete higher f value node from stack
+        for openNode in open_stack:
+            if openNode.state == child.state:
+                if child.fval < openNode.fval :
+                    children_to_remove_from_open_list.append(openNode)
+                    children_to_add.append(child)
+                    not_in_open = False
+                    break;
     
-    for i in children:
-        for j in open_stack:
-            if j.state == i.state:
-                not_in_open = False
-        for j in closed_stack:
-            if j.state == i.state:
-                not_in_closed = False
-        
-        if not_in_open and not_in_closed:
-            children_to_add.append(i)
-        
-        
-    return children_to_add
+        # if children is not found in any stack, brand new, add it to open stack
+        if not_in_open == True:
+            children_to_add.append(child)
+    
+    return children_to_remove_from_open_list, children_to_add
 
 
 #flattens state to calculate sum of permutations  
