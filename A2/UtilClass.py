@@ -318,25 +318,37 @@ def filter_children_heuristic(open_stack,closed_stack,children):
     
     children_to_add = []
     children_to_remove_from_open_list = []
+    children_to_remove_from_closed_list = []
     
     not_in_open = True
+    not_in_close = True
 
     for child in children:
         
-        # if children is in open stack, only add to open stack if new child has lower f value and delete higher f value node from stack
-        for openNode in open_stack:
-            if openNode.state == child.state:
-                if child.fval < openNode.fval :
-                    children_to_remove_from_open_list.append(openNode)
+        # if children is in close stack, readd it to open stack if it has a lower f value
+        for closeNode in closed_stack:
+            if closeNode.state == child.state:
+                if child.fval < closeNode.fval:  
+                    children_to_remove_from_closed_list.append(closeNode)
                     children_to_add.append(child)
-                    not_in_open = False
+                    not_in_close = False
                     break;
+        
+        # if children is in open stack, only add to open stack if new child has lower f value and delete higher f value node from stack
+        if not_in_close == True:
+            for openNode in open_stack:
+                if openNode.state == child.state:
+                    if child.fval < openNode.fval :
+                        children_to_remove_from_open_list.append(openNode)
+                        children_to_add.append(child)
+                        not_in_open = False
+                        break;
     
         # if children is not found in any stack, brand new, add it to open stack
-        if not_in_open == True:
+        if not_in_open == True and not_in_close == True:
             children_to_add.append(child)
     
-    return children_to_remove_from_open_list, children_to_add
+    return children_to_remove_from_open_list, children_to_remove_from_closed_list, children_to_add
 
 
 #flattens state to calculate sum of permutations  

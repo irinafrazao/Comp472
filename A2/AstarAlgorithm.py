@@ -68,10 +68,13 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
             children = UtilClass.get_all_children_of_sum_of_permutation_node(current_node, possible_swaps)
     
         #filter to find those not in closed or open
-        children_to_remove_from_open_list, children_to_add = UtilClass.filter_children_heuristic(open_stack, closed_stack, children)
+        children_to_remove_from_open_list, children_to_remove_from_closed_list, children_to_add = UtilClass.filter_children_heuristic(open_stack, closed_stack, children)
 
-        for j in children_to_remove_from_open_list:
-            open_stack.remove(j);
+        for o in children_to_remove_from_open_list:
+            open_stack.remove(o);
+            
+        for c in children_to_remove_from_closed_list:
+            closed_stack.remove(c);
 
         for i in children_to_add:
             open_stack.append(i)
