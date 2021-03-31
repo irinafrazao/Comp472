@@ -6,7 +6,7 @@
 import UtilClass
 from time import perf_counter
 
-def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
+def Astar_Algorithm(initial_puzzle_board, startTime, manhattan,isScaled):
     
     if manhattan == True: 
         print("starting manhattan distance")
@@ -14,11 +14,13 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
          print("starting sum of permutations")
     
     timerThresholdInSeconds = 60
+    scaledTimerThresholdInSeconds = 180
     timesUp = False
     
     open_stack = []
     closed_stack = []
     goal_state = UtilClass.get_goal_state_for_puzzle(initial_puzzle_board)
+    cost = 0
 
     if manhattan == True:
         #calculate initial h with manhattan distance
@@ -44,7 +46,12 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
         
         # 60 secs timer for calculation
         endTime = perf_counter()
-        if endTime - startTime >= timerThresholdInSeconds:
+        
+        if endTime - startTime >= scaledTimerThresholdInSeconds and isScaled == True:
+            timesUp = True
+            break;
+        
+        if endTime - startTime >= timerThresholdInSeconds and isScaled == False:
             timesUp = True
             break;
         
@@ -53,6 +60,7 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
             break;
             
         current_node = open_stack.pop()
+        cost += current_node.fval
         closed_stack.append(current_node)
         
         if current_node.state == goal_state:
@@ -90,6 +98,6 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
     # return outcome here
     computational_time = perf_counter() - startTime
     if timesUp == True:
-        return None, None, computational_time
+        return None, None, computational_time, cost
     else: 
-        return open_stack, closed_stack,computational_time
+        return open_stack, closed_stack,computational_time,cost
