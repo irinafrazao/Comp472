@@ -166,10 +166,10 @@ def get_all_children_of_node(currentNode, possible_swaps):
 
 
 # get the solution path from the closed_list after search algorithm is over
-def get_solution_path(initial_puzzle_state, closed_stack):
-    
+def get_solution_path(initial_puzzle_state, closed_stack,hasFval):
+    solution_cost = 0
     if closed_stack == None :
-        return "no solution - timesUp"
+        return "no solution - timesUp",0
     else:
         solution_path = str(initial_puzzle_state) + "\n"
         reversedPathStates = [];
@@ -180,13 +180,17 @@ def get_solution_path(initial_puzzle_state, closed_stack):
         realGoalState = get_goal_state_for_puzzle(initial_puzzle_state)
         
         if realGoalState != goalNode.state:
-            return "no solution - cannot reach goal state"
+            return "no solution - cannot reach goal state",0
         else:
             currentNode = goalNode
         
             while currentNode.parent.state != initial_puzzle_state:
                 for node in closed_stack:
                     if node.state == currentNode.parent.state:
+                        if hasFval==True:
+                            solution_cost += node.fval
+                        else: 
+                            solution_cost += 1
                         reversedPathStates.append(node.state)
                         currentNode = node
                         break
@@ -196,8 +200,8 @@ def get_solution_path(initial_puzzle_state, closed_stack):
                 solution_path = solution_path + str(path_state) + "\n"
             
             solution_path = solution_path + str(goalNode.state)
-        
-            return solution_path
+            
+            return solution_path, solution_cost
     
     
 # get the search path from the closed_list after search algorithm is over

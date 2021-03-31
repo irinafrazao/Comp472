@@ -20,7 +20,7 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan,isScaled):
     open_stack = []
     closed_stack = []
     goal_state = UtilClass.get_goal_state_for_puzzle(initial_puzzle_board)
-    cost = 0
+
 
     if manhattan == True:
         #calculate initial h with manhattan distance
@@ -60,7 +60,6 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan,isScaled):
             break;
             
         current_node = open_stack.pop()
-        cost += current_node.fval
         closed_stack.append(current_node)
         
         if current_node.state == goal_state:
@@ -98,6 +97,6 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan,isScaled):
     # return outcome here
     computational_time = perf_counter() - startTime
     if timesUp == True:
-        return None, None, computational_time, cost
+        return None, None, computational_time
     else: 
-        return open_stack, closed_stack,computational_time, cost
+        return open_stack, closed_stack,computational_time
