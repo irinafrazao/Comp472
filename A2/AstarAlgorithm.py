@@ -29,7 +29,8 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
     
         #calculate initial h with sum of permutations
         initial_h = UtilClass.get_sum_of_permutations(initial_state_2D)
-    
+
+
     #creates heuristic node with depth, f value (depth+calculated h)
     root_node = UtilClass.create_initial_heuristic_Node(initial_puzzle_board, initial_h)
      
@@ -38,7 +39,6 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
 
     #add initial node to stack
     open_stack.append(root_node)
-    
     
     while True:
         
@@ -70,11 +70,12 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan):
         #filter to find those not in closed or open
         children_to_remove_from_open_list, children_to_remove_from_closed_list, children_to_add = UtilClass.filter_children_heuristic(open_stack, closed_stack, children)
 
+
         for o in children_to_remove_from_open_list:
-            open_stack.remove(o);
+            open_stack.remove(o)
             
         for c in children_to_remove_from_closed_list:
-            closed_stack.remove(c);
+            closed_stack.remove(c)
 
         for i in children_to_add:
             open_stack.append(i)

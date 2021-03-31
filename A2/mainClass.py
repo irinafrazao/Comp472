@@ -17,6 +17,9 @@ inputs = open("inputs.txt", "r")
 
 for index, initial_state in enumerate(inputs):
 
+    # turn string from input into a python obj (tuple of tuple)
+    initial_state = eval(initial_state)    
+
     results.write("Puzzle " + str(index + 1) + ": " + str(initial_state) + "\n")
     
     open_stack, closed_stack, computational_time = DepthFirstSearch.depth_first_search(initial_state, False, 0, perf_counter()) 

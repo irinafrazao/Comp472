@@ -22,11 +22,7 @@ def create_initial_node(initial_puzzle_board):
     depth = 0
 
     # assumes it will be boards NxN 
-    size = 0
-    for character in initial_puzzle_board:
-        if character.isnumeric() == True:
-            size = size + 1
-    size = int(math.sqrt(size))
+    size = len(initial_puzzle_board)
 
     root_node = Node(parent_state,indexes_move_1,indexes_move_2,state,depth,size)
     return root_node
@@ -39,19 +35,14 @@ def get_goal_state_for_puzzle(initial_puzzle_board):
     values = [] 
     for t in initial_puzzle_board:
         for value in t:
-            if str(value).isnumeric() == True:
-                values.append(int(value))
+            values.append(int(value))
             
     # sort values (min to max)
     values.sort()
     
     # make new n-tuple of n-tuples in order
-    size = 0
-    for character in initial_puzzle_board:
-        if character.isnumeric() == True:
-            size = size + 1
-    size = int(math.sqrt(size))
-    
+    size = len(initial_puzzle_board)
+
     start = 0
     end = size
     temp_list = []
@@ -93,8 +84,7 @@ def get_state_after_move(currentNode, indexes_move_1, indexes_move_2):
     values = []
     for t in currentNode.state:
         for value in t:
-            if str(value).isnumeric() == True:
-                values.append(int(value))
+            values.append(int(value))
         
         
     # switch 2 positions in puzzle
@@ -181,7 +171,7 @@ def get_solution_path(initial_puzzle_state, closed_stack):
     if closed_stack == None :
         return "no solution - timesUp"
     else:
-        solution_path = str(initial_puzzle_state)
+        solution_path = str(initial_puzzle_state) + "\n"
         reversedPathStates = [];
     
         goalNode = closed_stack.pop()
@@ -226,7 +216,7 @@ def get_search_path(initial_puzzle_state, closed_stack):
         else:
             initial_state = str(closed_states[0])
             
-            search_path = initial_state
+            search_path = initial_state + "\n"
     
             for state in closed_states:
                 if state != initial_state:
@@ -249,11 +239,7 @@ def create_initial_heuristic_Node(initial_puzzle_board,initial_h):
     fval = depth + initial_h
     
     # assumes it will be boards NxN 
-    size = 0
-    for character in initial_puzzle_board:
-        if character.isnumeric() == True:
-            size = size + 1
-    size = int(math.sqrt(size))
+    size = len(initial_puzzle_board)
 
     root_node = HeuristicNode(parent,indexes_move_1, indexes_move_2,state, depth, fval, size)
     return root_node
@@ -329,8 +315,10 @@ def filter_children_heuristic(open_stack,closed_stack,children):
         for closeNode in closed_stack:
             if closeNode.state == child.state:
                 if child.fval < closeNode.fval:  
-                    children_to_remove_from_closed_list.append(closeNode)
-                    children_to_add.append(child)
+                    if closeNode not in children_to_remove_from_closed_list:
+                        children_to_remove_from_closed_list.append(closeNode)
+                    if child not in children_to_add:
+                        children_to_add.append(child)
                     not_in_close = False
                     break;
         
@@ -339,15 +327,18 @@ def filter_children_heuristic(open_stack,closed_stack,children):
             for openNode in open_stack:
                 if openNode.state == child.state:
                     if child.fval < openNode.fval :
-                        children_to_remove_from_open_list.append(openNode)
-                        children_to_add.append(child)
+                        if openNode not in children_to_remove_from_open_list:
+                            children_to_remove_from_open_list.append(openNode)
+                        if child not in children_to_add:
+                            children_to_add.append(child)
                         not_in_open = False
                         break;
     
         # if children is not found in any stack, brand new, add it to open stack
         if not_in_open == True and not_in_close == True:
-            children_to_add.append(child)
-    
+            if child not in children_to_add:
+                children_to_add.append(child)
+
     return children_to_remove_from_open_list, children_to_remove_from_closed_list, children_to_add
 
 
@@ -385,7 +376,6 @@ def find(state,value):
 
     for tup in state:
         for character in tup:
-            if str(character).isnumeric() == True:
                 values.append(character)
                 if len(values) == size :
                     twoDimensionArray.append(values)
@@ -415,7 +405,6 @@ def get_manhattan_distance(goal_state, state):
         distance = row_distance + col_distance
         m_distance+= distance
   
-
     return m_distance
         
     
