@@ -100,4 +100,4 @@ def Astar_Algorithm(initial_puzzle_board, startTime, manhattan,isScaled):
     if timesUp == True:
         return None, None, computational_time, cost
     else: 
-        return open_stack, closed_stack,computational_time,cost
+        return open_stack, closed_stack,computational_time, cost
