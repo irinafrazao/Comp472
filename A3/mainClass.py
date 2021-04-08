@@ -17,3 +17,5 @@ while True:
     total_tokens, number_of_taken_tokens, list_of_taken_tokens, depth = utilClass.split_input_string(inputString)
     
     print("This is what you gave me: " + str(total_tokens) + "  " + str(number_of_taken_tokens) + "   " + str(list_of_taken_tokens) + "   " + str(depth))
+
+    
