@@ -26,11 +26,84 @@ def split_input_string(inputStr):
 
 
 
+def get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_tokens):
+    # first move
+    if number_of_taken_tokens == 0:
+        range_of_numbers = list(range(1, (int)(total_tokens/2 + 1)))
+        possible_choices = [num for num in range_of_numbers if num % 2 == 1]
+    # every subsequent move
+    else:
+        last_move = list_of_taken_tokens[-1]
+        possible_choices = []
+        for num in list(range(1, total_tokens + 1)):
+            if num not in list_of_taken_tokens and is_multiple(num, last_move):
+                possible_choices.append(num)
+                
+    return possible_choices
+
+
+# TO FINISH TESTING
+def assign_children_to_node(parentNode, number_of_taken_tokens, total_tokens, list_of_taken_tokens, depth_of_search_tree):
+
+    # create nodes and add children to them  
+    possible_moves = get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_tokens)
+    
+    if parentNode.depth_of_node < depth_of_search_tree and len(possible_moves) > 0:
+        depth_of_node = parentNode.depth_of_node + 1
+        maximizingPlayerParent = not parentNode.maximizingPlayer
+        firstMove = True
+        
+        for move in possible_moves:
+            if firstMove: 
+                list_of_taken_tokens.append(move)
+                firstMove = False
+            else:
+                list_of_taken_tokens[-1] = move
+                
+            childNode = Node(None, maximizingPlayerParent, total_tokens, list_of_taken_tokens, depth_of_node, [], move)    
+            parentNode.list_children.append(childNode)
+        
+        # now parent has all children set so we can assign a ref of the parent in the children
+        for child in parentNode.list_children:
+            child.parent = parentNode
+            child.print_node()
+        
+        return parentNode
+
+    
+# TO FINISH TESTING
+def build_search_tree(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree):
+    # root of tree has no parent and no move
+    depth_of_node = 0   
+    
+    if number_of_taken_tokens == 0 or number_of_taken_tokens % 2 == 0:
+        maximizingPlayerParent = True
+    else:
+        maximizingPlayerParent = False
+        
+    treeRoot = Node(None, maximizingPlayerParent, total_tokens, list_of_taken_tokens, depth_of_node, [], None)      
+    treeRoot = assign_children_to_node(treeRoot, number_of_taken_tokens, total_tokens, list_of_taken_tokens, depth_of_search_tree)
+    
+    nodeLeftToAssignChildren = []
+    for c in treeRoot.list_children:
+        nodeLeftToAssignChildren.append(c)
+    
+    for child in nodeLeftToAssignChildren:
+        child = assign_children_to_node(child, len(child.list_taken_tokens), child.total_tokens, child.list_taken_tokens, depth_of_search_tree)
+        if child is None:
+            continue
+        else:
+            for x in child.list_children:
+                nodeLeftToAssignChildren.append(x)  
+    
+    return treeRoot;
+   
+
 # logic of the alpha beta algorithm
 def alphabeta(node, depth, alpha, beta, maximizingPlayer):
     
     # we are at the max depth of tree or a terminal node, we need the e(n) value
-    if depth == 0 or node.move_PNT is None:
+    if depth == 0 or len(node.list_children) == 0:
         return static_board_evaluation(node)
     
     if maximizingPlayer:
@@ -55,13 +128,13 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer):
 def static_board_evaluation(node):
     
     # end game state, the player on that layer loses, min wins = -1.0, max wins = 1.0
-    if node.move_PNT is None:
+    if len(node.list_children) == 0:
         if node.maximizingPlayer:
             return -1.0
         else:
             return 1.0
          
-    last_move = node.list_of_taken_tokens[-1]
+    last_move = node.list_taken_tokens[-1]
     
     # if its MINs turn, the values are negated
     multiplier = 1
