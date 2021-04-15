@@ -19,16 +19,12 @@ while True:
     
     total_tokens, number_of_taken_tokens, list_of_taken_tokens, depth_of_search_tree = utilClass.split_input_string(inputString)
     
-    print("DEBUG: This is what you gave me: " + str(total_tokens) + "  " + str(number_of_taken_tokens) + "   " + str(list_of_taken_tokens) + "   " + str(depth_of_search_tree))
-    
-    # create tree
-    tree = utilClass.build_search_tree(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree)
+    # create root of tree
+    treeRootNode = utilClass.create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree)
     
     # send data to alpha beta algorithm
-    value = utilClass.alphabeta(tree, depth_of_search_tree, -math.inf, math.inf, True)
+    value = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True)
     print("VALUE TESTING: " + str(value))
-    
-    # Test tree some more to make sure its well built!!
     
     # TO ADD OUTPUT
     

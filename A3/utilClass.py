@@ -42,7 +42,6 @@ def get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_t
     return possible_choices
 
 
-# TO FINISH TESTING
 def assign_children_to_node(parentNode, number_of_taken_tokens, total_tokens, list_of_taken_tokens, depth_of_search_tree):
 
     # create nodes and add children to them  
@@ -51,28 +50,22 @@ def assign_children_to_node(parentNode, number_of_taken_tokens, total_tokens, li
     if parentNode.depth_of_node < depth_of_search_tree and len(possible_moves) > 0:
         depth_of_node = parentNode.depth_of_node + 1
         maximizingPlayerParent = not parentNode.maximizingPlayer
-        firstMove = True
-        
+
         for move in possible_moves:
-            if firstMove: 
-                list_of_taken_tokens.append(move)
-                firstMove = False
-            else:
-                list_of_taken_tokens[-1] = move
+            
+            new_list_of_taken_moves = []
+            for m in list_of_taken_tokens:
+                new_list_of_taken_moves.append(m)
                 
-            childNode = Node(None, maximizingPlayerParent, total_tokens, list_of_taken_tokens, depth_of_node, [], move)    
+            new_list_of_taken_moves.append(move)
+            
+            childNode = Node(parentNode, maximizingPlayerParent, total_tokens, new_list_of_taken_moves, depth_of_node, [], move)    
             parentNode.list_children.append(childNode)
         
-        # now parent has all children set so we can assign a ref of the parent in the children
-        for child in parentNode.list_children:
-            child.parent = parentNode
-            child.print_node()
-        
-        return parentNode
+    return parentNode
 
     
-# TO FINISH TESTING
-def build_search_tree(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree):
+def create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree):
     # root of tree has no parent and no move
     depth_of_node = 0   
     
@@ -82,33 +75,30 @@ def build_search_tree(total_tokens, list_of_taken_tokens, number_of_taken_tokens
         maximizingPlayerParent = False
         
     treeRoot = Node(None, maximizingPlayerParent, total_tokens, list_of_taken_tokens, depth_of_node, [], None)      
-    treeRoot = assign_children_to_node(treeRoot, number_of_taken_tokens, total_tokens, list_of_taken_tokens, depth_of_search_tree)
     
-    nodeLeftToAssignChildren = []
-    for c in treeRoot.list_children:
-        nodeLeftToAssignChildren.append(c)
+    treeRoot_with_children = assign_children_to_node(treeRoot, len(treeRoot.list_taken_tokens), treeRoot.total_tokens, treeRoot.list_taken_tokens, depth_of_search_tree)
     
-    for child in nodeLeftToAssignChildren:
-        child = assign_children_to_node(child, len(child.list_taken_tokens), child.total_tokens, child.list_taken_tokens, depth_of_search_tree)
-        if child is None:
-            continue
-        else:
-            for x in child.list_children:
-                nodeLeftToAssignChildren.append(x)  
-    
-    return treeRoot;
+    return treeRoot_with_children;
    
 
 # logic of the alpha beta algorithm
 def alphabeta(node, depth, alpha, beta, maximizingPlayer):
     
+    # setup children of nodes (when its not the root node because it already comes with children)
+    if node.parent is not None:
+        node_with_children = assign_children_to_node(node, len(node.list_taken_tokens), node.total_tokens, node.list_taken_tokens, depth)
+    else:
+        node_with_children = node
+        
+    node_with_children.print_node()
+    
     # we are at the max depth of tree or a terminal node, we need the e(n) value
-    if depth == 0 or len(node.list_children) == 0:
-        return static_board_evaluation(node)
+    if depth == 0 or len(node_with_children.list_children) == 0:
+        return static_board_evaluation(node_with_children)
     
     if maximizingPlayer:
         value = -math.inf
-        for child in node.list_children:
+        for child in node_with_children.list_children:
             value = max(value, alphabeta(child, depth - 1, alpha, beta, False))
             alpha = max(alpha, value)
             if beta <= alpha:
@@ -116,7 +106,7 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer):
             return value
     else:
         value = math.inf
-        for child in node.list_children:
+        for child in node_with_children.list_children:
             value = min(value, alphabeta(child, depth - 1, alpha, beta, True))
             beta = min(beta, value)
             if beta <= alpha:
