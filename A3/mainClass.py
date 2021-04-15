@@ -4,11 +4,10 @@
 # Emilie Mines 40045370
 
 import utilClass
-import Node
 import math
 
 print("\nWelcome to the PNT game!")
-print("Let's start!")
+print("Let's start and compute a single move!")
 
 while True:
     print("\nGive me a sequence of positive integers separated by spaces in this format:")

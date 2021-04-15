@@ -27,7 +27,7 @@ def split_input_string(inputStr):
 
 
 def get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_tokens):
-    # first move
+    # first move, odd number strictly less than n/2
     if number_of_taken_tokens == 0:
         range_of_numbers = list(range(1, (int)(total_tokens/2 + 1)))
         possible_choices = [num for num in range_of_numbers if num % 2 == 1]
@@ -81,7 +81,7 @@ def create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens,
     return treeRoot_with_children;
    
 
-# logic of the alpha beta algorithm
+# logic of the alpha beta algorithm, compute a single move
 def alphabeta(node, depth, alpha, beta, maximizingPlayer):
     
     # setup children of nodes (when its not the root node because it already comes with children)
