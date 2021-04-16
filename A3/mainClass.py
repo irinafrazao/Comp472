@@ -23,9 +23,16 @@ while True:
     
     # send data to alpha beta algorithm
     count_nodes_visited = 1
-    value, move_to_do, count_nodes_visited, count_nodes_evaluated = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True, count_nodes_visited, 0)
+    count_nodes_evaluated = 0
+    max_depth_reached = 0
+    branching_factor_total_children = 0
     
-    print("VALUE TESTING: " + str(value) + "    MOVE:   " + str(move_to_do) + "       COUNT VISITED: " + str(count_nodes_visited)  +  "         COUNT EVALUATED: " + str(count_nodes_evaluated))
+    value, move_to_do, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
     
+    print(branching_factor_total_children)
+    branching_factor = count_nodes_visited / branching_factor_total_children
+    
+    print("VALUE TESTING: " + str(value) + "    MOVE:   " + str(move_to_do) + "   COUNT VISITED: " + str(count_nodes_visited))
+    print("  COUNT EVALUATED: " + str(count_nodes_evaluated) + "   MAX DEPTH REACHED: " + str(max_depth_reached) + "   BRANCHING FACTOR: " + str(branching_factor))
     # TO ADD OUTPUT
     
