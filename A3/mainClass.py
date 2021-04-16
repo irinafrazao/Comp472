@@ -17,13 +17,15 @@ while True:
     inputString = input()
     
     total_tokens, number_of_taken_tokens, list_of_taken_tokens, depth_of_search_tree = utilClass.split_input_string(inputString)
-    
+
     # create root of tree
     treeRootNode = utilClass.create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens, depth_of_search_tree)
     
     # send data to alpha beta algorithm
-    value = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True)
-    print("VALUE TESTING: " + str(value))
+    count_nodes_visited = 1
+    value, move_to_do, count_nodes_visited, count_nodes_evaluated = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True, count_nodes_visited, 0)
+    
+    print("VALUE TESTING: " + str(value) + "    MOVE:   " + str(move_to_do) + "       COUNT VISITED: " + str(count_nodes_visited)  +  "         COUNT EVALUATED: " + str(count_nodes_evaluated))
     
     # TO ADD OUTPUT
     

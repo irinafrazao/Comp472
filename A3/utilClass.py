@@ -42,12 +42,12 @@ def get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_t
     return possible_choices
 
 
-def assign_children_to_node(parentNode, number_of_taken_tokens, total_tokens, list_of_taken_tokens, depth_of_search_tree):
+def assign_children_to_node(parentNode, number_of_taken_tokens, total_tokens, list_of_taken_tokens):
 
     # create nodes and add children to them  
     possible_moves = get_possible_moves_PNT(total_tokens, number_of_taken_tokens, list_of_taken_tokens)
     
-    if parentNode.depth_of_node < depth_of_search_tree and len(possible_moves) > 0:
+    if len(possible_moves) > 0:
         depth_of_node = parentNode.depth_of_node + 1
         maximizingPlayerParent = not parentNode.maximizingPlayer
 
@@ -76,42 +76,60 @@ def create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens,
         
     treeRoot = Node(None, maximizingPlayerParent, total_tokens, list_of_taken_tokens, depth_of_node, [], None)      
     
-    treeRoot_with_children = assign_children_to_node(treeRoot, len(treeRoot.list_taken_tokens), treeRoot.total_tokens, treeRoot.list_taken_tokens, depth_of_search_tree)
+    treeRoot_with_children = assign_children_to_node(treeRoot, len(treeRoot.list_taken_tokens), treeRoot.total_tokens, treeRoot.list_taken_tokens)
     
     return treeRoot_with_children;
    
 
 # logic of the alpha beta algorithm, compute a single move
-def alphabeta(node, depth, alpha, beta, maximizingPlayer):
+def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, count_nodes_evaluated):
     
     # setup children of nodes (when its not the root node because it already comes with children)
     if node.parent is not None:
-        node_with_children = assign_children_to_node(node, len(node.list_taken_tokens), node.total_tokens, node.list_taken_tokens, depth)
+        node_with_children = assign_children_to_node(node, len(node.list_taken_tokens), node.total_tokens, node.list_taken_tokens)
     else:
         node_with_children = node
-        
+        # if depth sent in is 0, go until end game states
+        if depth == 0:
+            depth = node.total_tokens
+
     node_with_children.print_node()
-    
+
     # we are at the max depth of tree or a terminal node, we need the e(n) value
     if depth == 0 or len(node_with_children.list_children) == 0:
-        return static_board_evaluation(node_with_children)
+        count_nodes_evaluated = count_nodes_evaluated + 1
+        eN = static_board_evaluation(node_with_children)
+        return eN, None, count_nodes_visited, count_nodes_evaluated
     
     if maximizingPlayer:
         value = -math.inf
+        
         for child in node_with_children.list_children:
-            value = max(value, alphabeta(child, depth - 1, alpha, beta, False))
+            count_nodes_visited = count_nodes_visited + 1
+            
+            value_from_eval, move, count_nodes_visited, count_nodes_evaluated = alphabeta(child, depth - 1, alpha, beta, False, count_nodes_visited, count_nodes_evaluated)
+            
+            value = max(value, value_from_eval)
             alpha = max(alpha, value)
             if beta <= alpha:
                 break # beta cut off branch
-            return value
+                
+        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated
+    
     else:
         value = math.inf
+        
         for child in node_with_children.list_children:
-            value = min(value, alphabeta(child, depth - 1, alpha, beta, True))
+            count_nodes_visited = count_nodes_visited + 1
+
+            value_from_eval, move, count_nodes_visited, count_nodes_evaluated = alphabeta(child, depth - 1, alpha, beta, True, count_nodes_visited, count_nodes_evaluated)
+            
+            value = min(value, value_from_eval)
             beta = min(beta, value)
-            if beta <= alpha:
+            if alpha >= beta:
                 break # alpha cut off branch
-            return value
+                
+        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated
     
 
 # heuristic evaluation of a node
@@ -155,35 +173,32 @@ def static_board_evaluation(node):
         else:
             return multiplier * 0.7
         
+    
     # last move is composite, find largest prime that can divide composite,
-    # count multiples of that prime in successors, odd = 0.6, even = -0.6  
+    # count multiples of that prime in successors, odd = 0.6, even = -0.6 
     if is_prime(last_move) == False:
         
-        search = node.total_tokens
-        while search > 0:
-            if is_prime(search):
-                if last_move % search == 0:
-                    break
-                else:
-                    search = search - 1;
-            else:
-                search = search - 1;
-                
+        largest_prime_factor = maxPrimeFactors(last_move)
+        
         count = 0
         for child in node.list_children:
-            if is_multiple(child.move_PNT, search):
+            if is_multiple(child.move_PNT, largest_prime_factor):
                 count = count + 1
-        
+    
         if count % 2 == 0:
             return multiplier * -0.6
         else:
             return multiplier * 0.6
+    
         
         
-
 # check if number_to_check is a multiple of number_multiple_of (4 is multiple of 2, i.e. 4 % 2 = 0)
 def is_multiple(number_to_check, number_multiple_of):
-    if number_to_check % number_multiple_of == 0:
+    # 1 is a factor of all other numbers
+    if number_to_check == 1:
+        return True
+    
+    if (number_to_check % number_multiple_of == 0) or (number_multiple_of % number_to_check == 0):
         return True
     else:
         return False
@@ -192,14 +207,14 @@ def is_multiple(number_to_check, number_multiple_of):
 # check if given number is prime or not  
 def is_prime(number):
 
-    # If given number is greater than 1
+    # If given number is greater than 1 (one is not prime)
     if number > 1:
  
-        # Iterate from 2 to number / 2
-        for i in range(2, int(number/2)+1):
+        # Iterate from 1 to number / 2
+        for i in range(1, int(number/2)+1):
  
             # If number is divisible by any number between
-            # 2 and nymber / 2, it is not prime
+            # 1 and number / 2, it is not prime
             if (number % i) == 0:
                 return False
                 break
@@ -207,3 +222,33 @@ def is_prime(number):
                 return True
     else:
         return False
+    
+    
+
+# A function to find largest prime factor
+def maxPrimeFactors (n):
+      
+    # Initialize the maximum prime factor
+    # variable with the lowest one
+    maxPrime = -1
+      
+    # Print the number of 2s that divide n
+    while n % 2 == 0:
+        maxPrime = 2
+        n >>= 1     # equivalent to n /= 2
+          
+    # n must be odd at this point, 
+    # thus skip the even numbers and 
+    # iterate only for odd integers
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        while n % i == 0:
+            maxPrime = i
+            n = n / i
+      
+    # This condition is to handle the 
+    # case when n is a prime number 
+    # greater than 2
+    if n > 2:
+        maxPrime = n
+      
+    return int(maxPrime)
