@@ -1,1 +1,0 @@
-input1:    TakeTokens 3 0 0input2:    TakeTokens 7 1 1 2input3:    TakeTokens 10 3 4 2 6 4input4:    TakeTokens 7 3 1 4 2 3

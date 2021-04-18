@@ -82,76 +82,73 @@ def create_root_node(total_tokens, list_of_taken_tokens, number_of_taken_tokens,
     return treeRoot_with_children;
    
 
+
+
 # logic of the alpha beta algorithm, compute a single move
 def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children):
    
-    
-    while True:
+    # setup children of nodes (when its not the root node because it already comes with children)
+    if node.parent is not None:
+        node_with_children = assign_children_to_node(node, len(node.list_taken_tokens), node.total_tokens, node.list_taken_tokens)
+    else:
+        node_with_children = node
+        # if depth sent in is 0, go until end game states
+        if depth == 0:
+            depth = node.total_tokens
+
+    #node_with_children.print_node()
+
+    # we are at the max depth of tree or a terminal node, we need the e(n) value
+    if depth == 0 or len(node_with_children.list_children) == 0:
+        count_nodes_evaluated = count_nodes_evaluated + 1
         
-     
+        if node_with_children.depth_of_node > max_depth_reached:
+                max_depth_reached = node_with_children.depth_of_node
+                
+        eN = static_board_evaluation(node_with_children)
+        return eN, None, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
-        # setup children of nodes (when its not the root node because it already comes with children)
-        if node.parent is not None:
-            node_with_children = assign_children_to_node(node, len(node.list_taken_tokens), node.total_tokens, node.list_taken_tokens)
-        else:
-            node_with_children = node
-            # if depth sent in is 0, go until end game states
-            if depth == 0:
-                depth = node.total_tokens
-    
-        node_with_children.print_node()
-    
-        # we are at the max depth of tree or a terminal node, we need the e(n) value
-        if depth == 0 or len(node_with_children.list_children) == 0:
-            count_nodes_evaluated = count_nodes_evaluated + 1
-            
-            if node_with_children.depth_of_node > max_depth_reached:
-                    max_depth_reached = node_with_children.depth_of_node
-                    
-            eN = static_board_evaluation(node_with_children)
-            return eN, None, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+    # go through tree looking at alpha beta values
+    if maximizingPlayer:
+        value = -math.inf
         
-        # go through tree looking at alpha beta values
-        if maximizingPlayer:
-            value = -math.inf
-            
-            branching_factor_total_children = branching_factor_total_children + len(node_with_children.list_children)
-            
-            for child in node_with_children.list_children:
-                count_nodes_visited = count_nodes_visited + 1
-                
-                if child.depth_of_node > max_depth_reached:
-                    max_depth_reached = child.depth_of_node
-                value_from_eval, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = alphabeta(child, depth - 1, alpha, beta, False, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
-                value = max(value, value_from_eval)
-                alpha = max(alpha, value)
-                if beta <= alpha:
-                    break # beta cut off branch
-                    
-            return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+        branching_factor_total_children = branching_factor_total_children + len(node_with_children.list_children)
         
-        else:
-            value = math.inf
+        for child in node_with_children.list_children:
+            count_nodes_visited = count_nodes_visited + 1
             
-            branching_factor_total_children = branching_factor_total_children + len(node_with_children.list_children)
+            if child.depth_of_node > max_depth_reached:
+                max_depth_reached = child.depth_of_node
+            value_from_eval, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = alphabeta(child, depth - 1, alpha, beta, False, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
+            value = max(value, value_from_eval)
+            alpha = max(alpha, value)
+            if beta <= alpha:
+                break # beta cut off branch
+                
+        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+    
+    else:
+        value = math.inf
+        
+        branching_factor_total_children = branching_factor_total_children + len(node_with_children.list_children)
+        
+        for child in node_with_children.list_children:
+            count_nodes_visited = count_nodes_visited + 1
             
-            for child in node_with_children.list_children:
-                count_nodes_visited = count_nodes_visited + 1
+            if child.depth_of_node > max_depth_reached:
+                max_depth_reached = child.depth_of_node
+
+            value_from_eval, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = alphabeta(child, depth - 1, alpha, beta, True, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
+            
+            value = min(value, value_from_eval)
+            beta = min(beta, value)
+            if alpha >= beta:
+                break # alpha cut off branch
                 
-                if child.depth_of_node > max_depth_reached:
-                    max_depth_reached = child.depth_of_node
+        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
-                value_from_eval, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = alphabeta(child, depth - 1, alpha, beta, True, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
-                
-                value = min(value, value_from_eval)
-                beta = min(beta, value)
-                if alpha >= beta:
-                    break # alpha cut off branch
-                    
-            return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
-    print("time exceeded")
-    return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+    
 
 # heuristic evaluation of a node
 def static_board_evaluation(node):
