@@ -37,7 +37,7 @@ for inputString in test_cases:
     count_nodes_visited = 1
     count_nodes_evaluated = 0
     max_depth_reached = 0
-    branching_factor_total_children = 0
+    branching_factor_total_children = 1
     
     start = perf_counter()
     value, move_to_do, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = utilClass.alphabeta(treeRootNode, depth_of_search_tree, -math.inf, math.inf, True, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
@@ -51,6 +51,7 @@ for inputString in test_cases:
         branching_factor = round((count_nodes_visited / branching_factor_total_children),1)
     
     # print output
+    print("OUTPUT!")
     print("Move: " + str(move_to_do))
     print("Value: " + str(value))
     print("Number of Nodes Visited: " + str(count_nodes_visited))

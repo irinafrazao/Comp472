@@ -27,7 +27,9 @@ class Node:
         print("total_tokens: ", self.total_tokens)
         print("list_taken_tokens: ", self.list_taken_tokens)
         print("depth_of_node: ", self.depth_of_node)
-        print("list_children: ", self.list_children)
+        print("list_children: ")
+        for c in self.list_children:
+            print(str(c.move_PNT) + " ")
         print("move_PNT: ", self.move_PNT)
         print("\n")
 

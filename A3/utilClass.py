@@ -106,7 +106,7 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, c
                 max_depth_reached = node_with_children.depth_of_node
                 
         eN = static_board_evaluation(node_with_children)
-        return eN, None, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+        return eN, node_with_children.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
     # go through tree looking at alpha beta values
     if maximizingPlayer:
@@ -122,10 +122,16 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, c
             value_from_eval, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children = alphabeta(child, depth - 1, alpha, beta, False, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children)
             value = max(value, value_from_eval)
             alpha = max(alpha, value)
+            
             if beta <= alpha:
                 break # beta cut off branch
                 
-        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+            # to break ties between child nodes that have same value, take smallest move
+            if value == value_from_eval:
+                if child.move_PNT < move:
+                    move = child.move_PNT
+                            
+        return value, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
     else:
         value = math.inf
@@ -142,10 +148,16 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, c
             
             value = min(value, value_from_eval)
             beta = min(beta, value)
+            
             if alpha >= beta:
                 break # alpha cut off branch
+                          
+            # to break ties between child nodes that have same value, take smallest move
+            if value == value_from_eval:
+                if child.move_PNT < move:
+                    move = child.move_PNT
                 
-        return value, child.move_PNT, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
+        return value, move, count_nodes_visited, count_nodes_evaluated, max_depth_reached, branching_factor_total_children
     
     
     
@@ -192,16 +204,27 @@ def static_board_evaluation(node):
             return multiplier * 0.7
         
     
-    # last move is composite, find largest prime that can divide composite,
+    # last move is composite, find largest prime in successors that can divide composite,
     # count multiples of that prime in successors, odd = 0.6, even = -0.6 
     if is_prime(last_move) == False:
         
-        largest_prime_factor = maxPrimeFactors(last_move)
+        search = node.total_tokens
+        
+        while search > 0:
+            if is_prime(search):
+                if is_multiple(last_move, search):
+                    break;
+                else:
+                    search = search - 1
+            else:
+                search = search - 1
         
         count = 0
-        for child in node.list_children:
-            if is_multiple(child.move_PNT, largest_prime_factor):
-                count = count + 1
+        if search != 0 :
+            for child in node.list_children:
+                if child is not node.list_taken_tokens:
+                    if is_multiple(child.move_PNT, search):
+                        count = count + 1
     
         if count % 2 == 0:
             return multiplier * -0.6
@@ -240,33 +263,3 @@ def is_prime(number):
                 return True
     else:
         return False
-    
-    
-
-# A function to find largest prime factor
-def maxPrimeFactors (n):
-      
-    # Initialize the maximum prime factor
-    # variable with the lowest one
-    maxPrime = -1
-      
-    # Print the number of 2s that divide n
-    while n % 2 == 0:
-        maxPrime = 2
-        n >>= 1     # equivalent to n /= 2
-          
-    # n must be odd at this point, 
-    # thus skip the even numbers and 
-    # iterate only for odd integers
-    for i in range(3, int(math.sqrt(n)) + 1, 2):
-        while n % i == 0:
-            maxPrime = i
-            n = n / i
-      
-    # This condition is to handle the 
-    # case when n is a prime number 
-    # greater than 2
-    if n > 2:
-        maxPrime = n
-      
-    return int(maxPrime)
