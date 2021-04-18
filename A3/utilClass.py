@@ -101,7 +101,7 @@ def alphabeta(node, depth, alpha, beta, maximizingPlayer, count_nodes_visited, c
     # we are at the max depth of tree or a terminal node, we need the e(n) value
     if depth == 0 or len(node_with_children.list_children) == 0:
         count_nodes_evaluated = count_nodes_evaluated + 1
-        
+
         if node_with_children.depth_of_node > max_depth_reached:
                 max_depth_reached = node_with_children.depth_of_node
                 
